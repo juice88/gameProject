@@ -1,0 +1,11 @@
+# folder ignore
+
+.metadata/
+.settings/
+bin-debug/
+html-template/
+
+#file ignore
+
+.actionScriptProperties
+.project
