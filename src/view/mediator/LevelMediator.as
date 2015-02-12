@@ -78,7 +78,7 @@ package view.mediator
 					levelVL.mute();
 					break;
 				case GeneralNotifications.PAUSE:
-					levelVL.removeListenerForPause();
+					levelVL.removeListener();
 					break;
 				case GeneralNotifications.CONTINUE_GAME:
 					levelVL.addListenerForPause();

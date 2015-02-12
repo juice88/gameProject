@@ -12,9 +12,7 @@ package view.components
 		
 		public function ViewLogic(name:String){
 			this.displayObject = Warehouse.getInstance().getAsset(name);
-			
 		}
-		
 		public function get content():DisplayObject{
 			return displayObject;
 		}

@@ -28,7 +28,6 @@ package view.components
 		{
 			startBtn = startContent["startBtn"];
 			startBtn.addEventListener(MouseEvent.CLICK, onStartBtnClick);
-			
 		}
 		
 		protected function onStartBtnClick(event:MouseEvent):void

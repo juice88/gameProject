@@ -127,6 +127,7 @@ package view.components
 			for (var i:uint = 0; i < allElemList.length; i++)
 			{
 				vectorElementDto[i].element.back.gotoAndStop(show);
+			//	vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement); //знімаємо лісенери на випадок яколи був натиснутий рестарт
 			}
 			setTimeout(allElementsHided, Settings.SHOW_ELEMENTS_DELAY); //встановлюється затримка відкритих елементів 
 		}
@@ -147,9 +148,9 @@ package view.components
 				if (restElement[i] != null) //якщо елемент в векторі елементів які залишилися на сцені не нулл
 				{
 					((level1Content[shablon+i]) as MovieClip).removeChild(restElement[i]); //видаляємо усі елементи з сцени
-					vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
 				}
 			}
+			removeListener();
 			
 			for (var j:uint = 0; j<allElemList.length; j++)
 			{
@@ -205,21 +206,25 @@ package view.components
 			}
 		}
 		
-		public function removeListenerForPause():void
+		public function removeListener():void //метод для видалення лісенерів з елементів при паузі, рестарті та геймОвер
 		{
 			for (var i:uint=0; i<vectorElementDto.length; i++)
-			vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
+			{
+				vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
+			}
 		}
 		
 		public function addListenerForPause():void
 		{
 			for (var i:uint=0; i<vectorElementDto.length; i++)
+			{
 				vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement);
+			}
 		}
 		
 		public function gameOver():void
 		{
-			removeListenerForPause();
+			removeListener();
 			setTimeout(gameOverSound, 500);
 			gameOverShowRestElements();
 		}
