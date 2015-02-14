@@ -24,6 +24,7 @@ package controller.commands
 			facade.registerCommand(GeneralNotifications.LOAD_FLASH, LoadFlashCommand);
 			facade.registerCommand(GeneralNotifications.START_GAME, StartGameCommand);
 			facade.registerCommand(GeneralNotifications.BACK_TO_MENU, BackToMenuCommand);
+			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
 			facade.registerCommand(GeneralNotifications.END_TURN, EndTurnCommand);
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
@@ -32,6 +33,7 @@ package controller.commands
 			facade.registerCommand(GeneralNotifications.PAUSE, PauseCommand);
 			facade.registerCommand(GeneralNotifications.CONTINUE_GAME, ContinueGameCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER, GameOverCommand);
+			facade.registerCommand(GeneralNotifications.WIN, WinCommand);
 		}
 	}
 }

@@ -7,6 +7,7 @@ package controller.commands
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
 	import view.mediator.PausePopupMediator;
+	import view.mediator.WinPopupMediator;
 	
 	public class PauseCommand extends SimpleCommand
 	{

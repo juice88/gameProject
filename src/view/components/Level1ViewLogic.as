@@ -31,6 +31,7 @@ package view.components
 		private var FalseSound:Class = Warehouse.getInstance().getAssetClass("FalseSound");
 		private var TrueSound:Class = Warehouse.getInstance().getAssetClass("TrueSound");
 		private var GameOverSound:Class = Warehouse.getInstance().getAssetClass("GameOverSound");
+		private var WinSound:Class = Warehouse.getInstance().getAssetClass("WinSound");
 		private var volumeSet:SoundTransform = new SoundTransform();
 		
 		
@@ -127,7 +128,6 @@ package view.components
 			for (var i:uint = 0; i < allElemList.length; i++)
 			{
 				vectorElementDto[i].element.back.gotoAndStop(show);
-			//	vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement); //знімаємо лісенери на випадок яколи був натиснутий рестарт
 			}
 			setTimeout(allElementsHided, Settings.SHOW_ELEMENTS_DELAY); //встановлюється затримка відкритих елементів 
 		}
@@ -189,9 +189,14 @@ package view.components
 		
 		private function gameOverSound():void
 		{
-			
 			var gameOverSound:Sound = new GameOverSound;
 			gameOverSound.play(0,1,volumeSet);
+		}
+		
+		private function winSound():void
+		{
+			var winSound:Sound = new WinSound;
+			winSound.play(0,1,volumeSet);
 		}
 		
 		public function mute():void
@@ -227,6 +232,11 @@ package view.components
 			removeListener();
 			setTimeout(gameOverSound, 500);
 			gameOverShowRestElements();
+		}
+		
+		public function win():void
+		{
+			setTimeout(winSound, 500);
 		}
 	}
 }

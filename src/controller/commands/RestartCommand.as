@@ -11,6 +11,7 @@ package controller.commands
 	import view.mediator.GameOverPopupMediator;
 	import view.mediator.LevelMediator;
 	import view.mediator.PausePopupMediator;
+	import view.mediator.WinPopupMediator;
 	
 	public class RestartCommand extends SimpleCommand
 	{
@@ -18,6 +19,7 @@ package controller.commands
 		{
 			facade.removeMediator(PausePopupMediator.NAME);
 			facade.removeMediator(GameOverPopupMediator.NAME);
+			facade.removeMediator(WinPopupMediator.NAME);
 			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).resetLevelScoreCounter();
 			(facade.retrieveProxy(StartGameProxy.NAME) as StartGameProxy).replayLevel();
 		}

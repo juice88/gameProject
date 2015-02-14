@@ -40,7 +40,6 @@ package model.proxy
 		
 		public function init():void
 		{ 
-			levelDto.movesCounter = 0; //встановлюємо значення лічильника ходів на 0
 			state = Settings.IDLE_STATE; // коли гра перший раз загрузилася тоді включається режим очікування
 			levelDto.kadrList = new Vector.<uint>; //ініціалізація вектора значень кадрів
 			levelDto.ElementListVector = new Vector.<ElementDto>; // ініціалізація вектора усіх елементів
@@ -55,6 +54,7 @@ package model.proxy
 				levelDto.ElementListVector.push(elementDto);
 			}
 			sendNotification(GeneralNotifications.READY_TO_DRAW, levelDto.ElementListVector); //формуємо повідомлення про готовність до нарисовки елементів та відправляємо масив елементів
+			sendNotification(GeneralNotifications.NUMBER_OF_MOVES, (levelDto.ElementListVector.length as int)/Settings.OPEN_ELEM_LIMIT); //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
 		}
 		
 		private function fillKadrList():void //наповнюємо ігрове поле елементами(квадратиками)
@@ -99,8 +99,6 @@ package model.proxy
 			
 			if(levelDto.openElementsList.length == Settings.OPEN_ELEM_LIMIT) //якщо кількость відкритих елементів рівна заданій в Settings тоді...
 			{
-				levelDto.movesCounter++; //якщо відкрито будь-які два елемента тоді збільшити на 1 лічильник ходів
-				sendNotification(GeneralNotifications.MOVES_COUTNER_UPDATED, levelDto.movesCounter);
 				sendNotification(GeneralNotifications.RESULTS_TURN, checkElements()); //відправляємо нотіф з результатом ходу (вибору елемента) 
 				state = Settings.RESULT_STATE; //якщо вибрано два елементи то включається режим РесалтСтейт (стан відсилання результату), тобто більше не можливо буде попасти в цю функцію
 			}
@@ -141,7 +139,6 @@ package model.proxy
 		}
 		public function replayLevel():void
 		{
-			levelDto.movesCounter = 0;
 			levelDto.openElementsList = new Vector.<ElementDto>; //обнуляємо вектор відкритих елементів, щоб після рестарта можна було вибирати елементи спочатку
 			sendNotification(GeneralNotifications.REPLAY_LEVEL);
 		}

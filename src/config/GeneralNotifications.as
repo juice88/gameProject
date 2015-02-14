@@ -10,6 +10,7 @@ package config
 		public static const BACK_TO_MENU:String = "back_to_menu";
 		public static const RESTART_GAME:String = "restart_game";
 		public static const READY_TO_DRAW:String = "ready_to_draw"; // Нотіф про готовність до розташування елементів
+		public static const NUMBER_OF_MOVES:String = "number_of_moves"; //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
 		public static const ON_OPEN_ELEMENT:String = "on_open_element"; //Нотіф про те що елемент ще не відкритий, а ми лише намірені його відкрити цей елемент
 		public static const RESULTS_TURN:String = "result_turn"; //нотіф з результатом ходу (вибору елемента)
 		public static const END_TURN:String = "end_turn"; //Нотіф про закінчення вибору елементів
@@ -26,6 +27,9 @@ package config
 		public static const GAME_OVER:String = "game_over";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
 		public static const FULL_SCREEN:String = "full_screen";
+		public static const WIN:String = "win"; //перемога (пройдено рівень)
+		public static const SEND_VALUE_TO_WINPOPUP:String = "send_value_to_winpopup";
+		
 		
 	
 	}

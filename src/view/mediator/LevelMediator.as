@@ -54,7 +54,8 @@ package view.mediator
 					GeneralNotifications.MUTE,
 					GeneralNotifications.PAUSE,
 					GeneralNotifications.CONTINUE_GAME,
-					GeneralNotifications.GAME_OVER];
+					GeneralNotifications.GAME_OVER,
+					GeneralNotifications.WIN];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -85,6 +86,9 @@ package view.mediator
 					break;
 				case GeneralNotifications.GAME_OVER:
 					levelVL.gameOver();
+					break;
+				case GeneralNotifications.WIN:
+					levelVL.win();
 					break;
 			}
 		}

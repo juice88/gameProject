@@ -11,6 +11,7 @@ package controller.commands
 	import view.mediator.LevelMediator;
 	import view.mediator.StartScreenMediator;
 	import view.mediator.TopPanelMediator;
+	import view.mediator.WinPopupMediator;
 	
 	public class BackToMenuCommand extends SimpleCommand
 	{
@@ -19,6 +20,7 @@ package controller.commands
 			facade.removeMediator(LevelMediator.NAME);
 			facade.removeMediator(TopPanelMediator.NAME);
 			facade.removeMediator(BotPanelMediator.NAME);
+			facade.removeMediator(WinPopupMediator.NAME);
 			facade.removeProxy(ScoreProxy.NAME);
 			facade.removeProxy(StartGameProxy.NAME);
 			facade.registerMediator(new StartScreenMediator());

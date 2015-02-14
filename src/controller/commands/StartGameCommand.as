@@ -18,8 +18,8 @@ package controller.commands
 			facade.registerMediator(new TopPanelMediator());
 			facade.registerMediator(new BotPanelMediator());
 			facade.registerMediator(new LevelMediator());
-			facade.registerProxy(new StartGameProxy());
 			facade.registerProxy(new ScoreProxy());
+			facade.registerProxy(new StartGameProxy());
 		}
 	}
 }
