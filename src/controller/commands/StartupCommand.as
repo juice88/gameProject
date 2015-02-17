@@ -34,6 +34,7 @@ package controller.commands
 			facade.registerCommand(GeneralNotifications.CONTINUE_GAME, ContinueGameCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER, GameOverCommand);
 			facade.registerCommand(GeneralNotifications.WIN, WinCommand);
+			facade.registerCommand(GeneralNotifications.START_TIMER, StartTimerCommand);
 		}
 	}
 }

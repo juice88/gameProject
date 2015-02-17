@@ -35,6 +35,7 @@ package view.mediator
 			levelVL.addEventListener(GeneralEventsConst.END_TURN, onEndTurnHand);
 			levelVL.addEventListener(GeneralEventsConst.SELECT_IS_TRUE, onSelectIsTrueHand);
 			levelVL.addEventListener(GeneralEventsConst.SELECT_IS_FALSE, onSelectIsFalseHand);
+			levelVL.addEventListener(GeneralEventsConst.START_TIMER, onStartTimerHand);
 			
 		}
 		
@@ -44,6 +45,7 @@ package view.mediator
 			levelVL.removeEventListener(GeneralEventsConst.END_TURN, onEndTurnHand);
 			levelVL.removeEventListener(GeneralEventsConst.SELECT_IS_TRUE, onSelectIsTrueHand);
 			levelVL.removeEventListener(GeneralEventsConst.SELECT_IS_FALSE, onSelectIsFalseHand);
+			levelVL.removeEventListener(GeneralEventsConst.START_TIMER, onStartTimerHand);
 		}
 		
 		override public function listNotificationInterests():Array{
@@ -112,5 +114,9 @@ package view.mediator
 		{
 			sendNotification(GeneralNotifications.SELECT_IS_TRUE);
 		}	
+		protected function onStartTimerHand(event:Event):void
+		{
+			sendNotification(GeneralNotifications.START_TIMER);
+		}
 	}
 }

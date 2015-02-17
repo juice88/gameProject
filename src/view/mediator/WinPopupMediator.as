@@ -21,13 +21,13 @@ package view.mediator
 		}
 		override public function listNotificationInterests():Array
 		{
-			return [GeneralNotifications.SEND_VALUE_TO_WINPOPUP];
+			return [GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS];
 		}
 		override public function handleNotification(notification:INotification):void
 		{
 			switch (notification.getName())
 			{
-				case GeneralNotifications.SEND_VALUE_TO_WINPOPUP:
+				case GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS:
 					winPopup.ScoreTrueFalseCounters(notification.getBody() as Array);
 					break;
 			}

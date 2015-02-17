@@ -28,7 +28,9 @@ package config
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
 		public static const FULL_SCREEN:String = "full_screen";
 		public static const WIN:String = "win"; //перемога (пройдено рівень)
-		public static const SEND_VALUE_TO_WINPOPUP:String = "send_value_to_winpopup";
+		public static const VALUES_SCORE_TRUE_FALSE_MOVS:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
+		public static const START_TIMER:String = "start_timer";
+		public static const VALUES_MINUTE_SECOND:String = "values_minute_second";
 		
 		
 	

@@ -47,7 +47,8 @@ package view.mediator
 		
 		override public function listNotificationInterests():Array
 		{
-			return [GeneralNotifications.LIFES_COUNTER_UPDATED];
+			return [GeneralNotifications.LIFES_COUNTER_UPDATED,
+					GeneralNotifications.VALUES_MINUTE_SECOND];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -56,6 +57,9 @@ package view.mediator
 			{
 				case (GeneralNotifications.LIFES_COUNTER_UPDATED):
 					botPanel.lifesCounterUpdated(notification.getBody() as int);
+					break;
+				case (GeneralNotifications.VALUES_MINUTE_SECOND):
+					botPanel.timerUpdated(notification.getBody() as Array);
 					break;
 			}
 		}

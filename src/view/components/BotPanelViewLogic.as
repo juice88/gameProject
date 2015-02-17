@@ -6,6 +6,7 @@ package view.components
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
 
 	public class BotPanelViewLogic extends ViewLogic
 	{
@@ -13,6 +14,8 @@ package view.components
 		private var fullScreenBtn:SimpleButton;
 		private var frameMuteBtn:uint = 1;
 		private var lifesPic:MovieClip;
+		private var minuteTf:TextField;
+		private var secondTf:TextField;
 		
 		public function BotPanelViewLogic()
 		{
@@ -56,6 +59,28 @@ package view.components
 		public function lifesCounterUpdated(lifesValue:int):void
 		{
 			lifesPic.gotoAndStop(lifesValue + 1);
+		}
+		public function timerUpdated(minSec:Array):void
+		{
+			
+			minuteTf = botPanel.minute.valueTf;
+			secondTf = botPanel.second.valueTf;
+			if (minSec[1]<=9)
+			{
+				secondTf.text = "0" + minSec[1].toString(10);
+			}
+			else
+			{
+				secondTf.text = minSec[1].toString(10);
+			}
+			if (minSec[0]<=9)
+			{
+				minuteTf.text = "0" + minSec[0].toString(10);
+			}
+			else
+			{
+				minuteTf.text = minSec[0].toString(10);
+			}
 		}
 	}
 }

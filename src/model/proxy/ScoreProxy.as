@@ -2,6 +2,9 @@ package model.proxy
 {
 	import config.GeneralNotifications;
 	
+	import flash.events.TimerEvent;
+	import flash.utils.Timer;
+	
 	import model.dto.ScoreDto;
 	
 	import org.puremvc.as3.patterns.proxy.Proxy;
@@ -13,6 +16,9 @@ package model.proxy
 		public function ScoreProxy()
 		{
 			super(NAME, new ScoreDto());
+			score.timer = new Timer(1000, 60);
+			timerGameSet();
+		
 		}
 		
 		public function get score():ScoreDto
@@ -23,6 +29,10 @@ package model.proxy
 		public function allMovesCounter(value:int):void
 		{
 			score.numberOfMoves = value;
+		}
+		override public function onRemove():void
+		{
+			score.timer.stop();
 		}
 		
 		public function selectIsTrue():void
@@ -62,6 +72,8 @@ package model.proxy
 		}
 		public function resetLevelScoreCounter():void
 		{
+			score.timer.stop(); //стопаємо таймер, щоб при рестарті він вимкався не одразу, а лише коли закриються всі елементи
+			timerGameSet();
 			score.trueSelect = 0;
 			score.allTrueSelect = 0;
 			score.allFalseSelect = 0;
@@ -93,9 +105,49 @@ package model.proxy
 				score.ScoreTrueFalseValue = new Array;
 				score.ScoreTrueFalseValue.push(score.totalScore, score.allTrueSelect, score.allFalseSelect);
 				trace("масив -",score.ScoreTrueFalseValue);
+				score.timer.stop();
 				sendNotification(GeneralNotifications.WIN);
-				sendNotification(GeneralNotifications.SEND_VALUE_TO_WINPOPUP, score.ScoreTrueFalseValue);
+				sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS, score.ScoreTrueFalseValue);
 			}
+		}
+		public function timerGameSet():void
+		{
+			score.minute = 1;
+			score.second = 0;
+			score.minuteSecond = new Array;
+			score.minuteSecond.push(score.minute, score.second);
+			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, score.minuteSecond);
+			score.minuteSecond.length = 0;
+		}
+		public function timerGame():void
+		{
+			score.timer.addEventListener(TimerEvent.TIMER, onTick);
+			score.timer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
+			score.timer.start();
+		}
+		
+		protected function onTick(event:TimerEvent):void
+		{
+			score.second--;
+			if (score.second <= -1)
+			{
+				score.minute--;
+				score.second = 59;
+			}
+			score.minuteSecond.push(score.minute, score.second);
+			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, score.minuteSecond);
+			score.minuteSecond.length = 0;
+			trace("таймер", score.minute, ":", score.second);
+			if (score.minute == 0 && score.second ==0)
+			{
+				sendNotification(GeneralNotifications.GAME_OVER);
+				score.timer.stop();
+			}
+		}
+		
+		protected function onTimerComplete(event:TimerEvent):void
+		{
+			score.timer.start();
 		}
 	}
 }

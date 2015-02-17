@@ -139,6 +139,7 @@ package view.components
 				vectorElementDto[i].element.back.gotoAndStop(hide);
 				vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement); //добавляємо лісенери на всі елементи, лише коли вони закриються
 			}
+			dispatchEvent(new Event(GeneralEventsConst.START_TIMER));
 		}
 		
 		public function replayLevel():void
