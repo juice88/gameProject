@@ -6,8 +6,13 @@ package config
 		public static const TIME_DELAY:uint = 500; //1000мс = 1с, затримка відкритого елемента
 		public static const SHOW_ELEMENTS_DELAY:uint = 2000; // затримка відкритих елементів перед початком гри (для перегляду розташування елементів)
 		
+		//налаштування режимів гри
 		public static const IDLE_STATE:String = "IdleState";//режим (стан) очікування
 		public static const OPENING_STATE:String = "OpeningState";//режим (стан) відкриття елемента
 		public static const RESULT_STATE:String = "ResultState";//режим (стан) відсилання результату
+		
+		//налаштування нарахування очків
+		public static const SCORE_ONE_TRUE_SELECT:uint = 10; //кількість очків, яка нараховується при першому та другому правильних ходах
+		public static const scoreThreeTrueSelect:uint = 30; ////кількість очків, яка нараховується при третьому підряд правильному ході та всіх наступних (до помилки)
 	}
 }

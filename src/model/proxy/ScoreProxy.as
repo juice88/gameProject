@@ -1,6 +1,7 @@
 package model.proxy
 {
 	import config.GeneralNotifications;
+	import config.Settings;
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -18,7 +19,6 @@ package model.proxy
 			super(NAME, new ScoreDto());
 			score.timer = new Timer(1000, 60);
 			timerGameSet();
-		
 		}
 		
 		public function get score():ScoreDto
@@ -30,6 +30,7 @@ package model.proxy
 		{
 			score.numberOfMoves = value;
 		}
+		
 		override public function onRemove():void
 		{
 			score.timer.stop();
@@ -59,20 +60,23 @@ package model.proxy
 			score.trueSelect++;
 			if (score.trueSelect < 3) //якщо кількість правильних ходів менша від 3 тоді добавляємо по 10 очок
 			{
-				score.scoreValue += 10;
+				score.scoreValue += Settings.SCORE_ONE_TRUE_SELECT;
+				sendNotification(GeneralNotifications.SCORE_MOVES_ANIMATION, Settings.SCORE_ONE_TRUE_SELECT);
 				sendNotification(GeneralNotifications.SCORE_COUTNER_UPDATED, score.scoreValue);
 			}
 			else //інакше добавляємо по 30 очок
 			{
-				score.scoreValue += 30;
+				score.scoreValue += Settings.scoreThreeTrueSelect;
+				sendNotification(GeneralNotifications.SCORE_MOVES_ANIMATION, Settings.scoreThreeTrueSelect);
 				sendNotification(GeneralNotifications.SCORE_COUTNER_UPDATED, score.scoreValue);
 			}
 			levelWon();
 			trace("Лічильник: правильних ходів-", score.allTrueSelect, "неправильних ходів-", score.allFalseSelect, "Очки-", score.scoreValue);
 		}
-		public function resetLevelScoreCounter():void
+		
+		public function resetLevelCounters():void
 		{
-			score.timer.stop(); //стопаємо таймер, щоб при рестарті він вимкався не одразу, а лише коли закриються всі елементи
+			score.timer.stop(); //стопаємо таймер, щоб при рестарті він вимикався не одразу, а лише коли закриються всі елементи
 			timerGameSet();
 			score.trueSelect = 0;
 			score.allTrueSelect = 0;
@@ -83,20 +87,30 @@ package model.proxy
 			sendNotification(GeneralNotifications.SCORE_COUTNER_UPDATED, score.scoreValue);
 			sendNotification(GeneralNotifications.LIFES_COUNTER_UPDATED, score.lifes);
 		}
+		
 		public function openPausePopup():void // виклик з команди. передаємо значення загального рахунку очків при відкривання діалогового вікна pausePopup
 		{
 			score.totalScore = score.scoreValue;
+			score.timer.stop();
 			sendNotification(GeneralNotifications.TOTAL_SCORE_UPDATED, score.totalScore);
 		}
+		
+		public function timerStart():void
+		{
+			score.timer.start();
+		}
+		
 		private function lifesCounter():void
 		{
 			if (score.lifes < 1)
 			{
 				sendNotification(GeneralNotifications.GAME_OVER);
+				score.timer.stop();
 			}
 			sendNotification(GeneralNotifications.LIFES_COUNTER_UPDATED, score.lifes);
 			trace ("lifes -", score.lifes);
 		}
+		
 		public function levelWon():void
 		{
 			if (score.allTrueSelect == score.numberOfMoves)
@@ -110,15 +124,17 @@ package model.proxy
 				sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS, score.ScoreTrueFalseValue);
 			}
 		}
+		
 		public function timerGameSet():void
 		{
-			score.minute = 1;
-			score.second = 0;
+			score.minute = 0;
+			score.second = 10;
 			score.minuteSecond = new Array;
 			score.minuteSecond.push(score.minute, score.second);
 			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, score.minuteSecond);
 			score.minuteSecond.length = 0;
 		}
+		
 		public function timerGame():void
 		{
 			score.timer.addEventListener(TimerEvent.TIMER, onTick);
@@ -138,7 +154,7 @@ package model.proxy
 			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, score.minuteSecond);
 			score.minuteSecond.length = 0;
 			trace("таймер", score.minute, ":", score.second);
-			if (score.minute == 0 && score.second ==0)
+			if (score.minute <= 0 && score.second <= 0)
 			{
 				sendNotification(GeneralNotifications.GAME_OVER);
 				score.timer.stop();

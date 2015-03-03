@@ -9,6 +9,7 @@ package view.components
 	import flash.events.MouseEvent;
 	import flash.media.Sound;
 	import flash.media.SoundTransform;
+	import flash.text.TextField;
 	import flash.utils.setTimeout;
 	
 	import model.dto.ElementDto;
@@ -33,7 +34,10 @@ package view.components
 		private var GameOverSound:Class = Warehouse.getInstance().getAssetClass("GameOverSound");
 		private var WinSound:Class = Warehouse.getInstance().getAssetClass("WinSound");
 		private var volumeSet:SoundTransform = new SoundTransform();
+		private var ScoreAnim:Class = Warehouse.getInstance().getAssetClass("ScoreAnim");
 		
+		private var scoreAnimTf:TextField;
+		private var movesScoreVal:uint;
 		
 		public function Level1ViewLogic()
 		{
@@ -89,18 +93,29 @@ package view.components
 				restElement.splice(availableElem, 1, null); //видаляємо елемент(який було видалено зі сцени) з вектора MovieClip по індексу, 1 - кількість видалених елементів після елемента з індексом, null - ставиться в масив замість видалених елементів... (без налл не видаляються елементи зі сценни в методі replayLevel)
 			}
 		}
+		public function setScorAnim(scoreValue:int):void
+		{
+			movesScoreVal = scoreValue;
+		}
 
 		public function resultTurn(notif:Boolean):void //перевірка результатів ходу (вибору елементів)
 		{
 			if(notif as Boolean)
 			{
+				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_TRUE));
+				//додаємо анімацію нарахування очків за поточний хід
+				var scoreAnim:MovieClip = new ScoreAnim();
+				scoreAnimTf = scoreAnim.scoreMovesTf;
+				scoreAnimTf.text = movesScoreVal.toString(10);
+				
 				for (var i:uint = 0; i < openElemList.length; i++)
 				{
 					restElemFun(openElemList[i]);
-					trueSelectSound();
+					openElemList[i].parent.addChild(scoreAnim); //додаємо анімацію нарахування очків
+					scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
 					openElemList[i].parent.removeChild(openElemList[i]);
+					trueSelectSound();
 				}
-					dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_TRUE));
 			}
 			else
 			{
@@ -109,11 +124,19 @@ package view.components
 					falseSelectSound();
 					openElemList[i].back.gotoAndStop(hide);
 				}
-					dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
-					
+				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
 			}
 			openElemList = new Vector.<MovieClip>;
 			dispatchEvent(new Event(GeneralEventsConst.END_TURN)); //відправляємо евент про закінчення вибору елементів
+		}
+		
+		protected function onEnterFrameScoreAnim(event:Event):void //якщо поточний кадр мувікліпа scoreAnin рівний загальній кількості кадрів (тобто останній) і парент, який на який покладено мувікліп scoreAnin, тоді видаляємо мувікліп scoreAnin (після його програшу) з парента 
+		{
+			if (event.currentTarget.currentFrame == event.currentTarget.totalFrames && event.target.parent != null)
+			{
+				event.target.parent.removeChild(event.target);
+				event.target.removeEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim);
+			}
 		}
 		
 		public function permitToAdd(elemIndex:int):void 

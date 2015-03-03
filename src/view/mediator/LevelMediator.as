@@ -57,7 +57,8 @@ package view.mediator
 					GeneralNotifications.PAUSE,
 					GeneralNotifications.CONTINUE_GAME,
 					GeneralNotifications.GAME_OVER,
-					GeneralNotifications.WIN];
+					GeneralNotifications.WIN,
+					GeneralNotifications.SCORE_MOVES_ANIMATION];
 		}
 		
 		override public function handleNotification(notification:INotification):void
@@ -91,6 +92,9 @@ package view.mediator
 					break;
 				case GeneralNotifications.WIN:
 					levelVL.win();
+					break;
+				case GeneralNotifications.SCORE_MOVES_ANIMATION:
+					levelVL.setScorAnim(notification.getBody() as int);
 					break;
 			}
 		}
