@@ -2,7 +2,7 @@ package
 {
 	import config.GeneralNotifications;
 	
-	import controller.commands.StartupCommand;
+	import core.controller.commands.StartupCommand;
 	
 	import flash.display.Sprite;
 	import flash.events.Event;

@@ -32,6 +32,8 @@ package config
 		public static const VALUES_SCORE_TRUE_FALSE_MOVS:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
 		public static const START_TIMER:String = "start_timer";
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second";
+		public static const BONUS:String = "bonus";
+		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
 		
 		
 	

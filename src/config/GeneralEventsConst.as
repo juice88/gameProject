@@ -15,8 +15,10 @@ package config
 		public static const MUTE:String = "Mute";
 		public static const PAUSE:String = "Pause";
 		public static const CONTINUE_GAME:String = "ContinueGame";
-		public static const FULL_SCREEN:String = "fullScreen";
-		public static const START_TIMER:String = "startTimer";
+		public static const FULL_SCREEN:String = "FullScreen";
+		public static const START_TIMER:String = "StartTimer";
+		public static const START_BONUS_LEVEL:String = "StartBonusLevel";
+		public static const RESULT_OF_CHOISE_BONUS:String = "ResultOfChoiseBonus";
 		
 	}
 }
