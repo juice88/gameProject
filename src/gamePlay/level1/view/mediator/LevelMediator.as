@@ -56,7 +56,7 @@ package gamePlay.level1.view.mediator
 					GeneralNotifications.REPLAY_LEVEL,
 					GeneralNotifications.MUTE,
 					GeneralNotifications.PAUSE,
-					GeneralNotifications.CONTINUE_GAME,
+					GeneralNotifications.PAUSE_CONTINUE_GAME,
 					GeneralNotifications.GAME_OVER,
 					GeneralNotifications.WIN,
 					GeneralNotifications.SCORE_MOVES_ANIMATION,
@@ -86,7 +86,7 @@ package gamePlay.level1.view.mediator
 				case GeneralNotifications.PAUSE:
 					levelVL.removeListener();
 					break;
-				case GeneralNotifications.CONTINUE_GAME:
+				case GeneralNotifications.PAUSE_CONTINUE_GAME:
 					levelVL.addListenerForPause();
 					break;
 				case GeneralNotifications.GAME_OVER:

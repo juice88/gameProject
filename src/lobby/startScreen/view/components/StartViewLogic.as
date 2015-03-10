@@ -2,6 +2,8 @@ package lobby.startScreen.view.components
 {
 	import config.GeneralEventsConst;
 	
+	import core.view.components.ViewLogic;
+	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
@@ -9,11 +11,12 @@ package lobby.startScreen.view.components
 	import flash.events.MouseEvent;
 	
 	import utils.Warehouse;
-	import core.view.components.ViewLogic;
 	
 	public class StartViewLogic extends ViewLogic
 	{
-		private var startBtn:SimpleButton;
+		private var newGameBtn:SimpleButton;
+		private var continueGameBtn:SimpleButton;
+		private var settingsBtn:SimpleButton;
 		
 		
 		public function StartViewLogic()
@@ -27,13 +30,27 @@ package lobby.startScreen.view.components
 		
 		private function startUpScreenLoad():void
 		{
-			startBtn = startContent["startBtn"];
-			startBtn.addEventListener(MouseEvent.CLICK, onStartBtnClick);
+			newGameBtn = startContent["newGameBtn"];
+			newGameBtn.addEventListener(MouseEvent.CLICK, onNewGameBtnClickHand);
+			continueGameBtn = startContent["continueGameBtn"];
+			continueGameBtn.addEventListener(MouseEvent.CLICK, onContinueGameBtnClicHand);
+			settingsBtn = startContent["settingsBtn"];
+			settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
 		}
 		
-		protected function onStartBtnClick(event:MouseEvent):void
+		protected function onNewGameBtnClickHand(event:MouseEvent):void
 		{
-			dispatchEvent(new Event(GeneralEventsConst.START_GAME));
+			dispatchEvent(new Event(GeneralEventsConst.START_NEW_GAME));
+		}
+		
+		protected function onContinueGameBtnClicHand(event:MouseEvent):void
+		{
+			dispatchEvent(new Event(GeneralEventsConst.CONTINUE_GAME));
+		}
+		
+		protected function onSettingsBtnClickHand(event:MouseEvent):void
+		{
+			dispatchEvent(new Event(GeneralEventsConst.SHOW_SETTINGS_PANEL));
 		}
 	}
 }

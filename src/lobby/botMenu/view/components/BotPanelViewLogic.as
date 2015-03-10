@@ -32,14 +32,14 @@ package lobby.botMenu.view.components
 		private function botPaneLoad():void
 		{
 			muteBtn = botPanel["muteBtn"];
-			muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClick);
+			muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClickHand);
 			fullScreenBtn = botPanel["fullScreenBtn"];
-			fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClick);
+			fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClickHand);
 			lifesPic = botPanel["lifesPic"];
 			lifesPic.gotoAndStop(11);
 		}
 		
-		protected function onMuteBtnClick(event:MouseEvent):void
+		protected function onMuteBtnClickHand(event:MouseEvent):void
 		{
 			if (frameMuteBtn == 1)
 			{
@@ -53,7 +53,7 @@ package lobby.botMenu.view.components
 			dispatchEvent(new Event(GeneralEventsConst.MUTE));
 		}
 		
-		protected function onFullScreenBtnClick(event:MouseEvent):void
+		protected function onFullScreenBtnClickHand(event:MouseEvent):void
 		{
 			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
 		}

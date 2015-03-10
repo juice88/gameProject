@@ -23,16 +23,16 @@ package lobby.pause.view.mediator
 		}
 		override public function onRegisterListeners():void
 		{
-			pausePopup.addEventListener(GeneralEventsConst.CONTINUE_GAME, onContinueGameHand);
+			pausePopup.addEventListener(GeneralEventsConst.PAUSE_CONTINUE_GAME, onContinueGameHand);
 		}
 		override public function onRemoveListeners():void
 		{
-			pausePopup.removeEventListener(GeneralEventsConst.CONTINUE_GAME, onContinueGameHand);
+			pausePopup.removeEventListener(GeneralEventsConst.PAUSE_CONTINUE_GAME, onContinueGameHand);
 		}
 		
 		protected function onContinueGameHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.CONTINUE_GAME);			
+			sendNotification(GeneralNotifications.PAUSE_CONTINUE_GAME);			
 		}
 		
 		override public function listNotificationInterests():Array

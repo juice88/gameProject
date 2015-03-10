@@ -12,7 +12,7 @@ package lobby.pause.view.components
 
 	public class PausePopupVL extends ViewLogic
 	{
-		private var continueBtn:SimpleButton;
+		private var pauseContinueBtn:SimpleButton;
 		private var totalScoreTf:TextField;
 		
 		public function PausePopupVL()
@@ -26,13 +26,13 @@ package lobby.pause.view.components
 		}
 		public function popupLoad():void
 		{
-			continueBtn = pausePopup["continueBtn"];
-			continueBtn.addEventListener(MouseEvent.CLICK, onContinueBtnClick);
+			pauseContinueBtn = pausePopup["pauseContinueBtn"];
+			pauseContinueBtn.addEventListener(MouseEvent.CLICK, onPauseContinueBtnClickHand);
 		}
 		
-		protected function onContinueBtnClick(event:MouseEvent):void
+		protected function onPauseContinueBtnClickHand(event:MouseEvent):void
 		{
-			dispatchEvent(new Event(GeneralEventsConst.CONTINUE_GAME));
+			dispatchEvent(new Event(GeneralEventsConst.PAUSE_CONTINUE_GAME));
 		}
 		public function totalScoreUpdated(tatalScore:int):void
 		{
