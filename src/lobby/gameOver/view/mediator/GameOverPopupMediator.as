@@ -3,13 +3,13 @@ package lobby.gameOver.view.mediator
 	import config.GeneralEventsConst;
 	import config.GeneralNotifications;
 	
-	import flash.display.MovieClip;
+	import core.view.mediator.DialogMediator;
+	
 	import flash.events.Event;
 	
 	import lobby.gameOver.view.components.GameOverPopupVL;
-	import core.view.mediator.UIMediator;
 
-	public class GameOverPopupMediator extends UIMediator
+	public class GameOverPopupMediator extends DialogMediator
 	{
 		public static const NAME:String = "GameOverPopupMediator";
 		public function GameOverPopupMediator()
@@ -33,6 +33,7 @@ package lobby.gameOver.view.mediator
 		
 		protected function onReStartGameHand(event:Event):void
 		{
+			sendNotification(GeneralNotifications.GAME_OVER_CLOSE_POPUP);
 			sendNotification(GeneralNotifications.RESTART_GAME);
 		}
 	}

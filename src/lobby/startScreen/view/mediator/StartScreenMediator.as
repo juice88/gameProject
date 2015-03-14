@@ -54,7 +54,7 @@ package lobby.startScreen.view.mediator
 		protected function onShowSettingsPanelHand(event:Event):void
 		{
 			trace ("нажата кнопка settings");
-			sendNotification(GeneralNotifications.SHOW_SETTINGS_PANEL);
+			sendNotification(GeneralNotifications.SETTINGS_PANEL_OPEN);
 		}		
 		
 	}

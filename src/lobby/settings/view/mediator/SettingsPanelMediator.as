@@ -3,13 +3,13 @@ package lobby.settings.view.mediator
 	import config.GeneralEventsConst;
 	import config.GeneralNotifications;
 	
-	import core.view.mediator.UIMediator;
+	import core.view.mediator.DialogMediator;
 	
 	import flash.events.Event;
 	
 	import lobby.settings.view.components.SettingsPanelVL;
 	
-	public class SettingsPanelMediator extends UIMediator
+	public class SettingsPanelMediator extends DialogMediator
 	{
 		public static var NAME:String = "SettingsPanelMediator";
 		
@@ -37,7 +37,7 @@ package lobby.settings.view.mediator
 		
 		protected function onCloseSettingPanelHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.CLOSE_SETTINGS_PANEL);
+			sendNotification(GeneralNotifications.SETTINGS_PANEL_CLOSE);
 		}
 		
 		private function onMuteHand(event:Event):void //дубль кода... порешать

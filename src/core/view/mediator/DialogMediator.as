@@ -2,13 +2,13 @@ package core.view.mediator
 {
 	import config.GeneralNotifications;
 	
-	import org.puremvc.as3.patterns.mediator.Mediator;
-	
 	import core.view.components.ViewLogic;
 	
-	public class UIMediator extends Mediator
+	import org.puremvc.as3.patterns.mediator.Mediator;
+	
+	public class DialogMediator extends Mediator
 	{
-		public function UIMediator(mediatorName:String=null, viewComponent:Object=null)
+		public function DialogMediator(mediatorName:String=null, viewComponent:Object=null)
 		{
 			super(mediatorName, viewComponent);
 		}
@@ -20,10 +20,12 @@ package core.view.mediator
 		
 		override public function onRemove():void{
 			sendNotification(GeneralNotifications.REMOVE_CHILD_FROM_ROOT, viewLogic.content);
+			sendNotification(GeneralNotifications.DIALOG_CLOSE);
 			onRemoveListeners();
 		}
 		
-		protected function get viewLogic():ViewLogic{
+		protected function get viewLogic():ViewLogic
+		{
 			return viewComponent as ViewLogic;
 		}
 		

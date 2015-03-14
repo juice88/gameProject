@@ -1,16 +1,18 @@
 package core.controller.commands
 {
+	import core.queue.model.proxy.QueueDialogProxy;
+	
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
 	import flash.events.Event;
 	import flash.net.URLRequest;
 	
+	import lobby.startScreen.view.mediator.StartScreenMediator;
+	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
 	import utils.Warehouse;
-	
-	import lobby.startScreen.view.mediator.StartScreenMediator;
 	
 	public class LoadFlashCommand extends SimpleCommand
 	{
@@ -34,6 +36,7 @@ package core.controller.commands
 			Warehouse.getInstance().setData(loaderInfo);
 			
 			facade.registerMediator(new StartScreenMediator());
+			facade.registerProxy(new QueueDialogProxy());
 		}
 	}
 }

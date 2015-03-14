@@ -6,10 +6,13 @@ package config
 		public static const BACK_TO_MENU:String = "back_to_menu";
 		public static const BONUS:String = "bonus";
 		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
-		public static const CLOSE_SETTINGS_PANEL:String = "close_settings_panel";
+		public static const DIALOG_CLOSE:String = "dialog_close"; //нотіф про закривання діалога (відсилається з onRemove DialogMediator)
+		public static const DIALOG_LOAD_TO_QUEUE:String = "dialog_load_to_queue"; //завантажується медіатор діалога в чергу
+		public static const DIALOG_OPEN:String = "dialog_open";
 		public static const END_TURN:String = "end_turn"; //Нотіф про закінчення вибору елементів
 		public static const FULL_SCREEN:String = "full_screen";
 		public static const GAME_OVER:String = "game_over";
+		public static const GAME_OVER_CLOSE_POPUP:String = "game_over_close_popup";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
 		public static const LOAD_FLASH:String = "load_flash";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
@@ -28,7 +31,8 @@ package config
 		public static const SCORE_MOVES_ANIMATION:String = "score_moves_animation"; //нотіф з числом очків, які зараховуються при правильному ході
 		public static const SELECT_IS_TRUE:String = "select_is_true"; //нотіф про правильне порівняння елементів (для лічильника очків)
 		public static const SELECT_IS_FALSE:String = "select_is_false"; //нотіф про неправильне порівняння елементів (для лічильника очків)
-		public static const SHOW_SETTINGS_PANEL:String = "show_settings_panel";
+		public static const SETTINGS_PANEL_CLOSE:String = "settings_panel_close";
+		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";
 		public static const STARTUP:String = "startup";

@@ -18,11 +18,13 @@ package core.view.mediator
 		{
 			super(NAME, rootSprite);
 		}
+		
 		override public function listNotificationInterests():Array{
 			return [GeneralNotifications.ADD_CHILD_TO_ROOT, 
 					GeneralNotifications.REMOVE_CHILD_FROM_ROOT,
 					GeneralNotifications.FULL_SCREEN];
 		}
+		
 		override public function handleNotification(notification:INotification):void{
 			var displayObject:DisplayObject = notification.getBody() as DisplayObject;
 			switch(notification.getName()){
@@ -37,6 +39,7 @@ package core.view.mediator
 					break;
 			}
 		}
+		
 		private function fullScreen():void
 		{
 			if ((viewComponent as Sprite).stage.displayState == StageDisplayState.NORMAL)

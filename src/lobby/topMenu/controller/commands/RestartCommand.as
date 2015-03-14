@@ -17,9 +17,9 @@ package lobby.topMenu.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-			facade.removeMediator(PausePopupMediator.NAME);
-			facade.removeMediator(GameOverPopupMediator.NAME);
-			facade.removeMediator(WinPopupMediator.NAME);
+		//	facade.removeMediator(PausePopupMediator.NAME);
+		//	facade.removeMediator(GameOverPopupMediator.NAME);
+		//	facade.removeMediator(WinPopupMediator.NAME);
 			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).resetLevelCounters();
 			(facade.retrieveProxy(StartLevelProxy.NAME) as StartLevelProxy).replayLevel();
 		}

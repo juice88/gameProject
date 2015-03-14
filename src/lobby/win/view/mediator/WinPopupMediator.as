@@ -2,12 +2,13 @@ package lobby.win.view.mediator
 {
 	import config.GeneralNotifications;
 	
-	import org.puremvc.as3.interfaces.INotification;
+	import core.view.mediator.DialogMediator;
 	
 	import lobby.win.view.components.WinPopupVL;
-	import core.view.mediator.UIMediator;
+	
+	import org.puremvc.as3.interfaces.INotification;
 
-	public class WinPopupMediator extends UIMediator
+	public class WinPopupMediator extends DialogMediator
 	{
 		public static const NAME:String = "WinPopupMediator";
 		

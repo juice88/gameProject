@@ -3,14 +3,15 @@ package lobby.pause.view.mediator
 	import config.GeneralEventsConst;
 	import config.GeneralNotifications;
 	
+	import core.view.mediator.DialogMediator;
+	
 	import flash.events.Event;
 	
-	import org.puremvc.as3.interfaces.INotification;
-	
 	import lobby.pause.view.components.PausePopupVL;
-	import core.view.mediator.UIMediator;
+	
+	import org.puremvc.as3.interfaces.INotification;
 
-	public class PausePopupMediator extends UIMediator
+	public class PausePopupMediator extends DialogMediator
 	{
 		public static var NAME:String = "PausePopupMediator";
 		public function PausePopupMediator()
