@@ -5,6 +5,8 @@ package config
 	public class GeneralEventsConst
 	{
 		public static const ALL_ELEMENTS_DRAWED:String = "AllElementsDrawed";
+		public static const BONUS_LEVEL_START:String = "BonusLevelStart";
+		public static const BONUS_RESULT_OF_CHOISE:String = "ResultOfChoiseBonus";
 		public static const CLOSE_SETTINGS_PANEL:String = "CloseSettingsPanel";
 		public static const CONTINUE_GAME:String = "ContinueGame"; //при натиснені кнопки на стартСкріні Continue game
 		public static const GO_TO_MENU:String = "GoToMenu";
@@ -15,11 +17,9 @@ package config
 		public static const PAUSE:String = "Pause";
 		public static const PAUSE_CONTINUE_GAME:String = "PauseContinueGame"; // при натиснені на кнопці Сontinue на ПавзаПопап
 		public static const RESTART_GAME:String = "RestartGame";
-		public static const RESULT_OF_CHOISE_BONUS:String = "ResultOfChoiseBonus";
 		public static const SELECT_IS_TRUE:String = "SelectIsTrue";
 		public static const SELECT_IS_FALSE:String = "SelectIsFalse";
 		public static const SHOW_SETTINGS_PANEL:String = "ShowSettingsPanel";
-		public static const START_BONUS_LEVEL:String = "StartBonusLevel";
 		public static const START_NEW_GAME:String = "StartNewGame";
 		public static const START_TIMER:String = "StartTimer";
 		

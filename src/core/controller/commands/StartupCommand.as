@@ -10,8 +10,10 @@ package core.controller.commands
 	
 	import flash.display.Sprite;
 	
-	import gamePlay.bonus.controller.commands.BonusCommand;
-	import gamePlay.counters.controller.commands.NumberOfMovesSendCommand;
+	import gamePlay.bonus.controller.commands.BonusLevelLoadCommand;
+	import gamePlay.bonus.controller.commands.BonusPopupShowCommand;
+	import gamePlay.bonus.controller.commands.BonusResultOfChoiseCommand;
+	import core.queue.controller.commands.NumberOfMovesSendCommand;
 	import gamePlay.level1.controller.commands.EndTurnCommand;
 	import gamePlay.level1.controller.commands.OpenedElementCommand;
 	import gamePlay.level1.controller.commands.SelectIsFalseCommand;
@@ -46,7 +48,9 @@ package core.controller.commands
 		private function registerCommand():void
 		{
 			facade.registerCommand(GeneralNotifications.BACK_TO_MENU, BackToMenuCommand);
-			facade.registerCommand(GeneralNotifications.BONUS, BonusCommand);
+			facade.registerCommand(GeneralNotifications.BONUS_LEVEL_LOAD, BonusLevelLoadCommand);
+			facade.registerCommand(GeneralNotifications.BONUS_RESULT_OF_CHOISE, BonusResultOfChoiseCommand);
+			facade.registerCommand(GeneralNotifications.BONUS_POPUP_SHOW, BonusPopupShowCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_CLOSE, DialogCloseCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, DialogLoadToQueueCommand);
 			facade.registerCommand(GeneralNotifications.DIALOG_OPEN, DialogOpenCommand);

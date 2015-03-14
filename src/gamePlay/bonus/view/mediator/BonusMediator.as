@@ -1,8 +1,13 @@
 package gamePlay.bonus.view.mediator
 {
+	import config.GameEvent;
+	import config.GeneralEventsConst;
 	import config.GeneralNotifications;
 	
 	import core.view.mediator.UIMediator;
+	
+	import flash.events.Event;
+	import flash.utils.setTimeout;
 	
 	import gamePlay.bonus.model.dto.ElemBonusDto;
 	import gamePlay.bonus.view.components.BonusViewLogic;
@@ -22,6 +27,7 @@ package gamePlay.bonus.view.mediator
 		{
 			return viewLogic as BonusViewLogic;
 		}
+		
 		override public function listNotificationInterests():Array
 		{
 			return [GeneralNotifications.BONUS_READE_TO_DRAW];
@@ -35,5 +41,20 @@ package gamePlay.bonus.view.mediator
 					break;
 			}
 		}
+		override public function onRegisterListeners():void
+		{
+			bonusVL.addEventListener(GeneralEventsConst.BONUS_RESULT_OF_CHOISE, onResultOfChoiseBonusHand);
+		}
+		
+		override public function onRemoveListeners():void
+		{
+			bonusVL.removeEventListener(GeneralEventsConst.BONUS_RESULT_OF_CHOISE, onResultOfChoiseBonusHand);
+		}
+		
+		protected function onResultOfChoiseBonusHand(event:GameEvent):void
+		{
+			setTimeout(sendNotification, 2000, GeneralNotifications.BONUS_RESULT_OF_CHOISE, event.params);
+		}
+		
 	}
 }

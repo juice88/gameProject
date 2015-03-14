@@ -2,7 +2,7 @@ package lobby.topMenu.controller.commands
 {
 	import core.queue.model.proxy.QueueDialogProxy;
 	
-	import gamePlay.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.ScoreProxy;
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;
 	

@@ -23,13 +23,13 @@ package lobby.win.view.mediator
 		}
 		override public function listNotificationInterests():Array
 		{
-			return [GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS];
+			return [GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES];
 		}
 		override public function handleNotification(notification:INotification):void
 		{
 			switch (notification.getName())
 			{
-				case GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS:
+				case GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES:
 					winPopup.ScoreTrueFalseCounters(notification.getBody() as Array);
 					break;
 			}

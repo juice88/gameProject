@@ -15,7 +15,6 @@ package gamePlay.bonus.view.components
 
 	public class BonusViewLogic extends ViewLogic
 	{
-		private var bonusViewLogic:BonusPopupVL;
 		private var BonusElem:Class = Warehouse.getInstance().getAssetClass("ElementBonus");
 		private var shablonBonus:String = "shablonBonus";
 		private var show:String = "show";
@@ -24,25 +23,11 @@ package gamePlay.bonus.view.components
 		public function BonusViewLogic()
 		{
 			super("PolleBonus");
-			loadBonusPopap();
 		}
 	
 		private function get bonusVL():MovieClip
 		{
 			return content as MovieClip;
-		}
-		
-		private function loadBonusPopap():void
-		{
-			bonusViewLogic = new BonusPopupVL();
-			bonusVL.addChild(bonusViewLogic.content);
-			bonusViewLogic.addEventListener(GeneralEventsConst.START_BONUS_LEVEL, onPopupClickNextBtn);
-		}
-		
-		protected function onPopupClickNextBtn(event:Event):void
-		{
-			bonusViewLogic.removeEventListener(GeneralEventsConst.START_BONUS_LEVEL, onPopupClickNextBtn);
-			bonusVL.removeChild(bonusViewLogic.content);
 		}
 				
 		public function startBonusLevel(elemBonusDto:Vector.<ElemBonusDto>):void
@@ -66,8 +51,7 @@ package gamePlay.bonus.view.components
 			removeLisenersElem();
 			bonusClip.back.gotoAndStop(show);
 			
-			
-			dispatchEvent(new GameEvent(GeneralEventsConst.RESULT_OF_CHOISE_BONUS, neededDto.kadr as int));
+			dispatchEvent(new GameEvent(GeneralEventsConst.BONUS_RESULT_OF_CHOISE, neededDto.kadr as int));
 		}
 		
 		private function removeLisenersElem():void

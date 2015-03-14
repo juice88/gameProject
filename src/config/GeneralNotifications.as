@@ -4,8 +4,10 @@ package config
 	{
 		public static const ADD_CHILD_TO_ROOT:String = "add_child_to_root";
 		public static const BACK_TO_MENU:String = "back_to_menu";
-		public static const BONUS:String = "bonus";
+		public static const BONUS_LEVEL_LOAD:String = "bonus_level_load";
+		public static const BONUS_POPUP_SHOW:String = "bonus_popup_show";
 		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
+		public static const BONUS_RESULT_OF_CHOISE:String = "bonus_result_of_choise"; //нотіф з результатом вибору нонуса в скор проксі
 		public static const DIALOG_CLOSE:String = "dialog_close"; //нотіф про закривання діалога (відсилається з onRemove DialogMediator)
 		public static const DIALOG_LOAD_TO_QUEUE:String = "dialog_load_to_queue"; //завантажується медіатор діалога в чергу
 		public static const DIALOG_OPEN:String = "dialog_open";
@@ -38,10 +40,9 @@ package config
 		public static const STARTUP:String = "startup";
 		public static const TOTAL_SCORE_UPDATED:String = "total_score_updated";
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second"; //нотіф що передає значення хвилин та секунд, для відображення таймера
-		public static const VALUES_SCORE_TRUE_FALSE_MOVS:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
+		public static const VALUES_SCORE_TRUE_FALSE_MOVES:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
 		public static const WIN:String = "win"; //перемога (пройдено рівень)
 		
 		
-	
 	}
 }

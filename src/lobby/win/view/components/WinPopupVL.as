@@ -31,6 +31,7 @@ package lobby.win.view.components
 		
 		public function ScoreTrueFalseCounters(value:Array):void
 		{
+			winPopup.gotoAndStop(2);
 			totalScore = winPopup.totalScore.scoreTf;
 			totalScore.text = value[0].toString(10);
 			trueMoves = winPopup.trueMoves.movesTf;

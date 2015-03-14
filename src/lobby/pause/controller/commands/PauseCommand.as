@@ -2,7 +2,7 @@ package lobby.pause.controller.commands
 {
 	import config.GeneralNotifications;
 	
-	import gamePlay.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.ScoreProxy;
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	
 	import lobby.pause.view.mediator.PausePopupMediator;

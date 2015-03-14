@@ -1,4 +1,4 @@
-package gamePlay.counters.model.proxy
+package core.counters.model.proxy
 {
 	import config.GeneralNotifications;
 	import config.Settings;
@@ -6,7 +6,7 @@ package gamePlay.counters.model.proxy
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
 	
-	import gamePlay.counters.model.dto.ScoreDto;
+	import core.counters.model.dto.ScoreDto;
 	
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
@@ -116,17 +116,22 @@ package gamePlay.counters.model.proxy
 			if (score.allTrueSelect == score.numberOfMoves && score.allFalseSelect == 0)
 			{
 				score.timer.stop();
-				sendNotification(GeneralNotifications.BONUS);
+				sendNotification(GeneralNotifications.BONUS_POPUP_SHOW);
 			}
 			else if (score.allTrueSelect == score.numberOfMoves)
 			{
-				score.totalScore = score.scoreValue;
-				score.ScoreTrueFalseValue = new Array;
-				score.ScoreTrueFalseValue.push(score.totalScore, score.allTrueSelect, score.allFalseSelect);
 				score.timer.stop();
 				sendNotification(GeneralNotifications.WIN);
-				sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVS, score.ScoreTrueFalseValue);
+				sendValueScoreTrueFalseMoves();
 			}
+		}
+		
+		public function sendValueScoreTrueFalseMoves():void
+		{
+			score.totalScore = score.scoreValue;
+			score.ScoreTrueFalseValue = new Array;
+			score.ScoreTrueFalseValue.push(score.totalScore, score.allTrueSelect, score.allFalseSelect);
+			sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES, score.ScoreTrueFalseValue);
 		}
 		
 		public function timerGameSet():void

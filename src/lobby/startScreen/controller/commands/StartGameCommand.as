@@ -1,6 +1,6 @@
 package lobby.startScreen.controller.commands
 {
-	import gamePlay.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.ScoreProxy;
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	
 	import org.puremvc.as3.interfaces.INotification;

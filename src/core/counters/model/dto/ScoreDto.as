@@ -1,4 +1,4 @@
-package gamePlay.counters.model.dto
+package core.counters.model.dto
 {
 	import flash.utils.Timer;
 

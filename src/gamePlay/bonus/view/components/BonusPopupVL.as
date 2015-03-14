@@ -29,7 +29,7 @@ package gamePlay.bonus.view.components
 		
 		protected function onClickNextBtnHand(event:MouseEvent):void
 		{
-			dispatchEvent(new Event(GeneralEventsConst.START_BONUS_LEVEL));
+			dispatchEvent(new Event(GeneralEventsConst.BONUS_LEVEL_START));
 		}
 	}
 }
