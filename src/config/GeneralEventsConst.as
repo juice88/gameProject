@@ -13,6 +13,7 @@ package config
 		public static const END_TURN:String = "EndTurn";
  		public static const FULL_SCREEN:String = "FullScreen";
 		public static const MUTE:String = "Mute";
+		public static const NEXT_LEVEL:String = "NextLevel";
 		public static const OPENED_ELEMENT:String = "OpenedElement";
 		public static const PAUSE:String = "Pause";
 		public static const PAUSE_CONTINUE_GAME:String = "PauseContinueGame"; // при натиснені на кнопці Сontinue на ПавзаПопап

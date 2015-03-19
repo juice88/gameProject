@@ -1,15 +1,22 @@
 package lobby.win.view.components
 {
+	import config.GeneralEventsConst;
+	
+	import core.view.components.ViewLogic;
+	
 	import flash.display.MovieClip;
+	import flash.display.SimpleButton;
+	import flash.events.Event;
+	import flash.events.MouseEvent;
 	import flash.text.TextField;
 	import flash.utils.setTimeout;
-	import core.view.components.ViewLogic;
 
 	public class WinPopupVL extends ViewLogic
 	{
 		private var totalScore:TextField;
 		private var trueMoves:TextField;
 		private var falseMoves:TextField;
+		private var nextBtn:SimpleButton;
 		
 		public function WinPopupVL()
 		{
@@ -38,7 +45,14 @@ package lobby.win.view.components
 			trueMoves.text = value[1].toString(10);
 			falseMoves = winPopup.falseMoves.movesTf;
 			falseMoves.text = value[2].toString(10);
+			nextBtn = winPopup["nextBtn"];
+			nextBtn.addEventListener(MouseEvent.CLICK, onNextBtnClickHand);
 			winPopup.visible = true;
+		}
+		
+		protected function onNextBtnClickHand(event:Event):void
+		{
+			dispatchEvent(new Event(GeneralEventsConst.NEXT_LEVEL));
 		}
 	}
 }

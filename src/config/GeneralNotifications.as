@@ -19,6 +19,7 @@ package config
 		public static const LOAD_FLASH:String = "load_flash";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
 		public static const MUTE:String = "mute";
+		public static const NEXT_LEVEL:String = "next_level"
 		public static const NUMBER_OF_MOVES:String = "number_of_moves"; //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
 		public static const ON_OPEN_ELEMENT:String = "on_open_element"; //Нотіф про те що елемент ще не відкритий, а ми лише намірені його відкрити цей елемент
 		public static const PAUSE:String="pause";

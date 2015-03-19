@@ -6,6 +6,7 @@ package core.controller.commands
 	import core.queue.controller.commands.DialogCloseCommand;
 	import core.queue.controller.commands.DialogLoadToQueueCommand;
 	import core.queue.controller.commands.DialogOpenCommand;
+	import core.queue.controller.commands.NumberOfMovesSendCommand;
 	import core.view.mediator.RootMediator;
 	
 	import flash.display.Sprite;
@@ -13,7 +14,6 @@ package core.controller.commands
 	import gamePlay.bonus.controller.commands.BonusLevelLoadCommand;
 	import gamePlay.bonus.controller.commands.BonusPopupShowCommand;
 	import gamePlay.bonus.controller.commands.BonusResultOfChoiseCommand;
-	import core.queue.controller.commands.NumberOfMovesSendCommand;
 	import gamePlay.level1.controller.commands.EndTurnCommand;
 	import gamePlay.level1.controller.commands.OpenedElementCommand;
 	import gamePlay.level1.controller.commands.SelectIsFalseCommand;
@@ -58,6 +58,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.GAME_OVER, GameOverCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER_CLOSE_POPUP, GameOverClosePopupCommand);
 			facade.registerCommand(GeneralNotifications.LOAD_FLASH, LoadFlashCommand);
+			facade.registerCommand(GeneralNotifications.NEXT_LEVEL, NextLevelCommand);
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE, PauseCommand);

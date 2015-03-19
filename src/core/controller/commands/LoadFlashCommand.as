@@ -7,6 +7,7 @@ package core.controller.commands
 	import flash.events.Event;
 	import flash.net.URLRequest;
 	
+	import lobby.highScore.view.mediator.HighScorePanelMediator;
 	import lobby.startScreen.view.mediator.StartScreenMediator;
 	
 	import org.puremvc.as3.interfaces.INotification;
@@ -36,6 +37,7 @@ package core.controller.commands
 			Warehouse.getInstance().setData(loaderInfo);
 			
 			facade.registerMediator(new StartScreenMediator());
+			facade.registerMediator(new HighScorePanelMediator());
 			facade.registerProxy(new QueueDialogProxy());
 		}
 	}

@@ -165,14 +165,25 @@ package core.counters.model.proxy
 			trace("таймер", score.minute, ":", score.second);
 			if (score.minute <= 0 && score.second <= 0)
 			{
-				sendNotification(GeneralNotifications.GAME_OVER);
 				score.timer.stop();
+				sendNotification(GeneralNotifications.GAME_OVER);
 			}
 		}
 		
 		protected function onTimerComplete(event:TimerEvent):void
 		{
 			score.timer.start();
+		}
+		
+		public function nextLevel():void
+		{
+			score.timer.stop();
+			score.minute = 0;
+			score.second = 30;
+			score.lifes = 10;
+			score.allMoves = 0;
+			score.allTrueSelect = 0;
+			score.allFalseSelect = 0;
 		}
 	}
 }

@@ -15,7 +15,7 @@ package lobby.startScreen.view.mediator
 	
 	public class StartScreenMediator extends UIMediator
 	{
-		public static var NAME:String = "StartMediaor";
+		public static var NAME:String = "StartMediator";
 		
 		public function StartScreenMediator()
 		{

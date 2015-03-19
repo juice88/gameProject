@@ -1,8 +1,11 @@
 package lobby.win.view.mediator
 {
+	import config.GeneralEventsConst;
 	import config.GeneralNotifications;
 	
 	import core.view.mediator.DialogMediator;
+	
+	import flash.events.Event;
 	
 	import lobby.win.view.components.WinPopupVL;
 	
@@ -33,6 +36,19 @@ package lobby.win.view.mediator
 					winPopup.ScoreTrueFalseCounters(notification.getBody() as Array);
 					break;
 			}
+		}
+		override public function onRegisterListeners():void
+		{
+			winPopup.addEventListener(GeneralEventsConst.NEXT_LEVEL, onNextLevelHand);
+		}
+		override public function onRemoveListeners():void
+		{
+			winPopup.removeEventListener(GeneralEventsConst.NEXT_LEVEL, onNextLevelHand);
+		}
+		
+		protected function onNextLevelHand(event:Event):void
+		{
+			sendNotification(GeneralNotifications.NEXT_LEVEL);
 		}
 	}
 }
