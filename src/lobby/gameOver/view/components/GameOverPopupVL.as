@@ -2,14 +2,15 @@ package lobby.gameOver.view.components
 {
 	import config.GeneralEventsConst;
 	
+	import core.view.components.DialogViewLogic;
+	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.utils.setTimeout;
-	import core.view.components.ViewLogic;
 
-	public class GameOverPopupVL extends ViewLogic
+	public class GameOverPopupVL extends DialogViewLogic
 	{
 		private var restartBtn:SimpleButton;
 		public function GameOverPopupVL()

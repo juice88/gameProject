@@ -2,15 +2,16 @@ package lobby.pause.view.components
 {
 	import config.GeneralEventsConst;
 	
+	import core.view.components.DialogViewLogic;
+	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
+	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.net.sendToURL;
 	import flash.text.TextField;
-	import core.view.components.ViewLogic;
 
-	public class PausePopupVL extends ViewLogic
+	public class PausePopupVL extends DialogViewLogic
 	{
 		private var pauseContinueBtn:SimpleButton;
 		private var totalScoreTf:TextField;

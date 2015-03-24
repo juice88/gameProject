@@ -2,14 +2,14 @@ package lobby.settings.view.components
 {
 	import config.GeneralEventsConst;
 	
-	import core.view.components.ViewLogic;
+	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
-	public class SettingsPanelVL extends ViewLogic
+	public class SettingsPanelVL extends DialogViewLogic
 	{
 		private var closeBtn:SimpleButton;
 		private var muteBtn:MovieClip;

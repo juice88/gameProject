@@ -2,16 +2,15 @@ package lobby.win.view.components
 {
 	import config.GeneralEventsConst;
 	
-	import core.view.components.ViewLogic;
+	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import flash.utils.setTimeout;
 
-	public class WinPopupVL extends ViewLogic
+	public class WinPopupVL extends DialogViewLogic
 	{
 		private var totalScore:TextField;
 		private var trueMoves:TextField;

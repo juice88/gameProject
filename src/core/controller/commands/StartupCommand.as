@@ -38,11 +38,10 @@ package core.controller.commands
 	public class StartupCommand extends SimpleCommand
 	{
 		override public function execute(notification:INotification):void{
-			
-			registerCommand();
-			sendNotification(GeneralNotifications.LOAD_FLASH);
 			var rootSprite:Sprite = notification.getBody() as Sprite;
+			registerCommand();
 			facade.registerMediator(new RootMediator(rootSprite));
+			sendNotification(GeneralNotifications.LOAD_FLASH);
 		}
 		
 		private function registerCommand():void

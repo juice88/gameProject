@@ -2,13 +2,14 @@ package gamePlay.bonus.view.components
 {
 	import config.GeneralEventsConst;
 	
+	import core.view.components.DialogViewLogic;
+	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import core.view.components.ViewLogic;
 
-	public class BonusPopupVL extends ViewLogic
+	public class BonusPopupVL extends DialogViewLogic
 	{
 		private var nextBtn:SimpleButton;
 		public function BonusPopupVL()
