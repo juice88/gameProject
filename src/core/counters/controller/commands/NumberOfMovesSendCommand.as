@@ -1,4 +1,4 @@
-package core.queue.controller.commands
+package core.counters.controller.commands
 {
 	import core.counters.model.proxy.ScoreProxy;
 	

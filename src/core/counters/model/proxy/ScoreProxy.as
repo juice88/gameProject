@@ -3,10 +3,10 @@ package core.counters.model.proxy
 	import config.GeneralNotifications;
 	import config.Settings;
 	
+	import core.counters.model.dto.ScoreDto;
+	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-	
-	import core.counters.model.dto.ScoreDto;
 	
 	import org.puremvc.as3.patterns.proxy.Proxy;
 	
@@ -47,7 +47,14 @@ package core.counters.model.proxy
 		public function selectIsFalse():void
 		{
 			score.allFalseSelect++;
-			score.lifes--;
+			if (score.lifesIsFrozen == false)
+			{
+				score.lifes--;
+			}
+			else
+			{
+				score.lifes = 11; // на 12 кадрі в флашкі нарисовано, що життя заморожені
+			}
 			score.allMoves++;
 			sendNotification(GeneralNotifications.MOVES_COUTNER_UPDATED, score.allMoves);
 			lifesCounter();
@@ -66,8 +73,8 @@ package core.counters.model.proxy
 			}
 			else //інакше добавляємо по 30 очок
 			{
-				score.scoreValue += Settings.scoreThreeTrueSelect;
-				sendNotification(GeneralNotifications.SCORE_MOVES_ANIMATION, Settings.scoreThreeTrueSelect);
+				score.scoreValue += Settings.SCORE_THREE_TRUE_SELECT;
+				sendNotification(GeneralNotifications.SCORE_MOVES_ANIMATION, Settings.SCORE_THREE_TRUE_SELECT);
 				sendNotification(GeneralNotifications.SCORE_COUTNER_UPDATED, score.scoreValue);
 			}
 			levelWon();
@@ -95,9 +102,12 @@ package core.counters.model.proxy
 			sendNotification(GeneralNotifications.TOTAL_SCORE_UPDATED, score.totalScore);
 		}
 		
-		public function timerStart():void
+		public function timerStart():void // перевірка чи таймер не має бути зупинений
 		{
-			score.timer.start();
+			if (score.timerIsStopped == false)
+			{
+				score.timer.start();
+			}
 		}
 		
 		private function lifesCounter():void
@@ -116,11 +126,15 @@ package core.counters.model.proxy
 			if (score.allTrueSelect == score.numberOfMoves && score.allFalseSelect == 0)
 			{
 				score.timer.stop();
+				score.timerIsStopped = false;
+				score.lifesIsFrozen = false;
 				sendNotification(GeneralNotifications.BONUS_POPUP_SHOW);
 			}
 			else if (score.allTrueSelect == score.numberOfMoves)
 			{
 				score.timer.stop();
+				score.timerIsStopped = false;
+				score.lifesIsFrozen = false;
 				sendNotification(GeneralNotifications.WIN);
 				sendValueScoreTrueFalseMoves();
 			}
@@ -148,7 +162,7 @@ package core.counters.model.proxy
 		{
 			score.timer.addEventListener(TimerEvent.TIMER, onTick);
 			score.timer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
-			score.timer.start();
+			timerStart();
 		}
 		
 		protected function onTick(event:TimerEvent):void
@@ -173,6 +187,26 @@ package core.counters.model.proxy
 		protected function onTimerComplete(event:TimerEvent):void
 		{
 			score.timer.start();
+		}
+		
+		public function resultOfChoiseBonus(choiseFrame:int):void
+		{
+			if (choiseFrame == 1)
+			{
+				score.scoreValue += Settings.SCORE_BONUS;
+				trace("тотал скор =", score.totalScore);
+			}
+			else if (choiseFrame == 2)
+			{
+				score.lifesIsFrozen = true;
+				trace("кількість життів =", score.lifes);
+			}
+			else if (choiseFrame == 3)
+			{
+				score.timerIsStopped = true;
+				trace("таймер зупинено =", score.timerIsStopped);
+			}
+			sendValueScoreTrueFalseMoves();
 		}
 		
 		public function nextLevel():void

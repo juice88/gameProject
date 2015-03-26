@@ -15,14 +15,14 @@ package core.controller.commands
 	
 	import utils.Warehouse;
 	
-	public class LoadFlashCommand extends SimpleCommand
+	public class LoadUrlRequestCommand extends SimpleCommand
 	{
 		override public function execute(notification:INotification):void
 		{
-			loadFlash();
+			LoadUrlRequest();
 		}
 		
-		private function loadFlash():void
+		private function LoadUrlRequest():void
 		{
 			var loader:Loader = new Loader();
 			loader.contentLoaderInfo.addEventListener(Event.COMPLETE, onLoad);

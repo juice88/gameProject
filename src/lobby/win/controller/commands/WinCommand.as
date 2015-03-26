@@ -11,7 +11,6 @@ package lobby.win.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-		//	facade.registerMediator(new WinPopupMediator());
 			var winPop:WinPopupMediator = new WinPopupMediator();
 			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, winPop);
 		}

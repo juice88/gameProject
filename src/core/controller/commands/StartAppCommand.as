@@ -6,7 +6,7 @@ package core.controller.commands
 	import core.queue.controller.commands.DialogCloseCommand;
 	import core.queue.controller.commands.DialogLoadToQueueCommand;
 	import core.queue.controller.commands.DialogOpenCommand;
-	import core.queue.controller.commands.NumberOfMovesSendCommand;
+	import core.counters.controller.commands.NumberOfMovesSendCommand;
 	import core.view.mediator.RootMediator;
 	
 	import flash.display.Sprite;
@@ -35,13 +35,13 @@ package core.controller.commands
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
 	
-	public class StartupCommand extends SimpleCommand
+	public class StartAppCommand extends SimpleCommand
 	{
 		override public function execute(notification:INotification):void{
 			var rootSprite:Sprite = notification.getBody() as Sprite;
 			registerCommand();
 			facade.registerMediator(new RootMediator(rootSprite));
-			sendNotification(GeneralNotifications.LOAD_FLASH);
+			sendNotification(GeneralNotifications.LOAD_URL_REQUEST);
 		}
 		
 		private function registerCommand():void
@@ -56,7 +56,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.END_TURN, EndTurnCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER, GameOverCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER_CLOSE_POPUP, GameOverClosePopupCommand);
-			facade.registerCommand(GeneralNotifications.LOAD_FLASH, LoadFlashCommand);
+			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
 			facade.registerCommand(GeneralNotifications.NEXT_LEVEL, NextLevelCommand);
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);

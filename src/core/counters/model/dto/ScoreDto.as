@@ -12,8 +12,10 @@ package core.counters.model.dto
 		public var allFalseSelect:int = 0;  //загальна кількість неправильних ходів
 		public var allTrueSelect:int = 0; //загальна кількість правильних ходів 
 		public var lifes:int = 10; //кількість життів
+		public var lifesIsFrozen:Boolean = false; // перевірка, чи мають життя бути заморожені (у випадку вибору бонуса)
 		public var ScoreTrueFalseValue:Array; //додаються до масиву та передаються в WinPopupVL наступні значення: загальна кількість очок, правильні ходи та неправильні ходи
 		public var timer:Timer;
+		public var timerIsStopped:Boolean = false; //для бонусного рівня, якщо вибрано бонус зупинка таймера - тоді встановлюється true, далі намагані старт таймер відбуваєтсья перевірка цього значення
 		public var second:int;
 		public var minute:int;
 		public var minuteSecond:Array; //додаються в масив значення хвилин та секунд для таймера та передається в BotPanelViewLogic

@@ -16,7 +16,8 @@ package gamePlay.bonus.controller.commands
 			facade.removeMediator(BonusMediator.NAME);
 	//		(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).addBonus(notification.getBody() as int);
 			sendNotification(GeneralNotifications.WIN);
-			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).sendValueScoreTrueFalseMoves();
+			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).resultOfChoiseBonus(notification.getBody() as int);
+	//		(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).sendValueScoreTrueFalseMoves();
 		}
 	}
 }

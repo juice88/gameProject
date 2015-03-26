@@ -2,7 +2,7 @@ package
 {
 	import config.GeneralNotifications;
 	
-	import core.controller.commands.StartupCommand;
+	import core.controller.commands.StartAppCommand;
 	
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -20,8 +20,8 @@ package
 		protected function onAdded(event:Event):void
 		{
 			removeEventListener(Event.ADDED_TO_STAGE, onAdded);
-			Facade.getInstance().registerCommand(GeneralNotifications.STARTUP, StartupCommand);
-			Facade.getInstance().sendNotification(GeneralNotifications.STARTUP, this);
+			Facade.getInstance().registerCommand(GeneralNotifications.START_APP, StartAppCommand);
+			Facade.getInstance().sendNotification(GeneralNotifications.START_APP, this);
 		}
 	}
 }

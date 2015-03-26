@@ -16,7 +16,7 @@ package config
 		public static const GAME_OVER:String = "game_over";
 		public static const GAME_OVER_CLOSE_POPUP:String = "game_over_close_popup";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
-		public static const LOAD_FLASH:String = "load_flash";
+		public static const LOAD_URL_REQUEST:String = "load_url_request";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
 		public static const MUTE:String = "mute";
 		public static const NEXT_LEVEL:String = "next_level"
@@ -38,7 +38,7 @@ package config
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";
-		public static const STARTUP:String = "startup";
+		public static const START_APP:String = "start_app";
 		public static const TOTAL_SCORE_UPDATED:String = "total_score_updated";
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second"; //нотіф що передає значення хвилин та секунд, для відображення таймера
 		public static const VALUES_SCORE_TRUE_FALSE_MOVES:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
