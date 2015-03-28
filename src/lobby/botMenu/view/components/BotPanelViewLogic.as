@@ -1,13 +1,14 @@
 package lobby.botMenu.view.components
 {
 	import core.config.GeneralEventsConst;
+	import core.utils.SoundLib;
+	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import core.view.components.ViewLogic;
 
 	public class BotPanelViewLogic extends ViewLogic
 	{
@@ -41,6 +42,7 @@ package lobby.botMenu.view.components
 		
 		protected function onMuteBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			if (frameMuteBtn == 1)
 			{
 				frameMuteBtn = 2;
@@ -55,6 +57,7 @@ package lobby.botMenu.view.components
 		
 		protected function onFullScreenBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
 		}
 		public function lifesCounterUpdated(lifesValue:int):void

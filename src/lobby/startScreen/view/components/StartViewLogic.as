@@ -1,7 +1,8 @@
 package lobby.startScreen.view.components
 {
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
+	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
@@ -9,8 +10,6 @@ package lobby.startScreen.view.components
 	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	
-	import core.utils.Warehouse;
 	
 	public class StartViewLogic extends ViewLogic
 	{
@@ -40,16 +39,19 @@ package lobby.startScreen.view.components
 		
 		protected function onNewGameBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.START_NEW_GAME));
 		}
 		
 		protected function onContinueGameBtnClicHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.CONTINUE_GAME));
 		}
 		
 		protected function onSettingsBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.SHOW_SETTINGS_PANEL));
 		}
 	}

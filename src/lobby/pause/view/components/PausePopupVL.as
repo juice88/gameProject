@@ -1,7 +1,7 @@
 package lobby.pause.view.components
 {
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
 	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
@@ -33,6 +33,7 @@ package lobby.pause.view.components
 		
 		protected function onPauseContinueBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.PAUSE_CONTINUE_GAME));
 		}
 		public function totalScoreUpdated(tatalScore:int):void

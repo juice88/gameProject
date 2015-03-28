@@ -1,7 +1,7 @@
 package lobby.settings.view.components
 {
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
 	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
@@ -39,10 +39,12 @@ package lobby.settings.view.components
 		
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.CLOSE_SETTINGS_PANEL));
 		}
 		protected function onMuteBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			if (frameMuteBtn == 1)
 			{
 				frameMuteBtn = 2;
@@ -57,6 +59,7 @@ package lobby.settings.view.components
 		
 		protected function onFullScreenBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
 		}
 	}

@@ -8,7 +8,7 @@ package core.utils
 	{
 		public static var volumeSet:SoundTransform = new SoundTransform();
 		
-		public static function getSound(name:String, timeStart:int=0, loops:int=1/*, volume:int=1*/):Sound
+		public static function playSound(name:String, timeStart:int=0, loops:int=1/*, volume:int=1*/):Sound
 		{
 			var NeedSound:Class = Warehouse.getInstance().getAssetClass(name);
 			var sound:Sound = new NeedSound();
@@ -27,6 +27,11 @@ package core.utils
 			{
 				volumeSet.volume = 0;
 			}
+		}
+		
+		public static function btnClickSound():void
+		{
+			SoundLib.playSound("ButtonClick");
 		}
 	}
 }

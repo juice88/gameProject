@@ -1,7 +1,7 @@
 package lobby.win.view.components
 {
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
 	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
@@ -32,7 +32,6 @@ package lobby.win.view.components
 		{
 			winPopup.visible = false;
 			winPopup.gotoAndStop(2);
-			
 		}
 		
 		public function ScoreTrueFalseCounters(value:Array):void
@@ -51,6 +50,7 @@ package lobby.win.view.components
 		
 		protected function onNextBtnClickHand(event:Event):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.NEXT_LEVEL));
 		}
 	}

@@ -2,7 +2,8 @@ package gamePlay.bonus.view.components
 {
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
+	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
@@ -10,8 +11,6 @@ package gamePlay.bonus.view.components
 	import flash.events.MouseEvent;
 	
 	import gamePlay.bonus.model.dto.ElemBonusDto;
-	
-	import core.utils.Warehouse;
 
 	public class BonusViewLogic extends ViewLogic
 	{
@@ -50,7 +49,7 @@ package gamePlay.bonus.view.components
 			var neededDto:ElemBonusDto = getDtoByContent(bonusClip);
 			removeLisenersElem();
 			bonusClip.back.gotoAndStop(show);
-			
+			SoundLib.playSound("BonusSelect");
 			dispatchEvent(new GameEvent(GeneralEventsConst.BONUS_RESULT_OF_CHOISE, neededDto.kadr as int));
 		}
 		

@@ -1,13 +1,14 @@
 package lobby.topMenu.view.components
 {
 	import core.config.GeneralEventsConst;
+	import core.utils.SoundLib;
+	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
-	import core.view.components.ViewLogic;
 	
 
 	public class TopPanelViewLogic extends ViewLogic
@@ -41,19 +42,23 @@ package lobby.topMenu.view.components
 		
 		protected function onMenuBtnClick(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.GO_TO_MENU));
 		}
 		
 		protected function onRestartBtnClick(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.RESTART_GAME));
 			resetMouseCounter();
 		}
+		
 		protected function onPauseBtnClick(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.PAUSE));
-			
 		}
+		
 		public function movesCounterUpdate(moves:uint):void
 		{
 			movesTf = topPanel.movesTf.movesTf;

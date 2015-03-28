@@ -110,14 +110,14 @@ package gamePlay.level1.view.components
 					openElemList[i].parent.addChild(scoreAnim); //додаємо анімацію нарахування очків
 					scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
 					openElemList[i].parent.removeChild(openElemList[i]);
-					SoundLib.getSound("TrueSound", 200);
+					SoundLib.playSound("TrueSound", 200);
 				}
 			}
 			else
 			{
 				for ( i = 0; i < openElemList.length; i++)
 				{
-					SoundLib.getSound("FalseSound");
+					SoundLib.playSound("FalseSound");
 					openElemList[i].back.gotoAndStop(hide);
 				}
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
@@ -140,7 +140,7 @@ package gamePlay.level1.view.components
 			var elem:MovieClip = allElemList[elemIndex];
 			openElemList.push(elem);
 			elem.back.gotoAndStop(show);
-			SoundLib.getSound("SelectElemSound", 200);
+			SoundLib.playSound("SelectElemSound", 200);
 		}
 		
 		private function allElementsDrawed():void //відкриваємо усі елементи перед початком гри
@@ -207,13 +207,13 @@ package gamePlay.level1.view.components
 		public function gameOver():void
 		{
 			removeListener();
-			setTimeout(SoundLib.getSound, 500, "GameOverSound");
+			setTimeout(SoundLib.playSound, 500, "GameOverSound");
 			gameOverShowRestElements();
 		}
 		
 		public function win():void
 		{
-			setTimeout(SoundLib.getSound, 500, "WinSound");
+			setTimeout(SoundLib.playSound, 500, "WinSound");
 		}
 	}
 }

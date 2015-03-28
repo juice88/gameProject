@@ -1,7 +1,7 @@
 package gamePlay.bonus.view.components
 {
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
 	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
@@ -30,6 +30,7 @@ package gamePlay.bonus.view.components
 		
 		protected function onClickNextBtnHand(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.BONUS_LEVEL_START));
 		}
 	}

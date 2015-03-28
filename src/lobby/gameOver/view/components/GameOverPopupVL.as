@@ -1,7 +1,7 @@
 package lobby.gameOver.view.components
 {
 	import core.config.GeneralEventsConst;
-	
+	import core.utils.SoundLib;
 	import core.view.components.DialogViewLogic;
 	
 	import flash.display.MovieClip;
@@ -32,6 +32,7 @@ package lobby.gameOver.view.components
 		
 		protected function onRestartBtnClick(event:MouseEvent):void
 		{
+			SoundLib.btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.RESTART_GAME));
 		}
 	}
