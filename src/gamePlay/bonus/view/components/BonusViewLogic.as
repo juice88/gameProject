@@ -1,7 +1,7 @@
 package gamePlay.bonus.view.components
 {
-	import config.GameEvent;
-	import config.GeneralEventsConst;
+	import core.config.GameEvent;
+	import core.config.GeneralEventsConst;
 	
 	import core.view.components.ViewLogic;
 	
@@ -11,7 +11,7 @@ package gamePlay.bonus.view.components
 	
 	import gamePlay.bonus.model.dto.ElemBonusDto;
 	
-	import utils.Warehouse;
+	import core.utils.Warehouse;
 
 	public class BonusViewLogic extends ViewLogic
 	{

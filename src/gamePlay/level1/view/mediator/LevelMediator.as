@@ -1,19 +1,19 @@
 package gamePlay.level1.view.mediator
 {
-	import config.GameEvent;
-	import config.GeneralEventsConst;
-	import config.GeneralNotifications;
-	import config.Settings;
+	import core.config.GameEvent;
+	import core.config.GeneralEventsConst;
+	import core.config.GeneralNotifications;
+	import core.config.Settings;
+	import core.utils.SoundLib;
+	import core.view.mediator.UIMediator;
 	
 	import flash.events.Event;
 	import flash.utils.setTimeout;
 	
 	import gamePlay.level1.model.dto.ElementDto;
+	import gamePlay.level1.view.components.Level1ViewLogic;
 	
 	import org.puremvc.as3.interfaces.INotification;
-	
-	import gamePlay.level1.view.components.Level1ViewLogic;
-	import core.view.mediator.UIMediator;
 	
 	public class LevelMediator extends UIMediator
 	{
@@ -75,13 +75,12 @@ package gamePlay.level1.view.mediator
 					break;
 				case GeneralNotifications.PERMIT_TO_ADD:
 					levelVL.permitToAdd(notification.getBody() as int);
-					levelVL.clickElemSound();
 					break;
 				case GeneralNotifications.REPLAY_LEVEL:
 					levelVL.replayLevel();
 					break;
 				case GeneralNotifications.MUTE:
-					levelVL.mute();
+					SoundLib.mute();
 					break;
 				case GeneralNotifications.PAUSE:
 					levelVL.removeListener();

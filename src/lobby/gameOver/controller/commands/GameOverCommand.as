@@ -1,6 +1,6 @@
 package lobby.gameOver.controller.commands
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import flash.utils.setTimeout;
 	

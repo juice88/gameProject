@@ -1,7 +1,7 @@
 package lobby.botMenu.view.mediator
 {
-	import config.GeneralEventsConst;
-	import config.GeneralNotifications;
+	import core.config.GeneralEventsConst;
+	import core.config.GeneralNotifications;
 	
 	import flash.events.Event;
 	

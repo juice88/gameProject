@@ -1,6 +1,6 @@
 package gamePlay.bonus.model.proxy
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import gamePlay.bonus.model.dto.BonusDto;
 	import gamePlay.bonus.model.dto.ElemBonusDto;

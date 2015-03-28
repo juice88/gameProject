@@ -1,6 +1,6 @@
 package
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import core.controller.commands.StartAppCommand;
 	

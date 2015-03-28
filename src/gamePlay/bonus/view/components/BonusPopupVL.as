@@ -1,6 +1,6 @@
 package gamePlay.bonus.view.components
 {
-	import config.GeneralEventsConst;
+	import core.config.GeneralEventsConst;
 	
 	import core.view.components.DialogViewLogic;
 	

@@ -1,7 +1,6 @@
 package core.queue.model.proxy
 {
-	import config.GeneralNotifications;
-	
+	import core.config.GeneralNotifications;
 	import core.queue.model.dto.DialogDto;
 	import core.view.mediator.DialogMediator;
 	

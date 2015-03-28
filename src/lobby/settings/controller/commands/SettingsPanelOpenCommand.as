@@ -1,6 +1,6 @@
 package lobby.settings.controller.commands
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import lobby.settings.view.mediator.SettingsPanelMediator;
 	

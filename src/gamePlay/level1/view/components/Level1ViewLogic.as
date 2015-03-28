@@ -1,8 +1,11 @@
 package gamePlay.level1.view.components
 {
-	import config.GameEvent;
-	import config.GeneralEventsConst;
-	import config.Settings;
+	import core.config.GameEvent;
+	import core.config.GeneralEventsConst;
+	import core.config.Settings;
+	import core.utils.SoundLib;
+	import core.utils.Warehouse;
+	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.events.Event;
@@ -13,9 +16,6 @@ package gamePlay.level1.view.components
 	import flash.utils.setTimeout;
 	
 	import gamePlay.level1.model.dto.ElementDto;
-	
-	import utils.Warehouse;
-	import core.view.components.ViewLogic;
 	
 	
 	public class Level1ViewLogic extends ViewLogic
@@ -30,12 +30,6 @@ package gamePlay.level1.view.components
 		private var vectorElementDto:Vector.<ElementDto>; //вектор усіх ДТО
 		private var restElement:Vector.<MovieClip>; // вектор елементів які ще є на сцені
 		
-		private var ClickSound:Class = Warehouse.getInstance().getAssetClass("SelectElemSound");
-		private var FalseSound:Class = Warehouse.getInstance().getAssetClass("FalseSound");
-		private var TrueSound:Class = Warehouse.getInstance().getAssetClass("TrueSound");
-		private var GameOverSound:Class = Warehouse.getInstance().getAssetClass("GameOverSound");
-		private var WinSound:Class = Warehouse.getInstance().getAssetClass("WinSound");
-		private var volumeSet:SoundTransform = new SoundTransform();
 		private var ScoreAnim:Class = Warehouse.getInstance().getAssetClass("ScoreAnim");
 		
 		private var scoreAnimTf:TextField;
@@ -116,14 +110,14 @@ package gamePlay.level1.view.components
 					openElemList[i].parent.addChild(scoreAnim); //додаємо анімацію нарахування очків
 					scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
 					openElemList[i].parent.removeChild(openElemList[i]);
-					trueSelectSound();
+					SoundLib.getSound("TrueSound", 200);
 				}
 			}
 			else
 			{
 				for ( i = 0; i < openElemList.length; i++)
 				{
-					falseSelectSound();
+					SoundLib.getSound("FalseSound");
 					openElemList[i].back.gotoAndStop(hide);
 				}
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
@@ -146,6 +140,7 @@ package gamePlay.level1.view.components
 			var elem:MovieClip = allElemList[elemIndex];
 			openElemList.push(elem);
 			elem.back.gotoAndStop(show);
+			SoundLib.getSound("SelectElemSound", 200);
 		}
 		
 		private function allElementsDrawed():void //відкриваємо усі елементи перед початком гри
@@ -193,50 +188,6 @@ package gamePlay.level1.view.components
 			}
 		}
 		
-		public function clickElemSound():void
-		{
-			var clickSound:Sound = new ClickSound();
-			clickSound.play(200,1, volumeSet);
-		}
-		
-		private function falseSelectSound():void
-		{
-			var falseSound:Sound = new FalseSound();
-			//volumeSet.volume = 0.5;
-			//volumeSet.pan = 0; //баланс
-			falseSound.play(0,1,volumeSet);
-		}
-		
-		private function trueSelectSound():void
-		{
-			var trueSound:Sound = new TrueSound();
-			trueSound.play(200,1,volumeSet);
-		}
-		
-		private function gameOverSound():void
-		{
-			var gameOverSound:Sound = new GameOverSound;
-			gameOverSound.play(0,1,volumeSet);
-		}
-		
-		private function winSound():void
-		{
-			var winSound:Sound = new WinSound;
-			winSound.play(0,1,volumeSet);
-		}
-		
-		public function mute():void
-		{
-			if (volumeSet.volume == 0)
-			{
-				volumeSet.volume = 1;
-			}
-			else
-			{
-				volumeSet.volume = 0;
-			}
-		}
-		
 		public function removeListener():void //метод для видалення лісенерів з елементів при паузі, рестарті та геймОвер
 		{
 			for (var i:uint=0; i<vectorElementDto.length; i++)
@@ -256,13 +207,13 @@ package gamePlay.level1.view.components
 		public function gameOver():void
 		{
 			removeListener();
-			setTimeout(gameOverSound, 500);
+			setTimeout(SoundLib.getSound, 500, "GameOverSound");
 			gameOverShowRestElements();
 		}
 		
 		public function win():void
 		{
-			setTimeout(winSound, 500);
+			setTimeout(SoundLib.getSound, 500, "WinSound");
 		}
 	}
 }

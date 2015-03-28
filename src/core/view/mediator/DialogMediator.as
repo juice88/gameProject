@@ -1,6 +1,6 @@
 package core.view.mediator
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import core.view.components.DialogViewLogic;
 	
@@ -8,18 +8,19 @@ package core.view.mediator
 	
 	public class DialogMediator extends Mediator
 	{
+		public var layer:String = "upper"; 
 		public function DialogMediator(mediatorName:String=null, viewComponent:Object=null)
 		{
 			super(mediatorName, viewComponent);
 		}
 		
 		override public function onRegister():void{
-			sendNotification(GeneralNotifications.ADD_CHILD_TO_ROOT, viewLogic.content);
+			sendNotification(GeneralNotifications.ADD_CHILD_TO_ROOT, viewLogic.content, layer);
 			onRegisterListeners();
 		}
 		
 		override public function onRemove():void{
-			sendNotification(GeneralNotifications.REMOVE_CHILD_FROM_ROOT, viewLogic.content);
+			sendNotification(GeneralNotifications.REMOVE_CHILD_FROM_ROOT, viewLogic.content, layer);
 			sendNotification(GeneralNotifications.DIALOG_CLOSE);
 			onRemoveListeners();
 		}

@@ -1,6 +1,6 @@
 package core.view.mediator
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
@@ -13,10 +13,19 @@ package core.view.mediator
 	public class RootMediator extends Mediator
 	{
 		public static var NAME:String = "RootMediator";
+		private var upperLayer:Sprite;
+		private var lowerLayer:Sprite;
 		
 		public function RootMediator(rootSprite:Sprite)
 		{
 			super(NAME, rootSprite);
+		}
+		override public function onRegister():void
+		{
+			upperLayer = new Sprite;
+			lowerLayer = new Sprite;
+			(viewComponent as Sprite).addChild(lowerLayer);
+			(viewComponent as Sprite).addChild(upperLayer);
 		}
 		
 		override public function listNotificationInterests():Array{
@@ -29,10 +38,32 @@ package core.view.mediator
 			var displayObject:DisplayObject = notification.getBody() as DisplayObject;
 			switch(notification.getName()){
 				case GeneralNotifications.ADD_CHILD_TO_ROOT:
- 					(viewComponent as Sprite).addChild(displayObject);
+					if (notification.getType() != null)
+					{
+						if (notification.getType() == "upper")
+						{
+							upperLayer.addChild(displayObject);
+						}
+						else if (notification.getType() == "lower")
+						{
+							lowerLayer.addChild(displayObject);
+						}
+					}
+ 					//(viewComponent as Sprite).addChild(displayObject);
 					break;
 				case GeneralNotifications.REMOVE_CHILD_FROM_ROOT:
-					(viewComponent as Sprite).removeChild(displayObject);
+					if (notification.getType() != null)
+					{
+						if (notification.getType() == "upper")
+						{
+							upperLayer.removeChild(displayObject);
+						}
+						else if (notification.getType() == "lower")
+						{
+							lowerLayer.removeChild(displayObject);
+						}
+					}
+					//(viewComponent as Sprite).removeChild(displayObject);
 					break;
 				case GeneralNotifications.FULL_SCREEN:
 					fullScreen();

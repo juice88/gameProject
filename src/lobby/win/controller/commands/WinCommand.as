@@ -1,6 +1,6 @@
 package lobby.win.controller.commands
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import lobby.win.view.mediator.WinPopupMediator;
 	

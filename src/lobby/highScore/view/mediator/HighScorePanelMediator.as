@@ -11,6 +11,7 @@ package lobby.highScore.view.mediator
 		public function HighScorePanelMediator()
 		{
 			super(NAME, new HighScorePanelVL());
+			layer = "upper";
 		}
 		
 		private function get highScoreVL():HighScorePanelVL

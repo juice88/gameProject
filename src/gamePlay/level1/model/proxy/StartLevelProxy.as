@@ -1,7 +1,7 @@
 package gamePlay.level1.model.proxy
 {
-	import config.GeneralNotifications;
-	import config.Settings;
+	import core.config.GeneralNotifications;
+	import core.config.Settings;
 	
 	import flash.display.MovieClip;
 	import flash.sampler.NewObjectSample;

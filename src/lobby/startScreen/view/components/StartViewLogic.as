@@ -1,6 +1,6 @@
 package lobby.startScreen.view.components
 {
-	import config.GeneralEventsConst;
+	import core.config.GeneralEventsConst;
 	
 	import core.view.components.ViewLogic;
 	
@@ -10,7 +10,7 @@ package lobby.startScreen.view.components
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	
-	import utils.Warehouse;
+	import core.utils.Warehouse;
 	
 	public class StartViewLogic extends ViewLogic
 	{

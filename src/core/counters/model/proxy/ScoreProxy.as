@@ -1,8 +1,7 @@
 package core.counters.model.proxy
 {
-	import config.GeneralNotifications;
-	import config.Settings;
-	
+	import core.config.GeneralNotifications;
+	import core.config.Settings;
 	import core.counters.model.dto.ScoreDto;
 	
 	import flash.events.TimerEvent;
@@ -150,8 +149,8 @@ package core.counters.model.proxy
 		
 		public function timerGameSet():void
 		{
-			score.minute = 0;
-			score.second = 20;
+			score.minute = Settings.TIMER_START_LEVEL_MINUTE;
+			score.second = Settings.TIMER_START_LEVEL_SECOND;
 			score.minuteSecond = new Array;
 			score.minuteSecond.push(score.minute, score.second);
 			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, score.minuteSecond);
@@ -212,8 +211,8 @@ package core.counters.model.proxy
 		public function nextLevel():void
 		{
 			score.timer.stop();
-			score.minute = 0;
-			score.second = 30;
+			score.minute = Settings.TIMER_NEXT_LEVEL_MINUTE;
+			score.second =Settings.TIMER_NEXT_LEVEL_SECOND;
 			score.lifes = 10;
 			score.allMoves = 0;
 			score.allTrueSelect = 0;

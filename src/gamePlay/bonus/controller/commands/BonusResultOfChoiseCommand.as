@@ -1,6 +1,6 @@
 package gamePlay.bonus.controller.commands
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import core.counters.model.proxy.ScoreProxy;
 	

@@ -1,6 +1,6 @@
 package lobby.topMenu.view.components
 {
-	import config.GeneralEventsConst;
+	import core.config.GeneralEventsConst;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;

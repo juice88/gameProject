@@ -1,6 +1,6 @@
 package lobby.pause.controller.commands
 {
-	import config.GeneralNotifications;
+	import core.config.GeneralNotifications;
 	
 	import core.counters.model.proxy.ScoreProxy;
 	import gamePlay.level1.model.proxy.StartLevelProxy;

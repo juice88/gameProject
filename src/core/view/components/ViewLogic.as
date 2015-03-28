@@ -4,7 +4,7 @@ package core.view.components
 	import flash.display.Sprite;
 	import flash.events.EventDispatcher;
 	
-	import utils.Warehouse;
+	import core.utils.Warehouse;
 	
 	public class ViewLogic extends EventDispatcher
 	{

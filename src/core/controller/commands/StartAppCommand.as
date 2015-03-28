@@ -1,12 +1,10 @@
 package core.controller.commands
 {
-	import config.GeneralEventsConst;
-	import config.GeneralNotifications;
-	
+	import core.config.GeneralNotifications;
+	import core.counters.controller.commands.NumberOfMovesSendCommand;
 	import core.queue.controller.commands.DialogCloseCommand;
 	import core.queue.controller.commands.DialogLoadToQueueCommand;
 	import core.queue.controller.commands.DialogOpenCommand;
-	import core.counters.controller.commands.NumberOfMovesSendCommand;
 	import core.view.mediator.RootMediator;
 	
 	import flash.display.Sprite;
@@ -27,7 +25,6 @@ package core.controller.commands
 	import lobby.settings.controller.commands.SettingsPanelCloseCommand;
 	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
 	import lobby.startScreen.controller.commands.StartGameCommand;
-	import lobby.startScreen.view.mediator.StartScreenMediator;
 	import lobby.topMenu.controller.commands.BackToMenuCommand;
 	import lobby.topMenu.controller.commands.RestartCommand;
 	import lobby.win.controller.commands.WinCommand;

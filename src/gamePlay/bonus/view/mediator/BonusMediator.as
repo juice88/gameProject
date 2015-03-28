@@ -1,8 +1,8 @@
 package gamePlay.bonus.view.mediator
 {
-	import config.GameEvent;
-	import config.GeneralEventsConst;
-	import config.GeneralNotifications;
+	import core.config.GameEvent;
+	import core.config.GeneralEventsConst;
+	import core.config.GeneralNotifications;
 	
 	import core.view.mediator.UIMediator;
 	

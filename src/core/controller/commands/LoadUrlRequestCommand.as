@@ -1,6 +1,7 @@
 package core.controller.commands
 {
 	import core.queue.model.proxy.QueueDialogProxy;
+	import core.utils.Warehouse;
 	
 	import flash.display.Loader;
 	import flash.display.LoaderInfo;
@@ -12,8 +13,6 @@ package core.controller.commands
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
-	
-	import utils.Warehouse;
 	
 	public class LoadUrlRequestCommand extends SimpleCommand
 	{
