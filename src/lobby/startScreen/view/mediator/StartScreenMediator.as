@@ -3,19 +3,15 @@ package lobby.startScreen.view.mediator
 	
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
-	
 	import core.view.mediator.UIMediator;
 	
 	import flash.events.Event;
-	import flash.utils.setTimeout;
 	
 	import lobby.startScreen.view.components.StartViewLogic;
 	
-	import org.puremvc.as3.interfaces.INotification;
-	
 	public class StartScreenMediator extends UIMediator
 	{
-		public static var NAME:String = "StartMediator";
+		public static const NAME:String = "StartMediator";
 		
 		public function StartScreenMediator()
 		{

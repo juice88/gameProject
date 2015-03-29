@@ -2,10 +2,8 @@ package lobby.startScreen.view.components
 {
 	import core.config.GeneralEventsConst;
 	import core.utils.SoundLib;
-	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
 	
-	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.display.Sprite;
 	import flash.events.Event;
@@ -13,10 +11,9 @@ package lobby.startScreen.view.components
 	
 	public class StartViewLogic extends ViewLogic
 	{
-		private var newGameBtn:SimpleButton;
-		private var continueGameBtn:SimpleButton;
-		private var settingsBtn:SimpleButton;
-		
+		private var _newGameBtn:SimpleButton;
+		private var _continueGameBtn:SimpleButton;
+		private var _settingsBtn:SimpleButton;
 		
 		public function StartViewLogic()
 		{
@@ -29,29 +26,29 @@ package lobby.startScreen.view.components
 		
 		private function startUpScreenLoad():void
 		{
-			newGameBtn = startContent["newGameBtn"];
-			newGameBtn.addEventListener(MouseEvent.CLICK, onNewGameBtnClickHand);
-			continueGameBtn = startContent["continueGameBtn"];
-			continueGameBtn.addEventListener(MouseEvent.CLICK, onContinueGameBtnClicHand);
-			settingsBtn = startContent["settingsBtn"];
-			settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
+			_newGameBtn = startContent["newGameBtn"];
+			_newGameBtn.addEventListener(MouseEvent.CLICK, onNewGameBtnClickHand);
+			_continueGameBtn = startContent["continueGameBtn"];
+			_continueGameBtn.addEventListener(MouseEvent.CLICK, onContinueGameBtnClicHand);
+			_settingsBtn = startContent["settingsBtn"];
+			_settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
 		}
 		
 		protected function onNewGameBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.START_NEW_GAME));
 		}
 		
 		protected function onContinueGameBtnClicHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.CONTINUE_GAME));
 		}
 		
 		protected function onSettingsBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.SHOW_SETTINGS_PANEL));
 		}
 	}

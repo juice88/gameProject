@@ -2,7 +2,6 @@ package lobby.gameOver.view.mediator
 {
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
-	
 	import core.view.mediator.DialogMediator;
 	
 	import flash.events.Event;
@@ -12,6 +11,7 @@ package lobby.gameOver.view.mediator
 	public class GameOverPopupMediator extends DialogMediator
 	{
 		public static const NAME:String = "GameOverPopupMediator";
+		
 		public function GameOverPopupMediator()
 		{
 			super(NAME, new GameOverPopupVL());

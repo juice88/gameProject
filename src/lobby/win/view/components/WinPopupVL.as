@@ -12,10 +12,10 @@ package lobby.win.view.components
 
 	public class WinPopupVL extends DialogViewLogic
 	{
-		private var totalScore:TextField;
-		private var trueMoves:TextField;
-		private var falseMoves:TextField;
-		private var nextBtn:SimpleButton;
+		private var _totalScore:TextField;
+		private var _trueMoves:TextField;
+		private var _falseMoves:TextField;
+		private var _nextBtn:SimpleButton;
 		
 		public function WinPopupVL()
 		{
@@ -37,20 +37,20 @@ package lobby.win.view.components
 		public function ScoreTrueFalseCounters(value:Array):void
 		{
 			winPopup.gotoAndStop(2);
-			totalScore = winPopup.totalScore.scoreTf;
-			totalScore.text = value[0].toString(10);
-			trueMoves = winPopup.trueMoves.movesTf;
-			trueMoves.text = value[1].toString(10);
-			falseMoves = winPopup.falseMoves.movesTf;
-			falseMoves.text = value[2].toString(10);
-			nextBtn = winPopup["nextBtn"];
-			nextBtn.addEventListener(MouseEvent.CLICK, onNextBtnClickHand);
+			_totalScore = winPopup.totalScore.scoreTf;
+			_totalScore.text = value[0].toString(10);
+			_trueMoves = winPopup.trueMoves.movesTf;
+			_trueMoves.text = value[1].toString(10);
+			_falseMoves = winPopup.falseMoves.movesTf;
+			_falseMoves.text = value[2].toString(10);
+			_nextBtn = winPopup["nextBtn"];
+			_nextBtn.addEventListener(MouseEvent.CLICK, onNextBtnClickHand);
 			winPopup.visible = true;
 		}
 		
 		protected function onNextBtnClickHand(event:Event):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.NEXT_LEVEL));
 		}
 	}

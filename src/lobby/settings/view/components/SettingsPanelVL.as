@@ -11,10 +11,10 @@ package lobby.settings.view.components
 	
 	public class SettingsPanelVL extends DialogViewLogic
 	{
-		private var closeBtn:SimpleButton;
-		private var muteBtn:MovieClip;
-		private var fullScreenBtn:SimpleButton;
-		private var frameMuteBtn:uint = 1;
+		private var _closeBtn:SimpleButton;
+		private var _muteBtn:MovieClip;
+		private var _fullScreenBtn:SimpleButton;
+		private var _frameMuteBtn:uint = 1;
 		
 		public function SettingsPanelVL()
 		{
@@ -29,37 +29,38 @@ package lobby.settings.view.components
 		
 		public function loadSettingsPanel():void
 		{
-			closeBtn = setPanelVL["closeBtn"];
-			closeBtn.addEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
-			muteBtn = setPanelVL["muteBtn"];
-			muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClickHand);
-			fullScreenBtn = setPanelVL["fullScreenBtn"];
-			fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClickHand);
+			_closeBtn = setPanelVL["closeBtn"];
+			_closeBtn.addEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
+			_muteBtn = setPanelVL["muteBtn"];
+			_muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClickHand);
+			_fullScreenBtn = setPanelVL["fullScreenBtn"];
+			_fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClickHand);
 		}
 		
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.CLOSE_SETTINGS_PANEL));
 		}
 		protected function onMuteBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
-			if (frameMuteBtn == 1)
+			SoundLib.getInstance().btnClickSound();
+			SoundLib.getInstance().mute();
+			if (_frameMuteBtn == 1)
 			{
-				frameMuteBtn = 2;
+				_frameMuteBtn = 2;
 			}
 			else 
 			{
-				frameMuteBtn = 1;
+				_frameMuteBtn = 1;
 			}
-			setPanelVL.muteBtn.gotoAndStop(frameMuteBtn);
+			setPanelVL.muteBtn.gotoAndStop(_frameMuteBtn);
 			dispatchEvent(new Event(GeneralEventsConst.MUTE));
 		}
 		
 		protected function onFullScreenBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
 		}
 	}

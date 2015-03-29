@@ -12,12 +12,12 @@ package lobby.botMenu.view.components
 
 	public class BotPanelViewLogic extends ViewLogic
 	{
-		private var muteBtn:MovieClip;
-		private var fullScreenBtn:SimpleButton;
-		private var frameMuteBtn:uint = 1;
-		private var lifesPic:MovieClip;
-		private var minuteTf:TextField;
-		private var secondTf:TextField;
+		private var _muteBtn:MovieClip;
+		private var _fullScreenBtn:SimpleButton;
+		private var _frameMuteBtn:uint = 1;
+		private var _lifesPic:MovieClip;
+		private var _minuteTf:TextField;
+		private var _secondTf:TextField;
 		
 		public function BotPanelViewLogic()
 		{
@@ -32,58 +32,58 @@ package lobby.botMenu.view.components
 		
 		private function botPaneLoad():void
 		{
-			muteBtn = botPanel["muteBtn"];
-			muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClickHand);
-			fullScreenBtn = botPanel["fullScreenBtn"];
-			fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClickHand);
-			lifesPic = botPanel["lifesPic"];
-			lifesPic.gotoAndStop(11);
+			_muteBtn = botPanel["muteBtn"];
+			_muteBtn.addEventListener(MouseEvent.CLICK, onMuteBtnClickHand);
+			_fullScreenBtn = botPanel["fullScreenBtn"];
+			_fullScreenBtn.addEventListener(MouseEvent.CLICK, onFullScreenBtnClickHand);
+			_lifesPic = botPanel["lifesPic"];
+			_lifesPic.gotoAndStop(11);
 		}
 		
 		protected function onMuteBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
-			if (frameMuteBtn == 1)
+			SoundLib.getInstance().btnClickSound();
+			if (_frameMuteBtn == 1)
 			{
-				frameMuteBtn = 2;
+				_frameMuteBtn = 2;
 			}
 			else 
 			{
-				frameMuteBtn = 1;
+				_frameMuteBtn = 1;
 			}
-			botPanel.muteBtn.gotoAndStop(frameMuteBtn);
+			botPanel.muteBtn.gotoAndStop(_frameMuteBtn);
 			dispatchEvent(new Event(GeneralEventsConst.MUTE));
 		}
 		
 		protected function onFullScreenBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.FULL_SCREEN));
 		}
 		public function lifesCounterUpdated(lifesValue:int):void
 		{
-			lifesPic.gotoAndStop(lifesValue + 1);
+			_lifesPic.gotoAndStop(lifesValue + 1);
 		}
 		public function timerUpdated(minSec:Array):void
 		{
 			
-			minuteTf = botPanel.minute.valueTf;
-			secondTf = botPanel.second.valueTf;
+			_minuteTf = botPanel.minute.valueTf;
+			_secondTf = botPanel.second.valueTf;
 			if (minSec[1]<=9)
 			{
-				secondTf.text = "0" + minSec[1].toString(10);
+				_secondTf.text = "0" + minSec[1].toString(10);
 			}
 			else
 			{
-				secondTf.text = minSec[1].toString(10);
+				_secondTf.text = minSec[1].toString(10);
 			}
 			if (minSec[0]<=9)
 			{
-				minuteTf.text = "0" + minSec[0].toString(10);
+				_minuteTf.text = "0" + minSec[0].toString(10);
 			}
 			else
 			{
-				minuteTf.text = minSec[0].toString(10);
+				_minuteTf.text = minSec[0].toString(10);
 			}
 		}
 	}

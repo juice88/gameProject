@@ -6,7 +6,7 @@ package lobby.highScore.view.mediator
 	
 	public class HighScorePanelMediator extends UIMediator
 	{
-		public static var NAME:String = "HighScorePanelMediator";
+		public static const NAME:String = "HighScorePanelMediator";
 		
 		public function HighScorePanelMediator()
 		{

@@ -6,15 +6,14 @@ package lobby.pause.view.components
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
-	import flash.display.Sprite;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
 	import flash.text.TextField;
 
 	public class PausePopupVL extends DialogViewLogic
 	{
-		private var pauseContinueBtn:SimpleButton;
-		private var totalScoreTf:TextField;
+		private var _pauseContinueBtn:SimpleButton;
+		private var _totalScoreTf:TextField;
 		
 		public function PausePopupVL()
 		{
@@ -27,19 +26,19 @@ package lobby.pause.view.components
 		}
 		public function popupLoad():void
 		{
-			pauseContinueBtn = pausePopup["pauseContinueBtn"];
-			pauseContinueBtn.addEventListener(MouseEvent.CLICK, onPauseContinueBtnClickHand);
+			_pauseContinueBtn = pausePopup["pauseContinueBtn"];
+			_pauseContinueBtn.addEventListener(MouseEvent.CLICK, onPauseContinueBtnClickHand);
 		}
 		
 		protected function onPauseContinueBtnClickHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.PAUSE_CONTINUE_GAME));
 		}
 		public function totalScoreUpdated(tatalScore:int):void
 		{
-			totalScoreTf = pausePopup.totalScoreTf.scoreTf;
-			totalScoreTf.text = tatalScore.toString(10);
+			_totalScoreTf = pausePopup.totalScoreTf.scoreTf;
+			_totalScoreTf.text = tatalScore.toString(10);
 		}
 	}
 }

@@ -16,7 +16,7 @@ package gamePlay.bonus.view.mediator
 
 	public class BonusMediator extends UIMediator
 	{
-		public static var NAME:String = "BonusMediator";
+		public static const NAME:String = "BonusMediator";
 		
 		public function BonusMediator()
 		{

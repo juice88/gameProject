@@ -4,7 +4,6 @@ package core.view.mediator
 	
 	import flash.display.DisplayObject;
 	import flash.display.Sprite;
-	import flash.display.Stage;
 	import flash.display.StageDisplayState;
 	
 	import org.puremvc.as3.interfaces.INotification;
@@ -12,9 +11,9 @@ package core.view.mediator
 	
 	public class RootMediator extends Mediator
 	{
-		public static var NAME:String = "RootMediator";
-		private var upperLayer:Sprite;
-		private var lowerLayer:Sprite;
+		public static const NAME:String = "RootMediator";
+		private var _upperLayer:Sprite;
+		private var _lowerLayer:Sprite;
 		
 		public function RootMediator(rootSprite:Sprite)
 		{
@@ -22,10 +21,10 @@ package core.view.mediator
 		}
 		override public function onRegister():void
 		{
-			upperLayer = new Sprite;
-			lowerLayer = new Sprite;
-			(viewComponent as Sprite).addChild(lowerLayer);
-			(viewComponent as Sprite).addChild(upperLayer);
+			_upperLayer = new Sprite;
+			_lowerLayer = new Sprite;
+			(viewComponent as Sprite).addChild(_lowerLayer);
+			(viewComponent as Sprite).addChild(_upperLayer);
 		}
 		
 		override public function listNotificationInterests():Array{
@@ -42,11 +41,11 @@ package core.view.mediator
 					{
 						if (notification.getType() == "upper")
 						{
-							upperLayer.addChild(displayObject);
+							_upperLayer.addChild(displayObject);
 						}
 						else if (notification.getType() == "lower")
 						{
-							lowerLayer.addChild(displayObject);
+							_lowerLayer.addChild(displayObject);
 						}
 					}
  					//(viewComponent as Sprite).addChild(displayObject);
@@ -56,11 +55,11 @@ package core.view.mediator
 					{
 						if (notification.getType() == "upper")
 						{
-							upperLayer.removeChild(displayObject);
+							_upperLayer.removeChild(displayObject);
 						}
 						else if (notification.getType() == "lower")
 						{
-							lowerLayer.removeChild(displayObject);
+							_lowerLayer.removeChild(displayObject);
 						}
 					}
 					//(viewComponent as Sprite).removeChild(displayObject);

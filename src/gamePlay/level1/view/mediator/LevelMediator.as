@@ -17,14 +17,13 @@ package gamePlay.level1.view.mediator
 	
 	public class LevelMediator extends UIMediator
 	{
-		public static var NAME:String="LevelMediator";
+		public static const NAME:String="LevelMediator";
 		
 		public function LevelMediator()
 		{
 			super(NAME, new Level1ViewLogic());
-//			(viewLogic as Level1ViewLogic).addEventListener(GeneralEventsConst.OPENED_ELEMENT, onOpenedElementHand);
-//			(viewLogic as Level1ViewLogic).addEventListener(GeneralEventsConst.END_TURN, onEndTurnHand);
 		}
+		
 		private function get levelVL():Level1ViewLogic
 		{
 			return viewLogic as Level1ViewLogic;
@@ -80,7 +79,7 @@ package gamePlay.level1.view.mediator
 					levelVL.replayLevel();
 					break;
 				case GeneralNotifications.MUTE:
-					SoundLib.mute();
+					SoundLib.getInstance().mute();
 					break;
 				case GeneralNotifications.PAUSE:
 					levelVL.removeListener();

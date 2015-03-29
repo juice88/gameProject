@@ -1,7 +1,6 @@
 package core.view.mediator
 {
 	import core.config.GeneralNotifications;
-	
 	import core.view.components.DialogViewLogic;
 	
 	import org.puremvc.as3.patterns.mediator.Mediator;
@@ -9,6 +8,7 @@ package core.view.mediator
 	public class DialogMediator extends Mediator
 	{
 		public var layer:String = "upper"; 
+		
 		public function DialogMediator(mediatorName:String=null, viewComponent:Object=null)
 		{
 			super(mediatorName, viewComponent);

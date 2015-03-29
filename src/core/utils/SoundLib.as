@@ -6,32 +6,43 @@ package core.utils
 
 	public class SoundLib
 	{
-		public static var volumeSet:SoundTransform = new SoundTransform();
+		static private var _instance:SoundLib;
 		
-		public static function playSound(name:String, timeStart:int=0, loops:int=1/*, volume:int=1*/):Sound
+		private var _volumeSet:SoundTransform = new SoundTransform();
+		
+		static public function getInstance():SoundLib
+		{
+			if (_instance==null)
+			{
+				_instance = new SoundLib();
+			}
+			return _instance;
+		}
+		
+		public function playSound(name:String, timeStart:int=0, loops:int=1/*, volume:int=1*/):Sound
 		{
 			var NeedSound:Class = Warehouse.getInstance().getAssetClass(name);
 			var sound:Sound = new NeedSound();
 		//	volumeSet.volume = volume;
-			sound.play(timeStart,loops,volumeSet);
+			sound.play(timeStart,loops,_volumeSet);
 			return sound;
 		}
 		
-		public static function mute():void
+		public function mute():void
 		{
-			if (volumeSet.volume == 0)
+			if (_volumeSet.volume == 0)
 			{
-				volumeSet.volume = 1;
+				_volumeSet.volume = 1;
 			}
 			else
 			{
-				volumeSet.volume = 0;
+				_volumeSet.volume = 0;
 			}
 		}
 		
-		public static function btnClickSound():void
+		public function btnClickSound():void
 		{
-			SoundLib.playSound("ButtonClick");
+			SoundLib.getInstance().playSound("ButtonClick");
 		}
 	}
 }

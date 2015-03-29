@@ -11,7 +11,8 @@ package gamePlay.bonus.view.mediator
 	
 	public class BonusPopupMediator extends DialogMediator
 	{
-		public static var NAME:String = "BonusPopupMediator";
+		public static const NAME:String = "BonusPopupMediator";
+		
 		public function BonusPopupMediator()
 		{
 			super(NAME, new BonusPopupVL());

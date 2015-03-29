@@ -12,7 +12,7 @@ package lobby.botMenu.view.mediator
 
 	public class BotPanelMediator extends UIMediator
 	{
-		public static var NAME:String = "BotPanelMediator";
+		public static const NAME:String = "BotPanelMediator";
 		
 		public function BotPanelMediator()
 		{

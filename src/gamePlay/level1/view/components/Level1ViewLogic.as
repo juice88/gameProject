@@ -10,8 +10,6 @@ package gamePlay.level1.view.components
 	import flash.display.MovieClip;
 	import flash.events.Event;
 	import flash.events.MouseEvent;
-	import flash.media.Sound;
-	import flash.media.SoundTransform;
 	import flash.text.TextField;
 	import flash.utils.setTimeout;
 	
@@ -20,27 +18,27 @@ package gamePlay.level1.view.components
 	
 	public class Level1ViewLogic extends ViewLogic
 	{
-		private var Elem:Class = Warehouse.getInstance().getAssetClass("Element");
-		private var shablon:String = "shablon";
-		private var hide:String = "hide";
-		private var show:String = "show";
+		private var _Elem:Class = Warehouse.getInstance().getAssetClass("Element");
+		private var _shablon:String = "shablon";
+		private var _hide:String = "hide";
+		private var _show:String = "show";
 		
-		private var allElemList:Vector.<MovieClip>; //перелік усіх елементів
-		private var openElemList:Vector.<MovieClip>; // елементи які відкриті
-		private var vectorElementDto:Vector.<ElementDto>; //вектор усіх ДТО
-		private var restElement:Vector.<MovieClip>; // вектор елементів які ще є на сцені
+		private var _allElemList:Vector.<MovieClip>; //перелік усіх елементів
+		private var _openElemList:Vector.<MovieClip>; // елементи які відкриті
+		private var _vectorElementDto:Vector.<ElementDto>; //вектор усіх ДТО
+		private var _restElement:Vector.<MovieClip>; // вектор елементів які ще є на сцені
 		
-		private var ScoreAnim:Class = Warehouse.getInstance().getAssetClass("ScoreAnim");
+		private var _ScoreAnim:Class = Warehouse.getInstance().getAssetClass("ScoreAnim");
 		
-		private var scoreAnimTf:TextField;
-		private var movesScoreVal:uint;
+		private var _scoreAnimTf:TextField;
+		private var _movesScoreVal:uint;
 		
 		public function Level1ViewLogic()
 		{
 			super("Polle");
-			openElemList = new Vector.<MovieClip>; // вектор, що містить список відкритих елементів
-			allElemList = new Vector.<MovieClip>; // вектор усіх елементів
-			restElement = new Vector.<MovieClip>; // вектор елементів, що ще не відкриті та залишаються на сцені
+			_openElemList = new Vector.<MovieClip>; // вектор, що містить список відкритих елементів
+			_allElemList = new Vector.<MovieClip>; // вектор усіх елементів
+			_restElement = new Vector.<MovieClip>; // вектор елементів, що ще не відкриті та залишаються на сцені
 		}
 		
 		private function get level1Content():MovieClip
@@ -50,25 +48,25 @@ package gamePlay.level1.view.components
 		
 		public function readyToDraw(value:Vector.<ElementDto>):void
 		{
-			vectorElementDto = value;
+			_vectorElementDto = value;
 			for (var i:uint = 0; i<value.length; i++)
 			{
-				value[i].element = new Elem();
-				allElemList.push(value[i].element); // додаємо до вестора clipsList MovieClip-и витягнуті з вектора ElementDto
-				restElement.push(value[i].element);
+				value[i].element = new _Elem();
+				_allElemList.push(value[i].element); // додаємо до вестора clipsList MovieClip-и витягнуті з вектора ElementDto
+				_restElement.push(value[i].element);
 				value[i].element.gotoAndStop(value[i].kadr);
-				((level1Content[shablon+i]) as MovieClip).addChild(value[i].element);
+				((level1Content[_shablon+i]) as MovieClip).addChild(value[i].element);
 			}
 			allElementsDrawed();
 		}
 		
 		private function getDtoByContent(element:MovieClip):ElementDto // метод для отримання ДТО по елементу мувікліпа 
 		{
-			for (var i:uint=0; i<vectorElementDto.length; i++) // пробігаємося по всьому вектору ЕлементДто 
+			for (var i:uint=0; i<_vectorElementDto.length; i++) // пробігаємося по всьому вектору ЕлементДто 
 			{
-				if (element == vectorElementDto[i].element) //якщо провіряючий мовікліп співпадає з елементом в ДТО
+				if (element == _vectorElementDto[i].element) //якщо провіряючий мовікліп співпадає з елементом в ДТО
 				{
-					return  vectorElementDto[i]; // вернути його ДТО
+					return  _vectorElementDto[i]; // вернути його ДТО
 				}
 			}
 			return null; // інакше нічого не вертати
@@ -83,15 +81,15 @@ package gamePlay.level1.view.components
 		
 		public function restElemFun(delElem:MovieClip):void
 		{
-			var availableElem:int = allElemList.indexOf(delElem); //знаходимо даний елемент в векторі усіх елементів... визначаємо його індекс
+			var availableElem:int = _allElemList.indexOf(delElem); //знаходимо даний елемент в векторі усіх елементів... визначаємо його індекс
 			if (availableElem != -1) //якщо індекс не рівний -1 тоді
 			{
-				restElement.splice(availableElem, 1, null); //видаляємо елемент(який було видалено зі сцени) з вектора MovieClip по індексу, 1 - кількість видалених елементів після елемента з індексом, null - ставиться в масив замість видалених елементів... (без налл не видаляються елементи зі сценни в методі replayLevel)
+				_restElement.splice(availableElem, 1, null); //видаляємо елемент(який було видалено зі сцени) з вектора MovieClip по індексу, 1 - кількість видалених елементів після елемента з індексом, null - ставиться в масив замість видалених елементів... (без налл не видаляються елементи зі сценни в методі replayLevel)
 			}
 		}
 		public function setScorAnim(scoreValue:int):void
 		{
-			movesScoreVal = scoreValue;
+			_movesScoreVal = scoreValue;
 		}
 
 		public function resultTurn(notif:Boolean):void //перевірка результатів ходу (вибору елементів)
@@ -100,29 +98,29 @@ package gamePlay.level1.view.components
 			{
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_TRUE));
 				//додаємо анімацію нарахування очків за поточний хід
-				var scoreAnim:MovieClip = new ScoreAnim();
-				scoreAnimTf = scoreAnim.scoreMovesTf;
-				scoreAnimTf.text = movesScoreVal.toString(10);
+				var scoreAnim:MovieClip = new _ScoreAnim();
+				_scoreAnimTf = scoreAnim.scoreMovesTf;
+				_scoreAnimTf.text = _movesScoreVal.toString(10);
 				
-				for (var i:uint = 0; i < openElemList.length; i++)
+				for (var i:uint = 0; i < _openElemList.length; i++)
 				{
-					restElemFun(openElemList[i]);
-					openElemList[i].parent.addChild(scoreAnim); //додаємо анімацію нарахування очків
+					restElemFun(_openElemList[i]);
+					_openElemList[i].parent.addChild(scoreAnim); //додаємо анімацію нарахування очків
 					scoreAnim.addEventListener(Event.ENTER_FRAME, onEnterFrameScoreAnim); //по закінченю анімації видаляємо її
-					openElemList[i].parent.removeChild(openElemList[i]);
-					SoundLib.playSound("TrueSound", 200);
+					_openElemList[i].parent.removeChild(_openElemList[i]);
+					SoundLib.getInstance().playSound("TrueSound", 200);
 				}
 			}
 			else
 			{
-				for ( i = 0; i < openElemList.length; i++)
+				for ( i = 0; i < _openElemList.length; i++)
 				{
-					SoundLib.playSound("FalseSound");
-					openElemList[i].back.gotoAndStop(hide);
+					SoundLib.getInstance().playSound("FalseSound");
+					_openElemList[i].back.gotoAndStop(_hide);
 				}
 				dispatchEvent(new Event(GeneralEventsConst.SELECT_IS_FALSE));
 			}
-			openElemList = new Vector.<MovieClip>;
+			_openElemList = new Vector.<MovieClip>;
 			dispatchEvent(new Event(GeneralEventsConst.END_TURN)); //відправляємо евент про закінчення вибору елементів
 		}
 		
@@ -137,83 +135,83 @@ package gamePlay.level1.view.components
 		
 		public function permitToAdd(elemIndex:int):void 
 		{
-			var elem:MovieClip = allElemList[elemIndex];
-			openElemList.push(elem);
-			elem.back.gotoAndStop(show);
-			SoundLib.playSound("SelectElemSound", 200);
+			var elem:MovieClip = _allElemList[elemIndex];
+			_openElemList.push(elem);
+			elem.back.gotoAndStop(_show);
+			SoundLib.getInstance().playSound("SelectElemSound", 200);
 		}
 		
 		private function allElementsDrawed():void //відкриваємо усі елементи перед початком гри
 		{
-			for (var i:uint = 0; i < allElemList.length; i++)
+			for (var i:uint = 0; i < _allElemList.length; i++)
 			{
-				vectorElementDto[i].element.back.gotoAndStop(show);
+				_vectorElementDto[i].element.back.gotoAndStop(_show);
 			}
 			setTimeout(allElementsHided, Settings.SHOW_ELEMENTS_DELAY); //встановлюється затримка відкритих елементів 
 		}
 		
 		private function allElementsHided():void //закриваємо елементи піся перегляду
 		{
-			for (var i:uint = 0; i < allElemList.length; i++)
+			for (var i:uint = 0; i < _allElemList.length; i++)
 			{
-				vectorElementDto[i].element.back.gotoAndStop(hide);
-				vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement); //добавляємо лісенери на всі елементи, лише коли вони закриються
+				_vectorElementDto[i].element.back.gotoAndStop(_hide);
+				_vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement); //добавляємо лісенери на всі елементи, лише коли вони закриються
 			}
 			dispatchEvent(new Event(GeneralEventsConst.START_TIMER));
 		}
 		
 		public function replayLevel():void
 		{
-			for (var i:uint = 0; i<restElement.length; i++)
+			for (var i:uint = 0; i<_restElement.length; i++)
 			{
-				if (restElement[i] != null) //якщо елемент в векторі елементів які залишилися на сцені не нулл
+				if (_restElement[i] != null) //якщо елемент в векторі елементів які залишилися на сцені не нулл
 				{
-					((level1Content[shablon+i]) as MovieClip).removeChild(restElement[i]); //видаляємо усі елементи з сцени
+					((level1Content[_shablon+i]) as MovieClip).removeChild(_restElement[i]); //видаляємо усі елементи з сцени
 				}
 			}
 			removeListener();
 			
-			for (var j:uint = 0; j<allElemList.length; j++)
+			for (var j:uint = 0; j<_allElemList.length; j++)
 			{
-				((level1Content[shablon+j]) as MovieClip).addChild(allElemList[j]); //додаємо вектор усіх елементів на сцену
+				((level1Content[_shablon+j]) as MovieClip).addChild(_allElemList[j]); //додаємо вектор усіх елементів на сцену
 			}
-				openElemList = new Vector.<MovieClip>; //обнуляємо вектор відкритих елементів, щоб після рестарта можна було вибирати елементи спочатку
+				_openElemList = new Vector.<MovieClip>; //обнуляємо вектор відкритих елементів, щоб після рестарта можна було вибирати елементи спочатку
 				allElementsDrawed();
 		}
 		private function gameOverShowRestElements():void //після програшу відкриваємо елементи які залишилися на сцені
 		{
-			for (var i:uint = 0; i<vectorElementDto.length; i++)
+			for (var i:uint = 0; i<_vectorElementDto.length; i++)
 			{
-				vectorElementDto[i].element.back.gotoAndStop(show);
+				_vectorElementDto[i].element.back.gotoAndStop(_show);
 			}
 		}
 		
 		public function removeListener():void //метод для видалення лісенерів з елементів при паузі, рестарті та геймОвер
 		{
-			for (var i:uint=0; i<vectorElementDto.length; i++)
+			for (var i:uint=0; i<_vectorElementDto.length; i++)
 			{
-				vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
+				_vectorElementDto[i].element.removeEventListener(MouseEvent.CLICK, onClickElement);
 			}
 		}
 		
 		public function addListenerForPause():void
 		{
-			for (var i:uint=0; i<vectorElementDto.length; i++)
+			for (var i:uint=0; i<_vectorElementDto.length; i++)
 			{
-				vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement);
+				_vectorElementDto[i].element.addEventListener(MouseEvent.CLICK, onClickElement);
 			}
 		}
 		
 		public function gameOver():void
 		{
 			removeListener();
-			setTimeout(SoundLib.playSound, 500, "GameOverSound");
+			setTimeout(SoundLib.getInstance().playSound, 500, "GameOverSound");
 			gameOverShowRestElements();
 		}
 		
 		public function win():void
 		{
-			setTimeout(SoundLib.playSound, 500, "WinSound");
+			setTimeout(SoundLib.getInstance().playSound, 500, "WinSound");
 		}
 	}
 }

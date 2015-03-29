@@ -12,7 +12,8 @@ package lobby.gameOver.view.components
 
 	public class GameOverPopupVL extends DialogViewLogic
 	{
-		private var restartBtn:SimpleButton;
+		private var _restartBtn:SimpleButton;
+		
 		public function GameOverPopupVL()
 		{
 			super("GameOverPopup");
@@ -26,13 +27,13 @@ package lobby.gameOver.view.components
 		private function popupLoad():void
 		{
 			gameOverPopup.gotoAndStop(2);
-			restartBtn = gameOverPopup["restartBtn"];
-			restartBtn.addEventListener(MouseEvent.CLICK, onRestartBtnClick);
+			_restartBtn = gameOverPopup["restartBtn"];
+			_restartBtn.addEventListener(MouseEvent.CLICK, onRestartBtnClick);
 		}
 		
 		protected function onRestartBtnClick(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.RESTART_GAME));
 		}
 	}

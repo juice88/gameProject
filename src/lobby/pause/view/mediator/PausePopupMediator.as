@@ -2,7 +2,6 @@ package lobby.pause.view.mediator
 {
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
-	
 	import core.view.mediator.DialogMediator;
 	
 	import flash.events.Event;
@@ -13,7 +12,8 @@ package lobby.pause.view.mediator
 
 	public class PausePopupMediator extends DialogMediator
 	{
-		public static var NAME:String = "PausePopupMediator";
+		public static const NAME:String = "PausePopupMediator";
+		
 		public function PausePopupMediator()
 		{
 			super(NAME, new PausePopupVL());

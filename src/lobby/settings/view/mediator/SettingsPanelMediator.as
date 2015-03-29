@@ -11,7 +11,7 @@ package lobby.settings.view.mediator
 	
 	public class SettingsPanelMediator extends DialogMediator
 	{
-		public static var NAME:String = "SettingsPanelMediator";
+		public static const NAME:String = "SettingsPanelMediator";
 		
 		public function SettingsPanelMediator()
 		{

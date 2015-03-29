@@ -11,7 +11,8 @@ package gamePlay.bonus.view.components
 
 	public class BonusPopupVL extends DialogViewLogic
 	{
-		private var nextBtn:SimpleButton;
+		private var _nextBtn:SimpleButton;
+		
 		public function BonusPopupVL()
 		{
 			super("BonusPopup");
@@ -24,13 +25,13 @@ package gamePlay.bonus.view.components
 		private function bonusPopupLoad():void
 		{
 			bonusPopup.gotoAndStop(2);
-			nextBtn = bonusPopup["nextBtn"];
-			nextBtn.addEventListener(MouseEvent.CLICK, onClickNextBtnHand);
+			_nextBtn = bonusPopup["nextBtn"];
+			_nextBtn.addEventListener(MouseEvent.CLICK, onClickNextBtnHand);
 		}
 		
 		protected function onClickNextBtnHand(event:MouseEvent):void
 		{
-			SoundLib.btnClickSound();
+			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.BONUS_LEVEL_START));
 		}
 	}

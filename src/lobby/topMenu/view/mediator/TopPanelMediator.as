@@ -12,13 +12,11 @@ package lobby.topMenu.view.mediator
 
 	public class TopPanelMediator extends UIMediator
 	{
-		public static var NAME:String="TopPanelMediator";
+		public static const NAME:String="TopPanelMediator";
 		
 		public function TopPanelMediator()
 		{
 			super(NAME, new TopPanelViewLogic());
-//			topPanel.addEventListener(GeneralEventsConst.GO_TO_MENU, onGoToMenuEvent);
-//			topPanel.addEventListener(GeneralEventsConst.RESTART_GAME, onReStartGameEvent);
 		}
 		private function get topPanel():TopPanelViewLogic
 		{

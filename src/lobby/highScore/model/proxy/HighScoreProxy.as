@@ -6,7 +6,7 @@ package lobby.highScore.model.proxy
 	
 	public class HighScoreProxy extends Proxy
 	{
-		public static var NAME:String = "HighScoreProxy";
+		public static const NAME:String = "HighScoreProxy";
 		
 		public function HighScoreProxy()
 		{

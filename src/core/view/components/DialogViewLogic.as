@@ -13,13 +13,13 @@ package core.view.components
 	{
 		protected var displayObject:DisplayObject;
 		
-		private var background:Sprite;
+		private var _background:Sprite;
 		
 		public function DialogViewLogic(name:String)
 		{
 			this.displayObject = Warehouse.getInstance().getAsset(name);
 			addBackground();
-			(this.displayObject as Sprite).addChildAt(background, 0);
+			(this.displayObject as Sprite).addChildAt(_background, 0);
 		}
 		
 		public function get content():DisplayObject{
@@ -28,8 +28,8 @@ package core.view.components
 		
 		private function addBackground():void
 		{
-			background = new Sprite();
-			var graf:Graphics = background.graphics;
+			_background = new Sprite();
+			var graf:Graphics = _background.graphics;
 			graf.beginFill(0x150000, 0.5);
 			graf.drawRect(0,0,Settings.BACKGROUND_RECT_WIDTH,Settings.BACKGROUND_RECT_HEIGHT);
 			graf.endFill();

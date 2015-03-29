@@ -6,33 +6,41 @@ package core.utils
 
 	public class Warehouse
 	{
-		static private var instance:Warehouse;
+		static private var _instance:Warehouse;
 		
-		private var loaderInfo:LoaderInfo;
+		private var _loaderInfo:LoaderInfo;
 		
-		static public function getInstance():Warehouse{
-			if (instance==null){
-				instance = new Warehouse();
+		static public function getInstance():Warehouse
+		{
+			if (_instance==null)
+			{
+				_instance = new Warehouse();
 			}
-			return instance;
+			return _instance;
 		}
 		
-		public function setData(loaderInfo:LoaderInfo):void{
-			this.loaderInfo = loaderInfo;
+		public function setData(loaderInfo:LoaderInfo):void
+		{
+			this._loaderInfo = loaderInfo;
 			
 		}
-		public function getAsset(name:String):InteractiveObject {
-			if (loaderInfo.applicationDomain.hasDefinition(name)){
-				var AssetClass:Class = loaderInfo.applicationDomain.getDefinition(name) as Class;
+		
+		public function getAsset(name:String):InteractiveObject
+		{
+			if (_loaderInfo.applicationDomain.hasDefinition(name))
+			{
+				var AssetClass:Class = _loaderInfo.applicationDomain.getDefinition(name) as Class;
 				var mc:InteractiveObject = new AssetClass();
   				return mc;
 			}	
 			return null;	
-	}
-		public function getAssetClass(name:String):Class {
-			if (loaderInfo.applicationDomain.hasDefinition(name)){
-				var AssetClass:Class = loaderInfo.applicationDomain.getDefinition(name) as Class;
-			return AssetClass;
+		}
+		public function getAssetClass(name:String):Class
+		{
+			if (_loaderInfo.applicationDomain.hasDefinition(name))
+			{
+				var AssetClass:Class = _loaderInfo.applicationDomain.getDefinition(name) as Class;
+				return AssetClass;
 			}	
 			return null;
 		}

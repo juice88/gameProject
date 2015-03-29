@@ -8,8 +8,8 @@ package lobby.highScore.view.components
 	
 	public class HighScorePanelVL extends ViewLogic
 	{
-		private var allPlayersBtn:SimpleButton;
-		private var myFriendsBtn:SimpleButton;
+		private var _allPlayersBtn:SimpleButton;
+		private var _myFriendsBtn:SimpleButton;
 		
 		public function HighScorePanelVL()
 		{
@@ -24,10 +24,10 @@ package lobby.highScore.view.components
 		
 		private function highScoreLoad():void
 		{
-			allPlayersBtn = highScore["allPlayersBtn"];
-			allPlayersBtn.addEventListener(MouseEvent.CLICK, onAllPlayersBtnClickHand);
-			myFriendsBtn = highScore["myFriendsBtn"];
-			myFriendsBtn.addEventListener(MouseEvent.CLICK, onMyFriendsBtnClickHand);
+			_allPlayersBtn = highScore["allPlayersBtn"];
+			_allPlayersBtn.addEventListener(MouseEvent.CLICK, onAllPlayersBtnClickHand);
+			_myFriendsBtn = highScore["myFriendsBtn"];
+			_myFriendsBtn.addEventListener(MouseEvent.CLICK, onMyFriendsBtnClickHand);
 		}
 		
 		protected function onAllPlayersBtnClickHand(event:MouseEvent):void
