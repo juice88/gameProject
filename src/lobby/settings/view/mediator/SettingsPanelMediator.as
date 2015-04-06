@@ -24,20 +24,20 @@ package lobby.settings.view.mediator
 		}
 		override public function onRegisterListeners():void
 		{
-			settingsPanel.addEventListener(GeneralEventsConst.CLOSE_SETTINGS_PANEL, onCloseSettingPanelHand);
+			settingsPanel.addEventListener(GeneralEventsConst.SETTINGS_PANEL_CLOSE, onCloseSettingPanelHand);
 			settingsPanel.addEventListener(GeneralEventsConst.MUTE, onMuteHand); //дубль кода... порешать
 			settingsPanel.addEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand); ////дубль кода... порешать
 		}
 		override public function onRemoveListeners():void
 		{
-			settingsPanel.removeEventListener(GeneralEventsConst.CLOSE_SETTINGS_PANEL, onCloseSettingPanelHand);
+			settingsPanel.removeEventListener(GeneralEventsConst.SETTINGS_PANEL_CLOSE, onCloseSettingPanelHand);
 			settingsPanel.removeEventListener(GeneralEventsConst.MUTE, onMuteHand); //дубль кода... порешать
 			settingsPanel.removeEventListener(GeneralEventsConst.FULL_SCREEN, onFullScreenHand); //дубль кода... порешать
 		}
 		
 		protected function onCloseSettingPanelHand(event:Event):void
 		{
-			sendNotification(GeneralNotifications.SETTINGS_PANEL_CLOSE);
+			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);
 		}
 		
 		private function onMuteHand(event:Event):void //дубль кода... порешать

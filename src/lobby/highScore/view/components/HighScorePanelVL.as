@@ -10,6 +10,8 @@ package lobby.highScore.view.components
 	{
 		private var _allPlayersBtn:SimpleButton;
 		private var _myFriendsBtn:SimpleButton;
+		private var _friendsScorePanel:MyFriendsHighScorePanel;
+		private var _friendsScorePanelOnScene:Boolean = false;
 		
 		public function HighScorePanelVL()
 		{
@@ -24,6 +26,7 @@ package lobby.highScore.view.components
 		
 		private function highScoreLoad():void
 		{
+			_friendsScorePanel = new MyFriendsHighScorePanel();
 			_allPlayersBtn = highScore["allPlayersBtn"];
 			_allPlayersBtn.addEventListener(MouseEvent.CLICK, onAllPlayersBtnClickHand);
 			_myFriendsBtn = highScore["myFriendsBtn"];
@@ -32,11 +35,18 @@ package lobby.highScore.view.components
 		
 		protected function onAllPlayersBtnClickHand(event:MouseEvent):void
 		{
+			if (_friendsScorePanelOnScene == true)
+			{
+				highScore.removeChild(_friendsScorePanel.friendScore);
+				_friendsScorePanelOnScene = false;
+			}
 			trace("показати скор усіх гравців, кнопка allPlayersBtn");
 		}
 		
 		protected function onMyFriendsBtnClickHand(event:MouseEvent):void
 		{
+			_friendsScorePanelOnScene = true;
+			highScore.addChild(_friendsScorePanel.friendScore);
 			trace("показати скор друзів, кнопка myFriendsBtn");
 		}
 	}

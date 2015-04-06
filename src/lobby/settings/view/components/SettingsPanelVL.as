@@ -40,7 +40,7 @@ package lobby.settings.view.components
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
 			SoundLib.getInstance().btnClickSound();
-			dispatchEvent(new Event(GeneralEventsConst.CLOSE_SETTINGS_PANEL));
+			dispatchEvent(new Event(GeneralEventsConst.SETTINGS_PANEL_CLOSE));
 		}
 		protected function onMuteBtnClickHand(event:MouseEvent):void
 		{

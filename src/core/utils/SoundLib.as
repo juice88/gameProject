@@ -6,11 +6,11 @@ package core.utils
 
 	public class SoundLib
 	{
-		static private var _instance:SoundLib;
+		private static var _instance:SoundLib;
 		
 		private var _volumeSet:SoundTransform = new SoundTransform();
 		
-		static public function getInstance():SoundLib
+		public static function getInstance():SoundLib
 		{
 			if (_instance==null)
 			{

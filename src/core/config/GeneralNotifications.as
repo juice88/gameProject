@@ -27,6 +27,7 @@ package core.config
 		public static const PERMIT_TO_ADD:String = "permit_to_add"; //Нотіф про дозвіл добавити ще один вибраний елемент
 		public static const READY_TO_DRAW:String = "ready_to_draw"; // Нотіф про готовність до розташування елементів
 		public static const REMOVE_CHILD_FROM_ROOT:String = "remove_child_from_root";
+		public static const REMOVE_MEDIATOR:String = "remove_mediator"; //нотіф яким в команду передається ім"я медіатора, котрий потрібно видалити
 		public static const REPLAY_LEVEL:String = "replay_level";
 		public static const RESTART_GAME:String = "restart_game";
 		public static const RESULTS_TURN:String = "result_turn"; //нотіф з результатом ходу (вибору елемента)
@@ -34,7 +35,6 @@ package core.config
 		public static const SCORE_MOVES_ANIMATION:String = "score_moves_animation"; //нотіф з числом очків, які зараховуються при правильному ході
 		public static const SELECT_IS_TRUE:String = "select_is_true"; //нотіф про правильне порівняння елементів (для лічильника очків)
 		public static const SELECT_IS_FALSE:String = "select_is_false"; //нотіф про неправильне порівняння елементів (для лічильника очків)
-		public static const SETTINGS_PANEL_CLOSE:String = "settings_panel_close";
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";
 		public static const START_NEW_GAME:String = "start_new_game";
 		public static const START_TIMER:String = "start_timer";

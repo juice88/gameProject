@@ -22,7 +22,6 @@ package core.controller.commands
 	import lobby.pause.controller.commands.ContinueGameCommand;
 	import lobby.pause.controller.commands.PauseCommand;
 	import lobby.pause.controller.commands.StartTimerCommand;
-	import lobby.settings.controller.commands.SettingsPanelCloseCommand;
 	import lobby.settings.controller.commands.SettingsPanelOpenCommand;
 	import lobby.startScreen.controller.commands.StartGameCommand;
 	import lobby.topMenu.controller.commands.BackToMenuCommand;
@@ -59,11 +58,11 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.ON_OPEN_ELEMENT, OpenedElementCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE, PauseCommand);
 			facade.registerCommand(GeneralNotifications.PAUSE_CONTINUE_GAME, ContinueGameCommand);
+			facade.registerCommand(GeneralNotifications.REMOVE_MEDIATOR, RemoveMediatorCommand);
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);
 			facade.registerCommand(GeneralNotifications.SETTINGS_PANEL_OPEN, SettingsPanelOpenCommand);
-			facade.registerCommand(GeneralNotifications.SETTINGS_PANEL_CLOSE, SettingsPanelCloseCommand);
 			facade.registerCommand(GeneralNotifications.START_NEW_GAME, StartGameCommand);
 			facade.registerCommand(GeneralNotifications.START_TIMER, StartTimerCommand);
 			facade.registerCommand(GeneralNotifications.WIN, WinCommand);

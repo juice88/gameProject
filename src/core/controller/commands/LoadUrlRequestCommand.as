@@ -8,6 +8,7 @@ package core.controller.commands
 	import flash.events.Event;
 	import flash.net.URLRequest;
 	
+	import lobby.enterName.view.mediator.EnterNameMediator;
 	import lobby.highScore.view.mediator.HighScorePanelMediator;
 	import lobby.startScreen.view.mediator.StartScreenMediator;
 	
@@ -35,9 +36,15 @@ package core.controller.commands
 			loaderInfo.removeEventListener(Event.COMPLETE, onLoad);
 			Warehouse.getInstance().setData(loaderInfo);
 			
+			startScreenLoad();
+		}
+		
+		private function startScreenLoad():void
+		{
+			facade.registerProxy(new QueueDialogProxy());
 			facade.registerMediator(new StartScreenMediator());
 			facade.registerMediator(new HighScorePanelMediator());
-			facade.registerProxy(new QueueDialogProxy());
+			facade.registerMediator(new EnterNameMediator());
 		}
 	}
 }
