@@ -2,6 +2,7 @@ package core.controller.commands
 {
 	import core.config.GeneralNotifications;
 	import core.counters.controller.commands.NumberOfMovesSendCommand;
+	import core.counters.controller.commands.SetPlayerScoreCommand;
 	import core.queue.controller.commands.DialogCloseCommand;
 	import core.queue.controller.commands.DialogLoadToQueueCommand;
 	import core.queue.controller.commands.DialogOpenCommand;
@@ -17,8 +18,10 @@ package core.controller.commands
 	import gamePlay.level1.controller.commands.SelectIsFalseCommand;
 	import gamePlay.level1.controller.commands.SelectIsTrueCommand;
 	
+	import lobby.enterName.controller.commands.SetPlayerNameCommand;
 	import lobby.gameOver.controller.commands.GameOverClosePopupCommand;
 	import lobby.gameOver.controller.commands.GameOverCommand;
+	import lobby.highScore.controller.commands.SetNameAndScoreInSOCommand;
 	import lobby.pause.controller.commands.ContinueGameCommand;
 	import lobby.pause.controller.commands.PauseCommand;
 	import lobby.pause.controller.commands.StartTimerCommand;
@@ -62,6 +65,9 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);
+			facade.registerCommand(GeneralNotifications.SET_NAME_AND_SCORE_IN_SO, SetNameAndScoreInSOCommand);
+			facade.registerCommand(GeneralNotifications.SET_PLAYER_NAME, SetPlayerNameCommand);
+			facade.registerCommand(GeneralNotifications.SET_PLAYER_SCORE, SetPlayerScoreCommand);
 			facade.registerCommand(GeneralNotifications.SETTINGS_PANEL_OPEN, SettingsPanelOpenCommand);
 			facade.registerCommand(GeneralNotifications.START_NEW_GAME, StartGameCommand);
 			facade.registerCommand(GeneralNotifications.START_TIMER, StartTimerCommand);

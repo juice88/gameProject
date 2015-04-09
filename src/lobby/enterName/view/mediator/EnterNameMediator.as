@@ -1,5 +1,6 @@
 package lobby.enterName.view.mediator
 {
+	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
 	import core.view.mediator.DialogMediator;
@@ -28,9 +29,10 @@ package lobby.enterName.view.mediator
 			enterName.addEventListener(GeneralEventsConst.SET_PLAYER_NAME, onSetPlayerName);
 		}
 		
-		protected function onSetPlayerName(event:Event):void
+		protected function onSetPlayerName(event:GameEvent):void
 		{
 			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);
+			sendNotification(GeneralNotifications.SET_PLAYER_NAME, event.params);
 		}
 		
 		protected function onCloseEnterNamePopupHand(event:Event):void

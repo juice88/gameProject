@@ -16,6 +16,10 @@ package core.counters.model.proxy
 		public function ScoreProxy()
 		{
 			super(NAME, new ScoreDto());
+			
+		}
+		override public function onRegister():void
+		{
 			score.timer = new Timer(1000, 60);
 			timerGameSet();
 		}
@@ -135,6 +139,7 @@ package core.counters.model.proxy
 				score.timerIsStopped = false;
 				score.lifesIsFrozen = false;
 				sendNotification(GeneralNotifications.WIN);
+				sendNotification(GeneralNotifications.SET_PLAYER_SCORE, score.scoreValue);
 				sendValueScoreTrueFalseMoves();
 			}
 		}
@@ -206,6 +211,7 @@ package core.counters.model.proxy
 				trace("таймер зупинено =", score.timerIsStopped);
 			}
 			sendValueScoreTrueFalseMoves();
+			sendNotification(GeneralNotifications.SET_PLAYER_SCORE, score.scoreValue);
 		}
 		
 		public function nextLevel():void

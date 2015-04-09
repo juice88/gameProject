@@ -1,5 +1,6 @@
 package core.controller.commands
 {
+	import core.SharedObject.model.proxy.SharedObjProxy;
 	import core.queue.model.proxy.QueueDialogProxy;
 	import core.utils.Warehouse;
 	
@@ -9,6 +10,7 @@ package core.controller.commands
 	import flash.net.URLRequest;
 	
 	import lobby.enterName.view.mediator.EnterNameMediator;
+	import lobby.highScore.model.proxy.HighScoreProxy;
 	import lobby.highScore.view.mediator.HighScorePanelMediator;
 	import lobby.startScreen.view.mediator.StartScreenMediator;
 	
@@ -41,8 +43,10 @@ package core.controller.commands
 		
 		private function startScreenLoad():void
 		{
+			facade.registerProxy(new SharedObjProxy());
 			facade.registerProxy(new QueueDialogProxy());
 			facade.registerMediator(new StartScreenMediator());
+			facade.registerProxy(new HighScoreProxy());
 			facade.registerMediator(new HighScorePanelMediator());
 			facade.registerMediator(new EnterNameMediator());
 		}

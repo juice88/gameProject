@@ -14,6 +14,8 @@ package lobby.enterName.view.components
 	import flash.text.TextField;
 	import flash.ui.Keyboard;
 	
+	import mx.core.mx_internal;
+	
 	public class EnterNamePopupVL extends DialogViewLogic
 	{
 		private var _closeBtn:SimpleButton;
@@ -36,16 +38,18 @@ package lobby.enterName.view.components
 		{
 			_setPlayerNameTF = setNamePop["enterName"];
 			_closeBtn = setNamePop["closeBtn"];
+			setNamePop["enterName"].maxChars = 10;
 			_closeBtn.addEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
 			_setPlayerNameTF.addEventListener(KeyboardEvent.KEY_UP, onSettEnterNamePlayerHand);
 			_setPlayerNameTF.addEventListener(MouseEvent.MOUSE_DOWN, onMouseClickForText);
-			
 		}
 		
 		protected function onSettEnterNamePlayerHand(event:KeyboardEvent):void
 		{
+			
 			_playerName = setNamePop["enterName"].text;
-			if(event.charCode == 13)
+			
+			if(event.charCode == 13) //якщо натиснуто Enter
 			{
 				if (_setPlayerNameTF.text.length == 0)
 				{
@@ -55,14 +59,13 @@ package lobby.enterName.view.components
 				{
 					addListenersForNextBtn();
 					dispatchEvent(new GameEvent(GeneralEventsConst.SET_PLAYER_NAME, _playerName));
-					trace ("Імя введено", _playerName);
+					removeListeners();
 				}
 			}
 			else
 			{
 				if (_setPlayerNameTF.text.length == 0)
 				{
-					_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
 					return;
 				}
 				else
@@ -86,16 +89,23 @@ package lobby.enterName.view.components
 		protected function onCloseBtnClickHand(event:MouseEvent):void
 		{
 			SoundLib.getInstance().btnClickSound();
-			_closeBtn.removeEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
+			removeListeners();
 			dispatchEvent(new Event(GeneralEventsConst.ENTER_NAME_POPUP_CLOSE));
 		}
 		
 		protected function onNextBtnClickHand(event:MouseEvent):void
 		{
 			SoundLib.getInstance().btnClickSound();
-			_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
+			removeListeners();
 			dispatchEvent(new GameEvent(GeneralEventsConst.SET_PLAYER_NAME, _playerName));
-			trace ("Імя введено", _playerName);
+		}
+		
+		private function removeListeners():void
+		{
+			_closeBtn.removeEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
+			_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
+			_setPlayerNameTF.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseClickForText);
+			_setPlayerNameTF.removeEventListener(KeyboardEvent.KEY_UP, onSettEnterNamePlayerHand);
 		}
 	}
 }

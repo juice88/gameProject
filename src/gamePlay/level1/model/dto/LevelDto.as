@@ -1,7 +1,5 @@
 package gamePlay.level1.model.dto
 {
-	import flash.display.MovieClip;
-
 	public class LevelDto extends Object
 	{
 		public var kadrList:Vector.<uint>; // містить значення кадрів елементів(квадратиків) на грі

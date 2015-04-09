@@ -13,9 +13,9 @@ package core.config
 		
 		//налаштування таймера гри
 		public static const TIMER_START_LEVEL_MINUTE:int = 0;
-		public static const TIMER_START_LEVEL_SECOND:int = 20;
+		public static const TIMER_START_LEVEL_SECOND:int = 40;
 		public static const TIMER_NEXT_LEVEL_MINUTE:int = 0;
-		public static const TIMER_NEXT_LEVEL_SECOND:int = 30;
+		public static const TIMER_NEXT_LEVEL_SECOND:int = 50;
 		
 		//налаштування нарахування очків
 		public static const SCORE_ONE_TRUE_SELECT:uint = 10; //кількість очків, яка нараховується при першому та другому правильних ходах

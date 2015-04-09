@@ -18,7 +18,6 @@ package lobby.pause.controller.commands
 //			facade.registerMediator(new PausePopupMediator());
 			var pausePop:PausePopupMediator = new PausePopupMediator();
 			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, pausePop);
-			(facade.retrieveProxy(StartLevelProxy.NAME) as StartLevelProxy).pauseGame();
 			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).openPausePopup();
 		}
 	}

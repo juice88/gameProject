@@ -40,14 +40,12 @@ package lobby.highScore.view.components
 				highScore.removeChild(_friendsScorePanel.friendScore);
 				_friendsScorePanelOnScene = false;
 			}
-			trace("показати скор усіх гравців, кнопка allPlayersBtn");
 		}
 		
 		protected function onMyFriendsBtnClickHand(event:MouseEvent):void
 		{
 			_friendsScorePanelOnScene = true;
 			highScore.addChild(_friendsScorePanel.friendScore);
-			trace("показати скор друзів, кнопка myFriendsBtn");
 		}
 	}
 }

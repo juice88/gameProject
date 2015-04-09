@@ -141,14 +141,11 @@ package gamePlay.level1.model.proxy
 			levelDto.openElementsList = new Vector.<ElementDto>;
 			return true;
 		}
+		
 		public function replayLevel():void
 		{
 			levelDto.openElementsList = new Vector.<ElementDto>; //обнуляємо вектор відкритих елементів, щоб після рестарта можна було вибирати елементи спочатку
 			sendNotification(GeneralNotifications.REPLAY_LEVEL);
-		}
-		public function pauseGame():void 
-		{
-			
 		}
 	}
 }

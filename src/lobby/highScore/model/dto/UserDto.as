@@ -1,4 +1,4 @@
-package core.model.dto
+package lobby.highScore.model.dto
 {
 	public class UserDto extends Object
 	{
