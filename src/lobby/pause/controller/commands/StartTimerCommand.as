@@ -1,6 +1,6 @@
 package lobby.pause.controller.commands
 {
-	import core.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.CountersProxy;
 	
 	import org.puremvc.as3.interfaces.INotification;
 	import org.puremvc.as3.patterns.command.SimpleCommand;
@@ -9,7 +9,7 @@ package lobby.pause.controller.commands
 	{
 		override public function execute(notification:INotification):void
 		{
-			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).timerGame();
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).timerGame();
 		}
 	}
 }

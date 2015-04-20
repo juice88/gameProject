@@ -2,6 +2,7 @@ package gamePlay.level1.model.proxy
 {
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
+	import core.model.dto.ConfigDto;
 	
 	import flash.display.MovieClip;
 	import flash.sampler.NewObjectSample;
@@ -16,9 +17,9 @@ package gamePlay.level1.model.proxy
 	{
 		public static const NAME:String = "StartGameProxy";
 		
-		public function StartLevelProxy()
+		public function StartLevelProxy(confDto:ConfigDto)
 		{
-			super(NAME, new LevelDto());
+			super(NAME, new LevelDto(confDto));
 		}
 		
 		override public function onRegister():void
@@ -58,18 +59,32 @@ package gamePlay.level1.model.proxy
 				levelDto.ElementListVector.push(elementDto);
 			}
 			sendNotification(GeneralNotifications.READY_TO_DRAW, levelDto.ElementListVector); //формуємо повідомлення про готовність до нарисовки елементів та відправляємо масив елементів
-			sendNotification(GeneralNotifications.NUMBER_OF_MOVES, (levelDto.ElementListVector.length as int)/Settings.OPEN_ELEM_LIMIT); //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
+			sendNotification(GeneralNotifications.NUMBER_OF_MOVES, (levelDto.ElementListVector.length as int)/levelDto.openElemLimit); //передається в ScoreProxy кількість ходів (наперід відома) для правильного вибору елементів (тобто кількість можливих ходів аби виграти левел)
 		}
 		
 		private function fillKadrList():void //наповнюємо ігрове поле елементами(квадратиками)
 		{ 
-			for(var i:uint = 0; i<10; i++) //задаємо цикл
+			if (levelDto.openElemLimit == 2)
 			{
-				levelDto.randElements = 1+(int(Math.random()*5));
-				
-				levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
-				levelDto.kadrList.unshift(levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
+				for(var i:uint = 0; i<levelDto.elemNum/2; i++)
+				{
+					levelDto.randElements = levelDto.framesBeginNum+(int(Math.random()*levelDto.framesNum));
+					
+					levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
+					levelDto.kadrList.unshift(levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
+				}
 			}
+			else if (levelDto.openElemLimit == 3)
+			{
+				for(var j:uint = 0; j<levelDto.elemNum/3; j++)
+				{
+					levelDto.randElements = levelDto.framesBeginNum+(int(Math.random()*levelDto.framesNum));
+					
+					levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
+					levelDto.kadrList.unshift(levelDto.randElements, levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
+				}
+			}
+			
 			trace("послідовність кадрів наступна -",levelDto.kadrList);
 		}
 		
@@ -101,7 +116,7 @@ package gamePlay.level1.model.proxy
 				sendNotification(GeneralNotifications.PERMIT_TO_ADD, elem.index as int);
 			}
 			
-			if(levelDto.openElementsList.length == Settings.OPEN_ELEM_LIMIT) //якщо кількость відкритих елементів рівна заданій в Settings тоді...
+			if(levelDto.openElementsList.length == levelDto.openElemLimit) //якщо кількость відкритих елементів рівна заданій в Settings тоді...
 			{
 				sendNotification(GeneralNotifications.RESULTS_TURN, checkElements()); //відправляємо нотіф з результатом ходу (вибору елемента) 
 				state = Settings.RESULT_STATE; //якщо вибрано два елементи то включається режим РесалтСтейт (стан відсилання результату), тобто більше не можливо буде попасти в цю функцію

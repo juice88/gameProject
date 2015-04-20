@@ -21,6 +21,7 @@ package core.controller.commands
 	import lobby.enterName.controller.commands.SetPlayerNameCommand;
 	import lobby.gameOver.controller.commands.GameOverClosePopupCommand;
 	import lobby.gameOver.controller.commands.GameOverCommand;
+	import lobby.highScore.controller.commands.HighScoreUpdateCommand;
 	import lobby.highScore.controller.commands.SetNameAndScoreInSOCommand;
 	import lobby.pause.controller.commands.ContinueGameCommand;
 	import lobby.pause.controller.commands.PauseCommand;
@@ -55,6 +56,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.END_TURN, EndTurnCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER, GameOverCommand);
 			facade.registerCommand(GeneralNotifications.GAME_OVER_CLOSE_POPUP, GameOverClosePopupCommand);
+			facade.registerCommand(GeneralNotifications.HIGH_SCORE_UPDATE, HighScoreUpdateCommand);
 			facade.registerCommand(GeneralNotifications.LOAD_URL_REQUEST, LoadUrlRequestCommand);
 			facade.registerCommand(GeneralNotifications.NEXT_LEVEL, NextLevelCommand);
 			facade.registerCommand(GeneralNotifications.NUMBER_OF_MOVES, NumberOfMovesSendCommand);
@@ -65,6 +67,7 @@ package core.controller.commands
 			facade.registerCommand(GeneralNotifications.RESTART_GAME, RestartCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_TRUE, SelectIsTrueCommand);
 			facade.registerCommand(GeneralNotifications.SELECT_IS_FALSE, SelectIsFalseCommand);
+			facade.registerCommand(GeneralNotifications.SET_LEVEL_CONFIG, SetLevelConfigCommand);
 			facade.registerCommand(GeneralNotifications.SET_NAME_AND_SCORE_IN_SO, SetNameAndScoreInSOCommand);
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_NAME, SetPlayerNameCommand);
 			facade.registerCommand(GeneralNotifications.SET_PLAYER_SCORE, SetPlayerScoreCommand);

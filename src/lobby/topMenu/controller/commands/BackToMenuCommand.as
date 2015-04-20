@@ -1,6 +1,6 @@
 package lobby.topMenu.controller.commands
 {
-	import core.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.CountersProxy;
 	
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;
@@ -20,8 +20,8 @@ package lobby.topMenu.controller.commands
 			facade.removeMediator(LevelMediator.NAME);
 			facade.removeMediator(TopPanelMediator.NAME);
 			facade.removeMediator(BotPanelMediator.NAME);
-			facade.removeProxy(ScoreProxy.NAME);
 			facade.removeProxy(StartLevelProxy.NAME);
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).backToMenu();
 			facade.registerMediator(new StartScreenMediator());
 			facade.registerMediator(new HighScorePanelMediator());
 		}

@@ -2,7 +2,7 @@ package lobby.pause.controller.commands
 {
 	import core.config.GeneralNotifications;
 	
-	import core.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.CountersProxy;
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	
 	import lobby.pause.view.mediator.PausePopupMediator;
@@ -18,7 +18,7 @@ package lobby.pause.controller.commands
 //			facade.registerMediator(new PausePopupMediator());
 			var pausePop:PausePopupMediator = new PausePopupMediator();
 			sendNotification(GeneralNotifications.DIALOG_LOAD_TO_QUEUE, pausePop);
-			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).openPausePopup();
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).openPausePopup();
 		}
 	}
 }

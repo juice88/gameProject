@@ -1,6 +1,7 @@
 package core.SharedObject.model.proxy
 {
 	import core.SharedObject.model.dto.SharedObjDto;
+	import core.config.GeneralNotifications;
 	
 	import flash.net.SharedObject;
 	
@@ -43,7 +44,6 @@ package core.SharedObject.model.proxy
 			{
 				sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
 			}
-			getUserNameAndScoreList();
 		}
 		
 		private function getUserNameAndScoreList():Array 
@@ -58,8 +58,14 @@ package core.SharedObject.model.proxy
 					//нічого не робити - попалось поле sharedDto.sharedObject.data.name
 				}	
 			}
-			sharedDto.arrNamesAndScores.sortOn("score", Array.DESCENDING | Array.NUMERIC);
+			sharedDto.arrNamesAndScores.sortOn("score", Array.DESCENDING | Array.NUMERIC); //Сортування масиву за спадданням очків
 			return sharedDto.arrNamesAndScores;
+		}
+		
+		public function highScoreUpdate():void
+		{
+			var arrData:Array = getUserNameAndScoreList();
+			sendNotification(GeneralNotifications.HIGH_SCORE_SEND, arrData);
 		}
 	}
 }

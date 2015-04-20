@@ -38,9 +38,7 @@ package lobby.pause.view.mediator
 		
 		override public function listNotificationInterests():Array
 		{
-		//	trace("ТоталСкор");
 			return [GeneralNotifications.TOTAL_SCORE_UPDATED];	
-			
 		}
 		override public function handleNotification(notification:INotification):void
 		{

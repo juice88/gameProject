@@ -2,7 +2,7 @@ package gamePlay.bonus.controller.commands
 {
 	import core.config.GeneralNotifications;
 	
-	import core.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.CountersProxy;
 	
 	import gamePlay.bonus.view.mediator.BonusMediator;
 	
@@ -14,10 +14,8 @@ package gamePlay.bonus.controller.commands
 		override public function execute(notification:INotification):void
 		{
 			facade.removeMediator(BonusMediator.NAME);
-	//		(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).addBonus(notification.getBody() as int);
 			sendNotification(GeneralNotifications.WIN);
-			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).resultOfChoiseBonus(notification.getBody() as int);
-	//		(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).sendValueScoreTrueFalseMoves();
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).resultOfChoiseBonus(notification.getBody() as int);
 		}
 	}
 }

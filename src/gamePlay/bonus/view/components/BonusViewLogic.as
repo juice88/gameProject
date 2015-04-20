@@ -2,10 +2,12 @@ package gamePlay.bonus.view.components
 {
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
+	import core.config.Settings;
 	import core.utils.SoundLib;
 	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
 	
+	import flash.display.Graphics;
 	import flash.display.MovieClip;
 	import flash.events.MouseEvent;
 	
@@ -44,6 +46,7 @@ package gamePlay.bonus.view.components
 		
 		protected function onClickToBonusElemHald(event:MouseEvent):void
 		{
+			addBackground();
 			var bonusClip:MovieClip = (event.currentTarget as MovieClip);
 			var neededDto:ElemBonusDto = getDtoByContent(bonusClip);
 			removeLisenersElem();
@@ -60,16 +63,23 @@ package gamePlay.bonus.view.components
 			}
 		}
 		
-		private function getDtoByContent(bonusClip:MovieClip):ElemBonusDto // метод для отримання ДТО по елементу мувікліпа 
+		private function getDtoByContent(bonusClip:MovieClip):ElemBonusDto
 		{
-			for (var i:uint=0; i<_bonusElemList.length; i++) // пробігаємося по всьому вектору ЕлементДто 
+			for (var i:uint=0; i<_bonusElemList.length; i++)
 			{
-				if (bonusClip == _bonusElemList[i].elemBonus) //якщо провіряючий мовікліп співпадає з елементом в ДТО
+				if (bonusClip == _bonusElemList[i].elemBonus)
 				{
-					return  _bonusElemList[i]; // вернути його ДТО
+					return  _bonusElemList[i];
 				}
 			}
-			return null; // інакше нічого не вертати
+			return null;
+		}
+		private function addBackground():void
+		{
+			var graf:Graphics = bonusVL.graphics;
+			graf.beginFill(0x150000, 0.5);
+			graf.drawRect(0,0,Settings.BACKGROUND_RECT_WIDTH,Settings.BACKGROUND_RECT_HEIGHT);
+			graf.endFill();
 		}
 	}
 }

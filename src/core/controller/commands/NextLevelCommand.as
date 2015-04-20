@@ -1,6 +1,8 @@
 package core.controller.commands
 {
-	import core.counters.model.proxy.ScoreProxy;
+	import core.config.GeneralNotifications;
+	import core.counters.model.proxy.CountersProxy;
+	import core.model.proxy.LevelsGameConfigProxy;
 	
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;
@@ -17,10 +19,11 @@ package core.controller.commands
 			facade.removeMediator(WinPopupMediator.NAME);
 			facade.removeMediator(LevelMediator.NAME);
 			facade.removeProxy(StartLevelProxy.NAME);
-			facade.registerMediator(new LevelMediator);
-			facade.registerProxy(new StartLevelProxy);
-			(facade.retrieveProxy(ScoreProxy.NAME) as ScoreProxy).nextLevel();
-			
+//			facade.registerMediator(new LevelMediator);
+//			facade.registerProxy(new StartLevelProxy);
+			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum();
+			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelConfig();
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).nextLevel();
 		}
 	}
 }

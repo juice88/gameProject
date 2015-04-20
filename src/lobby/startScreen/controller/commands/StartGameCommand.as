@@ -1,6 +1,7 @@
 package lobby.startScreen.controller.commands
 {
-	import core.counters.model.proxy.ScoreProxy;
+	import core.counters.model.proxy.CountersProxy;
+	import core.model.proxy.LevelsGameConfigProxy;
 	
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;
@@ -20,9 +21,10 @@ package lobby.startScreen.controller.commands
 			facade.removeMediator(StartScreenMediator.NAME);
 			facade.registerMediator(new TopPanelMediator());
 			facade.registerMediator(new BotPanelMediator());
-			facade.registerMediator(new LevelMediator());
-			facade.registerProxy(new ScoreProxy());
-			facade.registerProxy(new StartLevelProxy());
+		//	facade.registerProxy(new CountersProxy());
+			//facade.registerMediator(new LevelMediator());
+			//facade.registerProxy(new StartLevelProxy());
+			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelConfig();
 		}
 	}
 }

@@ -4,6 +4,7 @@ package gamePlay.level1.view.mediator
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
+	import core.model.dto.ConfigDto;
 	import core.utils.SoundLib;
 	import core.view.mediator.UIMediator;
 	
@@ -19,9 +20,9 @@ package gamePlay.level1.view.mediator
 	{
 		public static const NAME:String="LevelMediator";
 		
-		public function LevelMediator()
+		public function LevelMediator(confDto:ConfigDto)
 		{
-			super(NAME, new Level1ViewLogic());
+			super(NAME, new Level1ViewLogic(confDto));
 		}
 		
 		private function get levelVL():Level1ViewLogic

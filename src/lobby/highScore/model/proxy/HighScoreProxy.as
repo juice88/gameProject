@@ -35,6 +35,10 @@ package lobby.highScore.model.proxy
 		
 		public function setUserScore(usScore:uint):void
 		{
+			if (highScoreDto.userDto.userName == null)
+			{
+				highScoreDto.userDto.userName = "undefined"; //якщо вікно введеня імені було просто зактрито, тоді замінюємо ім"я на undefined
+			}
 			highScoreDto.userDto.userScore = usScore;
 			sendNotification(GeneralNotifications.SET_NAME_AND_SCORE_IN_SO, highScoreDto.userDto);
 		}

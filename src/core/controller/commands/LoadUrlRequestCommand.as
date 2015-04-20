@@ -1,6 +1,9 @@
 package core.controller.commands
 {
 	import core.SharedObject.model.proxy.SharedObjProxy;
+	import core.config.GeneralNotifications;
+	import core.counters.model.proxy.CountersProxy;
+	import core.model.proxy.LevelsGameConfigProxy;
 	import core.queue.model.proxy.QueueDialogProxy;
 	import core.utils.Warehouse;
 	
@@ -43,12 +46,14 @@ package core.controller.commands
 		
 		private function startScreenLoad():void
 		{
+			facade.registerProxy(new LevelsGameConfigProxy());
 			facade.registerProxy(new SharedObjProxy());
 			facade.registerProxy(new QueueDialogProxy());
 			facade.registerMediator(new StartScreenMediator());
 			facade.registerProxy(new HighScoreProxy());
 			facade.registerMediator(new HighScorePanelMediator());
 			facade.registerMediator(new EnterNameMediator());
+			facade.registerProxy(new CountersProxy());
 		}
 	}
 }

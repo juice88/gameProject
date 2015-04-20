@@ -12,7 +12,7 @@ package lobby.win.view.components
 
 	public class WinPopupVL extends DialogViewLogic
 	{
-		private var _totalScore:TextField;
+		private var _scoreOfSomeLvlTf:TextField;
 		private var _trueMoves:TextField;
 		private var _falseMoves:TextField;
 		private var _nextBtn:SimpleButton;
@@ -37,8 +37,8 @@ package lobby.win.view.components
 		public function ScoreTrueFalseCounters(value:Array):void
 		{
 			winPopup.gotoAndStop(2);
-			_totalScore = winPopup.totalScore.scoreTf;
-			_totalScore.text = value[0].toString(10);
+			_scoreOfSomeLvlTf = winPopup.scoreOfSomeLvlTf.scoreTf;
+			_scoreOfSomeLvlTf.text = value[0].toString(10);
 			_trueMoves = winPopup.trueMoves.movesTf;
 			_trueMoves.text = value[1].toString(10);
 			_falseMoves = winPopup.falseMoves.movesTf;

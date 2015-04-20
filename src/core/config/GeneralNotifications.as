@@ -15,6 +15,8 @@ package core.config
 		public static const FULL_SCREEN:String = "full_screen";
 		public static const GAME_OVER:String = "game_over";
 		public static const GAME_OVER_CLOSE_POPUP:String = "game_over_close_popup";
+		public static const HIGH_SCORE_SEND:String = "high_score_send";
+		public static const HIGH_SCORE_UPDATE:String = "high_score_update";
 		public static const LIFES_COUNTER_UPDATED:String = "lifes_counter_updated";
 		public static const LOAD_URL_REQUEST:String = "load_url_request";
 		public static const MOVES_COUTNER_UPDATED:String = "moves_coutner_updated"; //нотіф з проксі про те що лічильник обновився... (має нове значення)
@@ -36,6 +38,7 @@ package core.config
 		public static const SELECT_IS_TRUE:String = "select_is_true"; //нотіф про правильне порівняння елементів (для лічильника очків)
 		public static const SELECT_IS_FALSE:String = "select_is_false"; //нотіф про неправильне порівняння елементів (для лічильника очків)
 		public static const SET_NAME_AND_SCORE_IN_SO:String = "set_name_and_score_in_so";
+		public static const SET_LEVEL_CONFIG:String = "set_level_config";
 		public static const SET_PLAYER_NAME:String = "set_player_name"; //нотіфом пересилається в highScore проксі введене ім"я гравця
 		public static const SET_PLAYER_SCORE:String = "set_player_score"; //нотіфом пересилається в highScore проксі score гравця
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";

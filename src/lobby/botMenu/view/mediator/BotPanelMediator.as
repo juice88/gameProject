@@ -2,13 +2,13 @@ package lobby.botMenu.view.mediator
 {
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
+	import core.view.mediator.UIMediator;
 	
 	import flash.events.Event;
 	
-	import org.puremvc.as3.interfaces.INotification;
-	
 	import lobby.botMenu.view.components.BotPanelViewLogic;
-	import core.view.mediator.UIMediator;
+	
+	import org.puremvc.as3.interfaces.INotification;
 
 	public class BotPanelMediator extends UIMediator
 	{

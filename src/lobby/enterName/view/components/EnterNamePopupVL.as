@@ -97,13 +97,14 @@ package lobby.enterName.view.components
 		{
 			SoundLib.getInstance().btnClickSound();
 			removeListeners();
+			_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
 			dispatchEvent(new GameEvent(GeneralEventsConst.SET_PLAYER_NAME, _playerName));
 		}
 		
 		private function removeListeners():void
 		{
 			_closeBtn.removeEventListener(MouseEvent.CLICK, onCloseBtnClickHand);
-			_nextBtn.removeEventListener(MouseEvent.CLICK, onNextBtnClickHand);
+		
 			_setPlayerNameTF.removeEventListener(MouseEvent.MOUSE_DOWN, onMouseClickForText);
 			_setPlayerNameTF.removeEventListener(KeyboardEvent.KEY_UP, onSettEnterNamePlayerHand);
 		}

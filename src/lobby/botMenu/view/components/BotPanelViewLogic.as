@@ -66,7 +66,7 @@ package lobby.botMenu.view.components
 		}
 		public function timerUpdated(minSec:Array):void
 		{
-			
+			(botPanel.stopAnim as MovieClip).visible = (minSec[2] as Boolean);
 			_minuteTf = botPanel.minute.valueTf;
 			_secondTf = botPanel.second.valueTf;
 			if (minSec[1]<=9)

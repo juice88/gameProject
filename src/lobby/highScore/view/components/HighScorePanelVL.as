@@ -1,10 +1,12 @@
 package lobby.highScore.view.components
 {
+	import core.utils.SoundLib;
 	import core.view.components.ViewLogic;
 	
 	import flash.display.MovieClip;
 	import flash.display.SimpleButton;
 	import flash.events.MouseEvent;
+	import flash.text.TextField;
 	
 	public class HighScorePanelVL extends ViewLogic
 	{
@@ -12,6 +14,9 @@ package lobby.highScore.view.components
 		private var _myFriendsBtn:SimpleButton;
 		private var _friendsScorePanel:MyFriendsHighScorePanel;
 		private var _friendsScorePanelOnScene:Boolean = false;
+		private var _n:String = "n";
+		private var _player:String = "player";
+		private var _score:String = "score";
 		
 		public function HighScorePanelVL()
 		{
@@ -35,6 +40,7 @@ package lobby.highScore.view.components
 		
 		protected function onAllPlayersBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.getInstance().btnClickSound();
 			if (_friendsScorePanelOnScene == true)
 			{
 				highScore.removeChild(_friendsScorePanel.friendScore);
@@ -44,8 +50,34 @@ package lobby.highScore.view.components
 		
 		protected function onMyFriendsBtnClickHand(event:MouseEvent):void
 		{
+			SoundLib.getInstance().btnClickSound();
 			_friendsScorePanelOnScene = true;
 			highScore.addChild(_friendsScorePanel.friendScore);
+		}
+		
+		public function highScoreBoardUpdate(arrUserData:Array):void
+		{
+			notVisibleTextOnBoard();
+			for (var i:int = 0; i<10; i++)
+			{
+				var obj:Object = arrUserData[i];
+				var playerName:TextField = highScore[_player+(i+1)];
+					playerName.text = obj.name as String;
+					playerName.visible = true;
+				var playerScore:TextField = highScore[_score+(i+1)];
+					playerScore.text = obj.score.toString();
+					playerScore.visible = true;
+				((highScore[_n+(i+1)]) as TextField).visible = true;
+			}
+		}
+		private function notVisibleTextOnBoard():void
+		{
+			for (var i:int = 1; i<11; i++)
+			{
+				((highScore[_n+i]) as TextField).visible = false;
+				((highScore[_player+i]) as TextField).visible = false;
+				((highScore[_score+i]) as TextField).visible = false;
+			}
 		}
 	}
 }

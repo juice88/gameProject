@@ -2,7 +2,7 @@ package gamePlay.level1.view.components
 {
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
-	import core.config.Settings;
+	import core.model.dto.ConfigDto;
 	import core.utils.SoundLib;
 	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
@@ -23,6 +23,8 @@ package gamePlay.level1.view.components
 		private var _hide:String = "hide";
 		private var _show:String = "show";
 		
+		private var _showElemDelay:int;
+		
 		private var _allElemList:Vector.<MovieClip>; //перелік усіх елементів
 		private var _openElemList:Vector.<MovieClip>; // елементи які відкриті
 		private var _vectorElementDto:Vector.<ElementDto>; //вектор усіх ДТО
@@ -33,12 +35,10 @@ package gamePlay.level1.view.components
 		private var _scoreAnimTf:TextField;
 		private var _movesScoreVal:uint;
 		
-		public function Level1ViewLogic()
+		public function Level1ViewLogic(confDto:ConfigDto)
 		{
-			super("Polle");
-			_openElemList = new Vector.<MovieClip>; // вектор, що містить список відкритих елементів
-			_allElemList = new Vector.<MovieClip>; // вектор усіх елементів
-			_restElement = new Vector.<MovieClip>; // вектор елементів, що ще не відкриті та залишаються на сцені
+			super(confDto.nameOfGameField);
+			_showElemDelay = confDto.showElemDelay;
 		}
 		
 		private function get level1Content():MovieClip
@@ -48,6 +48,10 @@ package gamePlay.level1.view.components
 		
 		public function readyToDraw(value:Vector.<ElementDto>):void
 		{
+			_openElemList = new Vector.<MovieClip>; // вектор, що містить список відкритих елементів
+			_allElemList = new Vector.<MovieClip>; // вектор усіх елементів
+			_restElement = new Vector.<MovieClip>; // вектор елементів, що ще не відкриті та залишаються на сцені
+			
 			_vectorElementDto = value;
 			for (var i:uint = 0; i<value.length; i++)
 			{
@@ -147,7 +151,7 @@ package gamePlay.level1.view.components
 			{
 				_vectorElementDto[i].element.back.gotoAndStop(_show);
 			}
-			setTimeout(allElementsHided, Settings.SHOW_ELEMENTS_DELAY); //встановлюється затримка відкритих елементів 
+			setTimeout(allElementsHided, _showElemDelay); //встановлюється затримка відкритих елементів 
 		}
 		
 		private function allElementsHided():void //закриваємо елементи піся перегляду
