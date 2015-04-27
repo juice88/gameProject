@@ -1,6 +1,6 @@
 package gamePlay.level1.model.dto
 {
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 
 	public class LevelDto extends Object
 	{

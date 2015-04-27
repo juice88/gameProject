@@ -1,6 +1,6 @@
 package core.counters.model.dto
 {
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 	
 	import flash.utils.Timer;
 
@@ -10,7 +10,7 @@ package core.counters.model.dto
 		public var totalScore:int = 0; //загальна кількість очок (за всі рівні)
 		public var numberOfMoves:int; //кількість можливих ходів передана з StartGameProxy...
 		public var allMoves:int; //кількість ходів за рівень
-		public var trueSelect:int = 0; // обнуляється, для підрахунку очок
+		public var trueSelect:int = 0; //кількість вірних ходів (для нарахування бонусних очків, при виборі підряд декількох елементів), обнуляється при неправильному ході
 		public var allFalseSelect:int = 0;  //загальна кількість неправильних ходів
 		public var allTrueSelect:int = 0; //загальна кількість правильних ходів 
 		public var lifes:int = 10; //кількість життів

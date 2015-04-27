@@ -4,7 +4,7 @@ package gamePlay.level1.view.mediator
 	import core.config.GeneralEventsConst;
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 	import core.utils.SoundLib;
 	import core.view.mediator.UIMediator;
 	

@@ -9,6 +9,8 @@ package lobby.startScreen.view.mediator
 	
 	import lobby.startScreen.view.components.StartViewLogic;
 	
+	import org.puremvc.as3.interfaces.INotification;
+	
 	public class StartScreenMediator extends UIMediator
 	{
 		public static const NAME:String = "StartMediator";
@@ -22,6 +24,7 @@ package lobby.startScreen.view.mediator
 		{
 			return viewLogic as StartViewLogic;
 		}
+		
 		override public function onRegisterListeners():void
 		{
 			startScreen.addEventListener(GeneralEventsConst.START_NEW_GAME, onStartGameHand);
@@ -38,20 +41,32 @@ package lobby.startScreen.view.mediator
 		
 		protected function onStartGameHand(event:Event):void
 		{
-			trace ("нажата кнопка New Game");
 			sendNotification(GeneralNotifications.START_NEW_GAME);
 		}
 		
 		protected function onContinueGameHand(event:Event):void
 		{
-			trace ("нажата кнопка Continue game");
+			sendNotification(GeneralNotifications.CONTINUE_GAME);
 		}
 		
 		protected function onShowSettingsPanelHand(event:Event):void
 		{
-			trace ("нажата кнопка settings");
 			sendNotification(GeneralNotifications.SETTINGS_PANEL_OPEN);
 		}		
 		
+		override public function listNotificationInterests():Array
+		{
+			return [GeneralNotifications.CONTINUE_BTN_IS_VISIBLE];
+		}
+		
+		override public function handleNotification(notification:INotification):void
+		{
+			switch (notification.getName())
+			{
+				case GeneralNotifications.CONTINUE_BTN_IS_VISIBLE:
+					startScreen.continueGameBtnIsVis();
+					break;
+			}
+		}
 	}
 }

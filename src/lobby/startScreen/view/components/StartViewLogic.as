@@ -30,6 +30,7 @@ package lobby.startScreen.view.components
 			_newGameBtn.addEventListener(MouseEvent.CLICK, onNewGameBtnClickHand);
 			_continueGameBtn = startContent["continueGameBtn"];
 			_continueGameBtn.addEventListener(MouseEvent.CLICK, onContinueGameBtnClicHand);
+			_continueGameBtn.visible = false;
 			_settingsBtn = startContent["settingsBtn"];
 			_settingsBtn.addEventListener(MouseEvent.CLICK, onSettingsBtnClickHand);
 		}
@@ -50,6 +51,11 @@ package lobby.startScreen.view.components
 		{
 			SoundLib.getInstance().btnClickSound();
 			dispatchEvent(new Event(GeneralEventsConst.SHOW_SETTINGS_PANEL));
+		}
+		
+		public function continueGameBtnIsVis():void
+		{
+			_continueGameBtn.visible = true;
 		}
 	}
 }

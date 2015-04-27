@@ -2,7 +2,7 @@ package gamePlay.level1.model.proxy
 {
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 	
 	import flash.display.MovieClip;
 	import flash.sampler.NewObjectSample;

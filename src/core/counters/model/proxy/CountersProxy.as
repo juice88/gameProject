@@ -3,7 +3,7 @@ package core.counters.model.proxy
 	import core.config.GeneralNotifications;
 	import core.config.Settings;
 	import core.counters.model.dto.CountersDto;
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -63,7 +63,6 @@ package core.counters.model.proxy
 			sendNotification(GeneralNotifications.MOVES_COUTNER_UPDATED, counters.allMoves);
 			lifesCounter();
 			counters.trueSelect = 0; // при неправильному виборі обнуляємо кількість правильних виборів (тобто все спочатку... на 3-й правильний вибір і всі наступні знову будуть додаватися по 30 очок за правильний вибір)  
-			trace("неправильний хід");
 		}
 		
 		private function lifesCounter():void
@@ -78,7 +77,6 @@ package core.counters.model.proxy
 				sendNotification(GeneralNotifications.GAME_OVER);
 			}
 			sendNotification(GeneralNotifications.LIFES_COUNTER_UPDATED, counters.lifes);
-			trace ("lifes -", counters.lifes);
 		}
 		private function scoreCounter():void
 		{
@@ -98,7 +96,6 @@ package core.counters.model.proxy
 				sendNotification(GeneralNotifications.SCORE_COUTNER_UPDATED, counters.totalScore);
 			}
 			levelWon();
-			trace("Лічильник: правильних ходів-", counters.allTrueSelect, "неправильних ходів-", counters.allFalseSelect, "Очки-", counters.scoreOfSomeLevel);
 		}
 		
 		public function restartLevel():void
@@ -120,7 +117,6 @@ package core.counters.model.proxy
 		
 		public function openPausePopup():void // виклик з команди. передаємо значення загального рахунку очків при відкривання діалогового вікна pausePopup
 		{
-			//counters.totalScore = counters.scoreOfSomeLevel;
 			timerStop();
 			sendNotification(GeneralNotifications.TOTAL_SCORE_UPDATED, counters.totalScore);
 		}
@@ -160,7 +156,6 @@ package core.counters.model.proxy
 		
 		public function sendValueScoreTrueFalseMoves():void
 		{
-			//counters.totalScore = counters.scoreOfSomeLevel;
 			counters.scoreTrueFalseValue = new Array;
 			counters.scoreTrueFalseValue.push(counters.scoreOfSomeLevel, counters.allTrueSelect, counters.allFalseSelect);
 			sendNotification(GeneralNotifications.VALUES_SCORE_TRUE_FALSE_MOVES, counters.scoreTrueFalseValue);
@@ -168,8 +163,6 @@ package core.counters.model.proxy
 		
 		public function timerGameSet():void
 		{
-//			counters.minute = 0;
-//			counters.second = Settings.TIMER_START_LEVEL_SECOND;
 			counters.minuteSecond = new Array;
 			counters.minuteSecond.push(counters.minute, counters.second, counters.timerIsStopped);
 			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, counters.minuteSecond);
@@ -195,15 +188,13 @@ package core.counters.model.proxy
 			sendNotification(GeneralNotifications.VALUES_MINUTE_SECOND, counters.minuteSecond, counters.timerIsStopped as String);
 			counters.minuteSecond.length = 0;
 			trace("таймер", counters.minute, ":", counters.second);
-		//	if (counters.minute <= 0 && counters.second <= 0)
-			if (counters.minute == 0)// && counters.second == 0)
+			if (counters.minute == 0)
 			{
 				if (counters.second == 0)
 				{
 					timerStop();
 					sendNotification(GeneralNotifications.GAME_OVER);
 				}
-				trace("таймер.раннінг "+counters.timer.running);
 			}
 		}
 		
@@ -223,17 +214,14 @@ package core.counters.model.proxy
 			if (choiseFrame == 1)
 			{
 				counters.totalScore += Settings.SCORE_BONUS;
-				trace("тотал скор =", counters.totalScore);
 			}
 			else if (choiseFrame == 2)
 			{
 				counters.lifesIsFrozen = true;
-				trace("кількість життів =", counters.lifes);
 			}
 			else if (choiseFrame == 3)
 			{
 				counters.timerIsStopped = true;
-				trace("таймер зупинено =", counters.timerIsStopped);
 			}
 			sendValueScoreTrueFalseMoves();
 			sendNotification(GeneralNotifications.SET_PLAYER_SCORE, counters.totalScore);
@@ -243,9 +231,8 @@ package core.counters.model.proxy
 		{
 			timerStop();
 			timerGameSet();
-//			counters.minute = Settings.TIMER_NEXT_LEVEL_MINUTE;
-//			counters.second = Settings.TIMER_NEXT_LEVEL_SECOND;
 			counters.scoreOfSomeLevel = 0;
+			counters.trueSelect = 0;
 			counters.lifes = 10;
 			counters.allMoves = 0;
 			counters.allTrueSelect = 0;
@@ -262,9 +249,12 @@ package core.counters.model.proxy
 			counters.scoreOfSomeLevel = 0;
 			counters.totalScore = 0;
 			counters.lifes = 10;
+			counters.trueSelect = 0;
 			counters.allMoves = 0;
 			counters.allTrueSelect = 0;
 			counters.allFalseSelect = 0;
+			counters.lifesIsFrozen == false;
+			counters.timerIsStopped == false;
 		}
 	}
 }

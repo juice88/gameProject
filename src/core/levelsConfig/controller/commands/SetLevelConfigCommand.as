@@ -1,7 +1,7 @@
-package core.controller.commands
+package core.levelsConfig.controller.commands
 {
 	import core.counters.model.proxy.CountersProxy;
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 	
 	import gamePlay.level1.model.proxy.StartLevelProxy;
 	import gamePlay.level1.view.mediator.LevelMediator;

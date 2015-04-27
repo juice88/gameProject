@@ -58,7 +58,7 @@ package lobby.highScore.view.components
 		public function highScoreBoardUpdate(arrUserData:Array):void
 		{
 			notVisibleTextOnBoard();
-			for (var i:int = 0; i<10; i++)
+			for (var i:int = 0; i<arrUserData.length && i<=9; i++) // переробити, щоб знати кількість техтфілдів на контенті, вайл контен.хесЧайл(текстякисьтам_і)
 			{
 				var obj:Object = arrUserData[i];
 				var playerName:TextField = highScore[_player+(i+1)];

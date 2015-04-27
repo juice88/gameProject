@@ -10,11 +10,7 @@ package lobby.enterName.view.components
 	import flash.events.Event;
 	import flash.events.KeyboardEvent;
 	import flash.events.MouseEvent;
-	import flash.sampler.NewObjectSample;
 	import flash.text.TextField;
-	import flash.ui.Keyboard;
-	
-	import mx.core.mx_internal;
 	
 	public class EnterNamePopupVL extends DialogViewLogic
 	{

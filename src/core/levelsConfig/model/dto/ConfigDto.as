@@ -1,4 +1,4 @@
-package core.model.dto
+package core.levelsConfig.model.dto
 {
 	public class ConfigDto extends Object
 	{
@@ -13,6 +13,7 @@ package core.model.dto
 		//Для LevelViewLogic
 		public var nameOfGameField:String;
 		public var showElemDelay:int; // затримка відкритих елементів перед початком гри (для перегляду розташування елементів)
+		public var elemName:String; //лінкейдж елемента в флеш проф, на який кладуться картинки
 		
 		//Для ScoreProxy
 		public var second:int; //задається кількість секунд для певного рівня

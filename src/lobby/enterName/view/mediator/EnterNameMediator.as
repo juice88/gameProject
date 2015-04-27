@@ -38,6 +38,7 @@ package lobby.enterName.view.mediator
 		protected function onCloseEnterNamePopupHand(event:Event):void
 		{
 			sendNotification(GeneralNotifications.REMOVE_MEDIATOR, NAME);
+			sendNotification(GeneralNotifications.SET_PLAYER_NAME);
 		}
 	}
 }

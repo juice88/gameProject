@@ -8,6 +8,8 @@ package core.config
 		public static const BONUS_POPUP_SHOW:String = "bonus_popup_show";
 		public static const BONUS_READE_TO_DRAW:String = "bonus_reade_to_draw"; //нотіф про готовність нарисування елементів бонусів (відсилається з проксі послідовність кадрів)
 		public static const BONUS_RESULT_OF_CHOISE:String = "bonus_result_of_choise"; //нотіф з результатом вибору нонуса в скор проксі
+		public static const CONTINUE_BTN_IS_VISIBLE:String = "continue_btn_is_visible"; //нотіф, про те, щоб зробити видимою кнопку continue game
+		public static const CONTINUE_GAME:String = "continue_game";
 		public static const DIALOG_CLOSE:String = "dialog_close"; //нотіф про закривання діалога (відсилається з onRemove DialogMediator)
 		public static const DIALOG_LOAD_TO_QUEUE:String = "dialog_load_to_queue"; //завантажується медіатор діалога в чергу
 		public static const DIALOG_OPEN:String = "dialog_open";
@@ -37,8 +39,10 @@ package core.config
 		public static const SCORE_MOVES_ANIMATION:String = "score_moves_animation"; //нотіф з числом очків, які зараховуються при правильному ході
 		public static const SELECT_IS_TRUE:String = "select_is_true"; //нотіф про правильне порівняння елементів (для лічильника очків)
 		public static const SELECT_IS_FALSE:String = "select_is_false"; //нотіф про неправильне порівняння елементів (для лічильника очків)
-		public static const SET_NAME_AND_SCORE_IN_SO:String = "set_name_and_score_in_so";
+		public static const SET_CONF_TO_CONTINUE_GAME:String = "set_conf_to_continue_game"; //нотіф з налаштуваннями левела для продовження гри
 		public static const SET_LEVEL_CONFIG:String = "set_level_config";
+		public static const SET_NAME_LEVEL_AND_SCORE_IN_SO:String = "set_name_and_score_in_so";
+		public static const SET_NUM_LEVEL:String = "set_num_level";
 		public static const SET_PLAYER_NAME:String = "set_player_name"; //нотіфом пересилається в highScore проксі введене ім"я гравця
 		public static const SET_PLAYER_SCORE:String = "set_player_score"; //нотіфом пересилається в highScore проксі score гравця
 		public static const SETTINGS_PANEL_OPEN:String = "settings_panel_open";
@@ -49,7 +53,5 @@ package core.config
 		public static const VALUES_MINUTE_SECOND:String = "values_minute_second"; //нотіф що передає значення хвилин та секунд, для відображення таймера
 		public static const VALUES_SCORE_TRUE_FALSE_MOVES:String = "values_score_true_false_movs"; //відплавляємо нотіфом значення totalScore, trueMoves, falseMoves
 		public static const WIN:String = "win"; //перемога (пройдено рівень)
-		
-		
 	}
 }

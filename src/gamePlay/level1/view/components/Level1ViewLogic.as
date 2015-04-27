@@ -2,7 +2,7 @@ package gamePlay.level1.view.components
 {
 	import core.config.GameEvent;
 	import core.config.GeneralEventsConst;
-	import core.model.dto.ConfigDto;
+	import core.levelsConfig.model.dto.ConfigDto;
 	import core.utils.SoundLib;
 	import core.utils.Warehouse;
 	import core.view.components.ViewLogic;
@@ -18,12 +18,12 @@ package gamePlay.level1.view.components
 	
 	public class Level1ViewLogic extends ViewLogic
 	{
-		private var _Elem:Class = Warehouse.getInstance().getAssetClass("Element");
 		private var _shablon:String = "shablon";
 		private var _hide:String = "hide";
 		private var _show:String = "show";
 		
 		private var _showElemDelay:int;
+		private var _elemName:String;
 		
 		private var _allElemList:Vector.<MovieClip>; //перелік усіх елементів
 		private var _openElemList:Vector.<MovieClip>; // елементи які відкриті
@@ -35,10 +35,12 @@ package gamePlay.level1.view.components
 		private var _scoreAnimTf:TextField;
 		private var _movesScoreVal:uint;
 		
+		
 		public function Level1ViewLogic(confDto:ConfigDto)
 		{
 			super(confDto.nameOfGameField);
 			_showElemDelay = confDto.showElemDelay;
+			_elemName = confDto.elemName;
 		}
 		
 		private function get level1Content():MovieClip
@@ -48,6 +50,7 @@ package gamePlay.level1.view.components
 		
 		public function readyToDraw(value:Vector.<ElementDto>):void
 		{
+			var _Elem:Class = Warehouse.getInstance().getAssetClass(_elemName);
 			_openElemList = new Vector.<MovieClip>; // вектор, що містить список відкритих елементів
 			_allElemList = new Vector.<MovieClip>; // вектор усіх елементів
 			_restElement = new Vector.<MovieClip>; // вектор елементів, що ще не відкриті та залишаються на сцені

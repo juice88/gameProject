@@ -7,7 +7,7 @@ package lobby.pause.controller.commands
 	
 	import lobby.pause.view.mediator.PausePopupMediator;
 	
-	public class ContinueGameCommand extends SimpleCommand
+	public class PauseContinueGameCommand extends SimpleCommand
 	{
 		override public function execute(notification:INotification):void
 		{

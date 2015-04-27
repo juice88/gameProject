@@ -1,5 +1,6 @@
 package lobby.topMenu.controller.commands
 {
+	import core.sharedObject.model.proxy.SharedObjProxy;
 	import core.counters.model.proxy.CountersProxy;
 	
 	import gamePlay.level1.model.proxy.StartLevelProxy;
@@ -24,6 +25,7 @@ package lobby.topMenu.controller.commands
 			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).backToMenu();
 			facade.registerMediator(new StartScreenMediator());
 			facade.registerMediator(new HighScorePanelMediator());
+			(facade.retrieveProxy(SharedObjProxy.NAME) as SharedObjProxy).visibleContinueBtn();
 		}
 	}
 }

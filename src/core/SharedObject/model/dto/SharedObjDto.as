@@ -1,4 +1,4 @@
-package core.SharedObject.model.dto
+package core.sharedObject.model.dto
 {
 	import flash.net.SharedObject;
 
@@ -8,5 +8,6 @@ package core.SharedObject.model.dto
 		public var apName:String = "Mahjjuice_game";
 		public var userName:String;
 		public var arrNamesAndScores:Array;
+		public var continGameConfDto:ContinGameConfDto;
 	}
 }

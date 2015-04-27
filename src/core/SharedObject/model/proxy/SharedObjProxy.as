@@ -1,8 +1,10 @@
-package core.SharedObject.model.proxy
+package core.sharedObject.model.proxy
 {
-	import core.SharedObject.model.dto.SharedObjDto;
+	import core.sharedObject.model.dto.ContinGameConfDto;
+	import core.sharedObject.model.dto.SharedObjDto;
 	import core.config.GeneralNotifications;
 	
+	import flash.display.MovieClip;
 	import flash.net.SharedObject;
 	
 	import lobby.highScore.model.dto.UserDto;
@@ -23,27 +25,74 @@ package core.SharedObject.model.proxy
 			return getData() as SharedObjDto;
 		}
 		
-		public function setUserNameEndScore(usDto:UserDto):void
+		override public function onRegister():void
 		{
+			sharedDto.continGameConfDto = new ContinGameConfDto();
+		}
+		
+		public function setUserNameLevelEndScore(usDto:UserDto):void
+		{
+			sharedDto.continGameConfDto.userName = usDto.userName;
 			sharedDto.userName = usDto.userName;
 			sharedDto.sharedObject = SharedObject.getLocal(sharedDto.apName);
-			if(sharedDto.sharedObject.size == 0)
+			if(usDto.userScore == 0)
 			{
-				sharedDto.sharedObject.data[sharedDto.userName] = new Object();
-				sharedDto.sharedObject.data.name = sharedDto.apName;
-				sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
-				sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
+				if(sharedDto.sharedObject.size == 0)
+				{
+					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
+					sharedDto.sharedObject.data.name = sharedDto.apName;
+					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
+					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 1;
+				}
+				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
+				{
+					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
+					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
+					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 1;
+				}
+				visibleContinueBtn();
+			//	sendNotification(GeneralNotifications.SET_NUM_LEVEL, sharedDto.sharedObject.data[sharedDto.userName].numLvl);
 			}
-			if (sharedDto.sharedObject.data[sharedDto.userName] == null)
+			else
 			{
-				sharedDto.sharedObject.data[sharedDto.userName] = new Object();
-				sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
-				sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
+				if(sharedDto.sharedObject.size == 0)
+				{
+					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
+					sharedDto.sharedObject.data.name = sharedDto.apName;
+					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
+					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+				}
+				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
+				{
+					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
+					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
+					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+				}
+				else 
+				{
+					sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = usDto.numLevel;
+				}
 			}
-			else 
+		}
+		
+		public function visibleContinueBtn():void
+		{
+			if (sharedDto.sharedObject.data[sharedDto.userName].numLvl > 1)
 			{
-				sharedDto.sharedObject.data[sharedDto.userName].score = usDto.userScore;
+				sendNotification(GeneralNotifications.CONTINUE_BTN_IS_VISIBLE);
 			}
+		}
+		
+		public function continueGame():void
+		{
+			sharedDto.continGameConfDto.numLvl = sharedDto.sharedObject.data[sharedDto.continGameConfDto.userName].numLvl;
+			sharedDto.continGameConfDto.userScore = sharedDto.sharedObject.data[sharedDto.continGameConfDto.userName].score;
+			sendNotification(GeneralNotifications.SET_CONF_TO_CONTINUE_GAME, sharedDto.continGameConfDto);
 		}
 		
 		private function getUserNameAndScoreList():Array 

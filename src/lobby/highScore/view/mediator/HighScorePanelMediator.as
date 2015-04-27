@@ -14,7 +14,7 @@ package lobby.highScore.view.mediator
 		public function HighScorePanelMediator()
 		{
 			super(NAME, new HighScorePanelVL());
-			layer = "upper";
+			layer = "lower";
 		}
 		
 		override public function onRegisterListeners():void
