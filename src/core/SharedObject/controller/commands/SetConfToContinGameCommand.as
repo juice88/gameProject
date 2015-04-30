@@ -1,5 +1,6 @@
 package core.sharedObject.controller.commands
 {
+	import core.counters.model.proxy.CountersProxy;
 	import core.levelsConfig.model.proxy.LevelsGameConfigProxy;
 	import core.sharedObject.model.dto.ContinGameConfDto;
 	
@@ -19,6 +20,7 @@ package core.sharedObject.controller.commands
 			facade.removeMediator(StartScreenMediator.NAME);
 			facade.registerMediator(new TopPanelMediator());
 			facade.registerMediator(new BotPanelMediator());
+			(facade.retrieveProxy(CountersProxy.NAME) as CountersProxy).continueGame(notification.getBody() as ContinGameConfDto);
 			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelNum(notification.getBody() as ContinGameConfDto);
 			(facade.retrieveProxy(LevelsGameConfigProxy.NAME) as LevelsGameConfigProxy).setLevelConfig();
 		}

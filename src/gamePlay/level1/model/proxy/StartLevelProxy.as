@@ -63,28 +63,28 @@ package gamePlay.level1.model.proxy
 		}
 		
 		private function fillKadrList():void //наповнюємо ігрове поле елементами(квадратиками)
-		{ 
-			if (levelDto.openElemLimit == 2)
+		{
+			switch (levelDto.openElemLimit)
 			{
-				for(var i:uint = 0; i<levelDto.elemNum/2; i++)
-				{
-					levelDto.randElements = levelDto.framesBeginNum+(int(Math.random()*levelDto.framesNum));
-					
-					levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
-					levelDto.kadrList.unshift(levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
-				}
+				case 2:
+					for(var i:uint = 0; i<levelDto.elemNum/2; i++)
+					{
+						levelDto.randElements = levelDto.framesBeginNum+(int(Math.random()*levelDto.framesNum));
+						
+						levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
+						levelDto.kadrList.unshift(levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
+					}
+					break;
+				case 3:
+					for(var j:uint = 0; j<levelDto.elemNum/3; j++)
+					{
+						levelDto.randElements = levelDto.framesBeginNum+(int(Math.random()*levelDto.framesNum));
+						
+						levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
+						levelDto.kadrList.unshift(levelDto.randElements, levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
+					}
+					break;
 			}
-			else if (levelDto.openElemLimit == 3)
-			{
-				for(var j:uint = 0; j<levelDto.elemNum/3; j++)
-				{
-					levelDto.randElements = levelDto.framesBeginNum+(int(Math.random()*levelDto.framesNum));
-					
-					levelDto.kadrList.push(levelDto.randElements); //додаємо отримані випадкові значення в кінець масиву
-					levelDto.kadrList.unshift(levelDto.randElements, levelDto.randElements); //додаємо ще раз ті самі значення на початок масиву для отримання парності кольорів
-				}
-			}
-			
 			trace("послідовність кадрів наступна -",levelDto.kadrList);
 		}
 		
@@ -107,7 +107,6 @@ package gamePlay.level1.model.proxy
 				{
 					if (elem.ifSelect == true)
 					{
-						trace("натиснуто той самий елемент, індекс -",elem.index+1, "кадр-", elem.kadr);
 						return;
 					}
 				}

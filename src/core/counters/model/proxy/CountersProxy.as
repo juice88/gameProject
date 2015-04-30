@@ -4,6 +4,7 @@ package core.counters.model.proxy
 	import core.config.Settings;
 	import core.counters.model.dto.CountersDto;
 	import core.levelsConfig.model.dto.ConfigDto;
+	import core.sharedObject.model.dto.ContinGameConfDto;
 	
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
@@ -253,8 +254,14 @@ package core.counters.model.proxy
 			counters.allMoves = 0;
 			counters.allTrueSelect = 0;
 			counters.allFalseSelect = 0;
-			counters.lifesIsFrozen == false;
-			counters.timerIsStopped == false;
+			counters.lifesIsFrozen = false;
+			counters.timerIsStopped = false;
+		}
+		
+		public function continueGame(contGame:ContinGameConfDto):void
+		{
+			counters.totalScore = contGame.userScore;
+			nextLevel();
 		}
 	}
 }

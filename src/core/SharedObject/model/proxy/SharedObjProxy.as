@@ -43,14 +43,14 @@ package core.sharedObject.model.proxy
 					sharedDto.sharedObject.data.name = sharedDto.apName;
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 1;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
 				}
 				if (sharedDto.sharedObject.data[sharedDto.userName] == null)
 				{
 					sharedDto.sharedObject.data[sharedDto.userName] = new Object();
 					sharedDto.sharedObject.data[sharedDto.userName].name = usDto.userName;
 					sharedDto.sharedObject.data[sharedDto.userName].score = 0;
-					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 1;
+					sharedDto.sharedObject.data[sharedDto.userName].numLvl = 0;
 				}
 				visibleContinueBtn();
 			//	sendNotification(GeneralNotifications.SET_NUM_LEVEL, sharedDto.sharedObject.data[sharedDto.userName].numLvl);
@@ -82,7 +82,7 @@ package core.sharedObject.model.proxy
 		
 		public function visibleContinueBtn():void
 		{
-			if (sharedDto.sharedObject.data[sharedDto.userName].numLvl > 1)
+			if (sharedDto.sharedObject.data[sharedDto.userName].numLvl >= 1)
 			{
 				sendNotification(GeneralNotifications.CONTINUE_BTN_IS_VISIBLE);
 			}
